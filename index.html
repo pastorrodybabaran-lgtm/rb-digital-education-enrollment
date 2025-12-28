@@ -94,7 +94,11 @@ label[for="registrationDate"] {
         </header>
 
         <main id="enrollment-form-container">
-            <form id="enrollmentForm" class="space-y-6" novalidate>
+            <form id="enrollmentForm" name="enrollment" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6" novalidate>
+      <input type="hidden" name="form-name" value="enrollment" />
+      <p class="hidden">
+        <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+      </p>
 
                 <!-- Student Information Section -->
                 <div class="form-section">
@@ -769,73 +773,27 @@ async function handleFormSubmit(event) {
     const docRef = await addDoc(collection(db, 'enrollments'), enrollmentData);
     console.log('Enrollment saved with ID:', docRef.id);
 
-    // 2) Attempt to queue emails, but DO NOT block success if this fails
-    if (studentEmail) {
-      const adminEmail = 'pastorrodybabaran@gmail.com'; // <-- change if needed
-      try {
-        // Student confirmation email
-        await addDoc(collection(db, 'mail'), {
-          to: [studentEmail],
-          cc: [adminEmail], // remove if you don't want CC
-          message: {
-            subject: 'Welcome to RB Digital Education',
-            html: `
-              <div style="font-family:Arial,sans-serif;line-height:1.5">
-                <h2>Welcome, ${enrollmentData.legalName}!</h2>
-                <p>Thank you for registering for <strong>${enrollmentData.course}</strong>.</p>
-                <p><strong>Next steps:</strong></p>
-                <ol>
-                  <li>Save this email for your records.</li>
-                  <li>Message Pastor Rody to confirm:
-                    <a href="https://m.me/PastorRodyBabaran" target="_blank">https://m.me/PastorRodyBabaran</a>
-                  </li>
-                </ol>
-                <hr/>
-                <p><strong>Registration Details</strong></p>
-                <ul>
-                  <li>Name: ${enrollmentData.legalName}</li>
-                  <li>Email: ${enrollmentData.email}</li>
-                  <li>Course: ${enrollmentData.course}</li>
-                  <li>Date: ${enrollmentData.registrationDate}</li>
-                </ul>
-                <p style="margin-top:16px">RB Digital Education</p>
-              </div>
-            `
-          },
-          enrollmentId: docRef.id,
-          createdAt: new Date().toISOString()
-        });
+    // Netlify Form Capture (Phase 1)
+    await submitToNetlifyForms(event.target);
+    // 2) OPTIONAL: Email sending (server-side)
+    // The previous Firebase "mail" collection trigger stops working when the project is on Spark (no-cost),
+    // because the typical email-trigger approach requires paid plan/Cloud Functions.
+    // We now call a Netlify Function instead (Phase 2). If the function is not installed yet, we DO NOT block success.
 
-        // Admin-only notification
-        await addDoc(collection(db, 'mail'), {
-          to: [adminEmail],
-          message: {
-            subject: 'New Enrollment Received',
-            html: `
-              <div style="font-family:Arial,sans-serif;line-height:1.5">
-                <h3>New Enrollment Submitted</h3>
-                <p><strong>ID:</strong> ${docRef.id}</p>
-                <ul>
-                  <li><strong>Name:</strong> ${enrollmentData.legalName}</li>
-                  <li><strong>Email:</strong> ${enrollmentData.email}</li>
-                  <li><strong>Course:</strong> ${enrollmentData.course}</li>
-                  <li><strong>Date:</strong> ${enrollmentData.registrationDate}</li>
-                  <li><strong>Device:</strong> ${enrollmentData.device}</li>
-                  <li><strong>Connection:</strong> ${Array.isArray(enrollmentData.connection) ? enrollmentData.connection.join(', ') : ''}</li>
-                </ul>
-                <p style="white-space:pre-wrap"><strong>Raw JSON:</strong><br>${JSON.stringify(enrollmentData, null, 2)}</p>
-              </div>
-            `
-          },
-          enrollmentId: docRef.id,
-          createdAt: new Date().toISOString()
-        });
-      } catch (mailErr) {
-        console.warn('Email queue failed (enrollment still saved):', mailErr);
-        // Optional: show a gentle notice that email may be delayed
-      }
+    try {
+      await fetch('/.netlify/functions/sendEnrollmentEmail', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          legalName: data.legalName || '',
+          email: data.email || '',
+          course: data.course || '',
+          submittedAt: new Date().toISOString()
+        })
+      });
+    } catch (err) {
+      console.warn('Email function not configured yet:', err);
     }
-
     // 3) UI: success regardless of mail write
     formContainer.classList.add('hidden');
     successContainer.classList.remove('hidden');
@@ -863,5 +821,3 @@ window.handleMessengerClick = function handleMessengerClick() {
     </script>
 </body>
 </html>
-
-
