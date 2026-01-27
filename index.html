@@ -769,19 +769,24 @@ async function handleFormSubmit(event) {
   };
 
   try {
-    // 1) Save enrollment (this must succeed)
-    const docRef = await addDoc(collection(db, 'enrollments'), enrollmentData);
-    console.log('Enrollment saved with ID:', docRef.id);
-
-    // Netlify Form Capture (Phase 1)
+    // 1) Netlify Form Capture (Phase 1) — this is the PRIMARY capture and must succeed
     await submitToNetlifyForms(event.target);
+
+    // 2) Firestore save (optional backup). If this fails, we still allow success because Netlify captured it.
+    try {
+      const docRef = await addDoc(collection(db, 'enrollments'), enrollmentData);
+      console.log('Enrollment saved with ID:', docRef.id);
+    } catch (err) {
+      console.warn('Firestore save failed (Netlify capture already succeeded):', err);
+    }
+
     // 2) OPTIONAL: Email sending (server-side)
     // The previous Firebase "mail" collection trigger stops working when the project is on Spark (no-cost),
     // because the typical email-trigger approach requires paid plan/Cloud Functions.
     // We now call a Netlify Function instead (Phase 2). If the function is not installed yet, we DO NOT block success.
 
     try {
-      await fetch('/.netlify/functions/sendEnrollmentEmail', {
+      await fetch('/.netlify/functions/send-confirmation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
