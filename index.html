@@ -94,7 +94,7 @@ label[for="registrationDate"] {
         </header>
 
         <main id="enrollment-form-container">
-            <form id="enrollmentForm" name="enrollment" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6" novalidate>
+            <form id="enrollmentForm" name="enrollment" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6" novalidate>
       <input type="hidden" name="form-name" value="enrollment" />
       <p class="hidden">
         <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
@@ -733,7 +733,7 @@ function validateForm() {
       formData.set('form-name', nameAttr);
     }
 
-    const res = await fetch('/', {
+    const res = await fetch(formEl.getAttribute('action') || '/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData).toString(),
