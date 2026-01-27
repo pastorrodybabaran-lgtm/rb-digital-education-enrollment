@@ -721,6 +721,33 @@ function validateForm() {
     return invalidElements;
 }
 
+  // PHASE 1 — Netlify Form Capture (Backup submission to Netlify Forms)
+  // This posts the same payload to Netlify Forms so you have a backup capture in Netlify dashboard.
+  // It does NOT send any email by itself.
+  async function submitToNetlifyForms(formEl) {
+    const formData = new FormData(formEl);
+
+    // Netlify Forms requires a "form-name" field that matches the form's name attribute.
+    if (!formData.get('form-name')) {
+      const nameAttr = formEl.getAttribute('name') || 'enrollment';
+      formData.set('form-name', nameAttr);
+    }
+
+    const res = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
+    });
+
+    if (!res.ok) {
+      throw new Error(`Netlify Forms capture failed (${res.status})`);
+    }
+
+    return true;
+  }
+
+
+
 async function handleFormSubmit(event) {
   event.preventDefault();
   removeAllHighlights();
