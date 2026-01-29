@@ -104,7 +104,7 @@ const html = `
 
         <div style="margin-top:16px;padding:14px;border-radius:12px;background:#fff7ed;border:1px solid #fed7aa;">
           <b style="color:#b91c1c;">Next Step (IMPORTANT)</b><br/><br/>
-          Please message Pastor Rody on Facebook Messenger to confirm your enrollment:<br/>
+          Your Enrollment is not yet confirmed. Please message Pastor Rody on Facebook Messenger to confirm your enrollment:<br/>
           <a href="https://m.me/PastorRodyBabaran">https://m.me/PastorRodyBabaran</a>
         </div>
 
