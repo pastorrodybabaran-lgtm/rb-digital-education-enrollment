@@ -130,11 +130,12 @@ const html = `
 
     // Send email
     await transporter.sendMail({
-      from: `Rody Babaran Digital Education <${GMAIL_FROM}>`,
-      to: email,
-      subject,
-      html,
-    });
+  from: `Rody Babaran Digital Education <${GMAIL_FROM}>`,
+  to: email,
+  cc: process.env.ADMIN_EMAIL || "",
+  subject,
+  html,
+});
 
     return {
       statusCode: 200,
