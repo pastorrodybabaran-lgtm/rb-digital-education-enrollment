@@ -82,8 +82,10 @@ exports.handler = async (event) => {
 </div>
 
       <div style="padding:22px;color:#111827;">
-        <h2 style="margin:0 0 10px 0;color:#0b2a4a;">
+        <h2 style="margin:0 0 10px 0;color:#0b2a4a;font-weight:700;">
   Enrollment Received!
+</h2>
+
 </h2>
         <p>Hi <b>${escapeHtml(fullName)}</b>,</p>
 
@@ -105,9 +107,9 @@ exports.handler = async (event) => {
         </div>
 
         <p style="margin-top:20px;">
-          Blessings,<br/>
-          Pastor Rody Babaran, B.Th, M.CE
-        </p>
+  Blessings,<br/>
+  <b>Pastor Rody Babaran, B.Th, M.CE</b>
+</p>
 
         <hr/>
 
