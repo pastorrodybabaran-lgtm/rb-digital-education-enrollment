@@ -63,23 +63,63 @@ exports.handler = async (event) => {
     // Email content
     const subject = "Rody Babaran Digital Education — Enrollment Received";
     const html = `
-      <div style="font-family: Arial, sans-serif; line-height:1.6;">
-        <h2>Enrollment Received</h2>
+<div style="margin:0;padding:0;background:#f4f6fb;font-family:Arial,Helvetica,sans-serif;">
+  <div style="max-width:680px;margin:0 auto;padding:28px;">
+    <div style="background:#ffffff;border:1px solid #e6e9f2;border-radius:14px;overflow:hidden;">
+      
+      <div style="background:#0b2a4a;padding:22px 22px 18px 22px;color:#ffffff;text-align:center;">
+        <img
+          src="https://i.imgur.com/zpxUXa5.png"
+          alt="Rody Babaran Digital Education"
+          width="90"
+          style="display:block;margin:0 auto 12px auto;border-radius:50%;"
+        />
+        <div style="font-size:16px;font-weight:700;letter-spacing:.4px;">
+          Rody Babaran Digital Education
+        </div>
+        <div style="font-size:13px;opacity:.9;margin-top:4px;">
+          Enrollment Confirmation
+        </div>
+      </div>
+
+      <div style="padding:22px;color:#111827;">
+        <h2 style="margin:0 0 10px 0;">Enrollment Received</h2>
+
         <p>Hi <b>${escapeHtml(fullName)}</b>,</p>
-        <p>Thank you for registering with <b>Rody Babaran Digital Education</b>.</p>
+
+        <p>
+          Thank you for registering with
+          <b>Rody Babaran Digital Education</b>.
+        </p>
+
         ${
           course
             ? `<p><b>Selected Course:</b> ${escapeHtml(course)}</p>`
             : ""
         }
-        <p><b>Next Step:</b> "IMPORTANT!", Please message Pastor Rody on Facebook Messenger to confirm your enrollment. https://m.me/PastorRodyBabaran</p>
-        <p style="margin-top:20px;">Blessings,<br/>Pastor Rody Babaran, B.Th, M.CE</p>
+
+        <div style="margin-top:16px;padding:14px;border-radius:12px;background:#fff7ed;border:1px solid #fed7aa;">
+          <b>Next Step (IMPORTANT)</b><br/><br/>
+          Please message Pastor Rody on Facebook Messenger to confirm your enrollment:<br/>
+          <a href="https://m.me/PastorRodyBabaran">https://m.me/PastorRodyBabaran</a>
+        </div>
+
+        <p style="margin-top:20px;">
+          Blessings,<br/>
+          Pastor Rody Babaran, B.Th, M.CE
+        </p>
+
         <hr/>
+
         <p style="font-size:12px;color:#666;">
           This email was sent automatically to confirm your enrollment submission.
         </p>
       </div>
-    `;
+    </div>
+  </div>
+</div>
+`;
+
 
     // Send email
     await transporter.sendMail({
