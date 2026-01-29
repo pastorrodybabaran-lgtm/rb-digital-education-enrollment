@@ -126,16 +126,23 @@ const html = `
 </div>
 `;
 
-
-
-    // Send email
-    await transporter.sendMail({
+    // 1) Send to student (no CC)
+await transporter.sendMail({
   from: `Rody Babaran Digital Education <${GMAIL_FROM}>`,
   to: email,
-  cc: process.env.ADMIN_EMAIL || "",
   subject,
   html,
 });
+
+// 2) Send ADMIN COPY to your inbox (separate email)
+if (process.env.ADMIN_EMAIL) {
+  await transporter.sendMail({
+    from: `Rody Babaran Digital Education <${GMAIL_FROM}>`,
+    to: process.env.ADMIN_EMAIL,
+    subject: `[ADMIN COPY] ${subject}`,
+    html,
+  });
+}
 
     return {
       statusCode: 200,
