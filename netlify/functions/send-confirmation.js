@@ -74,17 +74,17 @@ exports.handler = async (event) => {
           width="90"
           style="display:block;margin:0 auto 12px auto;border-radius:50%;"
         />
-        <div style="font-size:16px;font-weight:700;letter-spacing:.4px;">
-          Rody Babaran Digital Education
-        </div>
-        <div style="font-size:13px;opacity:.9;margin-top:4px;">
-          Enrollment Confirmation
-        </div>
-      </div>
+        <div style="font-size:16px;font-weight:700;letter-spacing:.4px;color:#ffffff;">
+  Rody Babaran Digital Education
+</div>
+<div style="font-size:13px;margin-top:4px;color:#ffffff;">
+  Enrollment Confirmation
+</div>
 
       <div style="padding:22px;color:#111827;">
-        <h2 style="margin:0 0 10px 0;">Enrollment Received</h2>
-
+        <h2 style="margin:0 0 10px 0;color:#0b2a4a;">
+  Enrollment Received!
+</h2>
         <p>Hi <b>${escapeHtml(fullName)}</b>,</p>
 
         <p>
@@ -99,7 +99,7 @@ exports.handler = async (event) => {
         }
 
         <div style="margin-top:16px;padding:14px;border-radius:12px;background:#fff7ed;border:1px solid #fed7aa;">
-          <b>Next Step (IMPORTANT)</b><br/><br/>
+          <b style="color:#b91c1c;">Next Step (IMPORTANT)</b><br/><br/>
           Please message Pastor Rody on Facebook Messenger to confirm your enrollment:<br/>
           <a href="https://m.me/PastorRodyBabaran">https://m.me/PastorRodyBabaran</a>
         </div>
