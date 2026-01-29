@@ -62,12 +62,13 @@ exports.handler = async (event) => {
 
     // Email content
     const subject = "Rody Babaran Digital Education — Enrollment Received";
-    const html = `
+const html = `
 <div style="margin:0;padding:0;background:#f4f6fb;font-family:Arial,Helvetica,sans-serif;">
   <div style="max-width:680px;margin:0 auto;padding:28px;">
     <div style="background:#ffffff;border:1px solid #e6e9f2;border-radius:14px;overflow:hidden;">
-      
-      <div style="background:#0b2a4a;padding:22px 22px 18px 22px;color:#ffffff;text-align:center;">
+
+      <!-- HEADER (blue background only here) -->
+      <div style="background:#0b2a4a;padding:22px 22px 18px 22px;text-align:center;">
         <img
           src="https://i.imgur.com/zpxUXa5.png"
           alt="Rody Babaran Digital Education"
@@ -75,28 +76,29 @@ exports.handler = async (event) => {
           style="display:block;margin:0 auto 12px auto;border-radius:50%;"
         />
         <div style="font-size:16px;font-weight:700;letter-spacing:.4px;color:#ffffff;">
-  Rody Babaran Digital Education
-</div>
-<div style="font-size:13px;margin-top:4px;color:#ffffff;">
-  Enrollment Confirmation
-</div>
+          Rody Babaran Digital Education
+        </div>
+        <div style="font-size:13px;margin-top:4px;color:#ffffff;">
+          Enrollment Confirmation
+        </div>
+      </div>
+      <!-- END HEADER -->
 
-      <div style="padding:22px;color:#111827;">
+      <!-- BODY (white background) -->
+      <div style="padding:22px;color:#111827;background:#ffffff;">
         <h2 style="margin:0 0 10px 0;color:#0b2a4a;font-weight:700;">
-  Enrollment Received!
-</h2>
+          Enrollment Received
+        </h2>
 
-</h2>
-        <p>Hi <b>${escapeHtml(fullName)}</b>,</p>
+        <p style="margin:0 0 10px 0;">Hi <b>${escapeHtml(fullName)}</b>,</p>
 
-        <p>
-          Thank you for registering with
-          <b>Rody Babaran Digital Education</b>.
+        <p style="margin:0 0 12px 0;">
+          Thank you for registering with <b>Rody Babaran Digital Education</b>.
         </p>
 
         ${
           course
-            ? `<p><b>Selected Course:</b> ${escapeHtml(course)}</p>`
+            ? `<p style="margin:0 0 12px 0;"><b>Selected Course:</b> ${escapeHtml(course)}</p>`
             : ""
         }
 
@@ -106,21 +108,24 @@ exports.handler = async (event) => {
           <a href="https://m.me/PastorRodyBabaran">https://m.me/PastorRodyBabaran</a>
         </div>
 
-        <p style="margin-top:20px;">
-  Blessings,<br/>
-  <b>Pastor Rody Babaran, B.Th, M.CE</b>
-</p>
+        <p style="margin-top:20px;margin-bottom:0;">
+          Blessings,<br/>
+          <b>Pastor Rody Babaran, B.Th, M.CE</b>
+        </p>
 
-        <hr/>
+        <hr style="margin:18px 0;border:none;border-top:1px solid #e5e7eb;" />
 
-        <p style="font-size:12px;color:#666;">
+        <p style="font-size:12px;color:#666;margin:0;">
           This email was sent automatically to confirm your enrollment submission.
         </p>
       </div>
+      <!-- END BODY -->
+
     </div>
   </div>
 </div>
 `;
+
 
 
     // Send email
