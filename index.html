@@ -813,19 +813,26 @@ async function handleFormSubmit(event) {
     // We now call a Netlify Function instead (Phase 2). If the function is not installed yet, we DO NOT block success.
 
     try {
-      await fetch('/.netlify/functions/send-confirmation', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          legalName: data.legalName || '',
-          email: data.email || '',
-          course: data.course || '',
-          submittedAt: new Date().toISOString()
-        })
-      });
-    } catch (err) {
-      console.warn('Email function not configured yet:', err);
-    }
+  const res = await fetch('/.netlify/functions/send-confirmation', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      fullName: (enrollmentData.legalName || '').trim(),
+      email: (enrollmentData.email || '').trim(),
+      course: (enrollmentData.course || '').trim()
+    })
+  });
+
+  if (!res.ok) {
+    const txt = await res.text();
+    console.warn('Email send failed:', res.status, txt);
+  } else {
+    console.log('Confirmation email triggered successfully.');
+  }
+} catch (err) {
+  console.warn('Email function call failed:', err);
+}
+
     // 3) UI: success regardless of mail write
     formContainer.classList.add('hidden');
     successContainer.classList.remove('hidden');
