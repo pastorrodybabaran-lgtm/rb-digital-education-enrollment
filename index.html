@@ -108,6 +108,26 @@ label[for="registrationDate"] {
 
 
 
+        
+<!-- Registration Fee Notice -->
+<div class="mx-auto mb-6 max-w-2xl px-4">
+    <div class="rounded-lg border border-yellow-300/40 bg-yellow-300/10 backdrop-blur-sm py-4 px-5 text-center">
+        <div class="text-yellow-300 font-extrabold tracking-wide text-lg" style="text-shadow: 0 0 8px rgba(255,215,0,0.9);">
+            REGISTRATION FEE NOTICE
+        </div>
+        <p class="mt-2 text-white font-semibold leading-relaxed">
+            A non-refundable registration fee of <span class="font-extrabold underline">Php 400.00</span> is required to process your enrollment.
+        </p>
+        <p class="mt-2 text-white text-sm">
+            This helps support the administration and ongoing ministry work behind these courses.
+        </p>
+        <p class="mt-2 text-white text-sm italic">
+            Payment details will be provided after submission of this form.
+        </p>
+    </div>
+</div>
+
+
         <main id="enrollment-form-container">
             <form id="enrollmentForm" name="enrollment" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6" novalidate>
       <input type="hidden" name="form-name" value="enrollment" />
@@ -268,12 +288,16 @@ label[for="registrationDate"] {
                 <!-- Course Agreement Section -->
                 <div class="form-section">
                     <h3 class="text-xl font-semibold mb-4 text-white border-b border-gray-400 pb-2">Course Agreement</h3>
-                    <div class="prose prose-sm max-w-none text-gray-200 space-y-3">
-                        <p>This enrollment and the course is <strong style="color:#FFD700; font-weight:bold; text-shadow:0 0 8px rgba(255,215,0,0.9);">FREE</strong>. The only commitment required is what you have selected above.</p>
-                        <p>The course runs on a weekly home study or self-paced basis. You must be committed to faithfully submit assignments on time. In the event of a delay or unavoidable circumstances, a <strong style="color:#FFD700; font-weight:bold; text-shadow:0 0 8px rgba(255,215,0,0.9);">1-week extension</strong> is available.</p>
-                        <p>If you fail to finish or complete an assignment beyond the extension, you will be automatically dropped and removed from the Group Chat.</p>
-                        <p>In the event you cannot comply and need to drop the course, please simply message me directly or provide a message to the FB Group Chat.</p>
-                    </div>
+                    
+<div class="prose prose-sm max-w-none text-gray-200 space-y-3">
+    <p>This course is offered as part of a ministry training program. While the course content itself is provided freely, a one-time non-refundable registration fee of <strong style="color:#FFD700; font-weight:bold; text-shadow:0 0 8px rgba(255,215,0,0.9);">Php 400.00</strong> is required to confirm and process your enrollment.</p>
+    <p>This registration fee secures your slot in the program and supports the administrative and ministry efforts behind this course.</p>
+    <p>Enrollment does not guarantee completion. Students are responsible for their own progress, participation, and submission of assignments.</p>
+    <p><strong style="color:#FFD700; font-weight:bold; text-shadow:0 0 8px rgba(255,215,0,0.9);">Failure to participate, complete assignments, or communicate will be considered a voluntary withdrawal from the course without refund.</strong></p>
+    <p><strong style="color:#FFD700; font-weight:bold; text-shadow:0 0 8px rgba(255,215,0,0.9);">No refunds will be issued once registration has been confirmed.</strong></p>
+    <p>By proceeding with this enrollment, you acknowledge and agree to these terms.</p>
+</div>
+
                     <fieldset class="mt-4" data-validation="no-refusal" data-refusal-value="I Do Not Agree">
                         <div class="flex items-center space-x-4 mt-2">
                              <div class="flex items-center">
@@ -361,10 +385,218 @@ label[for="registrationDate"] {
         import { getFirestore, collection, addDoc, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // --- COURSE DATA ---
-        const courses = [
-            { 
-                id: "how_to_write_devotional", 
-                name: "How to Write a Devotional", 
+                const courses = [
+            {
+                id: "zero_to_faithful_worker",
+                name: "From Zero to Faithful Worker: Complete Theology & Ministry Training",
+                syllabus: `
+                    <p><strong>Course Title:</strong> From Zero to Faithful Worker: Complete Theology & Ministry Training</p>
+                    <p><strong>Format:</strong> Self-Paced KJV Training Curriculum</p>
+                    <p><strong>Focus:</strong> Understanding Scripture, Teaching Doctrine, Writing Sermons, Leading Bible Studies, and Evangelism</p>
+                    <p><strong>Author:</strong> Rody D. Babaran, B.Th., M.CE, M.A (Sys Theo)</p>
+                    <p><strong>Founder:</strong> Rody Babaran Digital Education</p>
+                    <p><strong>Scripture Base:</strong> King James Version (KJV)</p>
+                    <p><em>Copyright © 2026 Rody D. Babaran. All rights reserved.</em></p>
+                    <hr class='my-4'>
+                    <h4>Course Description</h4>
+                    <p>This complete self-paced KJV-based training program is designed to take a learner from little or no theological foundation to becoming a faithful and capable church worker. It develops real ministry ability—not just information—through a clear, practical, step-by-step learning path.</p>
+                    <p>Students will learn how to understand Scripture, explain doctrine, prepare sermons, lead Bible studies, and participate in evangelism with clarity and confidence. The curriculum is especially designed for learners with limited time, limited confidence, limited educational background, or limited formal theological training.</p>
+                    <hr class='my-4'>
+                    <h4>By the End of This Course, the Student Will Be Able To:</h4>
+                    <ul>
+                        <li>Understand foundational truths about God, Scripture, and the Gospel</li>
+                        <li>Read and explain a Bible verse accurately</li>
+                        <li>Interpret short passages in their proper context</li>
+                        <li>Understand essential biblical doctrines in simple, biblical terms</li>
+                        <li>Prepare and lead a clear Bible study</li>
+                        <li>Write and deliver a simple, faithful sermon</li>
+                        <li>Share the Gospel clearly and confidently</li>
+                    </ul>
+                    <hr class='my-4'>
+                    <h4>Course Structure (7 Levels)</h4>
+                    <p><strong>Level 0:</strong> Foundations</p>
+                    <p><strong>Level 1:</strong> Understanding a Verse</p>
+                    <p><strong>Level 2:</strong> Understanding a Passage</p>
+                    <p><strong>Level 3:</strong> Basic Doctrine and Theology</p>
+                    <p><strong>Level 4:</strong> Leading a Bible Study</p>
+                    <p><strong>Level 5:</strong> Writing a Simple Sermon</p>
+                    <p><strong>Level 6:</strong> Worker Readiness and Evangelism</p>
+                    <hr class='my-4'>
+                    <h4>Curriculum Ladder</h4>
+                    <p>Stage 1: Know God, the Bible, and the Gospel</p>
+                    <p>Stage 2: Explain a Verse</p>
+                    <p>Stage 3: Explain a Passage</p>
+                    <p>Stage 4: Learn Doctrine</p>
+                    <p>Stage 5: Teach Others</p>
+                    <p>Stage 6: Preach</p>
+                    <p>Stage 7: Evangelize</p>
+                `
+            },
+            {
+                id: "disciple_new_believer",
+                name: "Discipleship Program - How to Disciple a New Believer (Foundational)",
+                syllabus: `
+                    <p><strong>Course Title:</strong> How to Disciple a New Believer? (Foundation)</p>
+                    <p><strong>Provider:</strong> Rody Babaran Digital Education</p>
+                    <p><strong>Author/Instructor:</strong> Pastor Rody Babaran</p>
+                    <p><strong>Course Format:</strong> Self-Paced (Asynchronous)</p>
+                    <p><strong>Course Duration:</strong> 6 Modules (Recommended: 7 days per module)</p>
+                    <p><strong>Bible Translation:</strong> King James Version (KJV)</p>
+                    <p><strong>Certificate:</strong> Certificate of Completion upon successful completion of all course requirements</p>
+                    <p><em>All Rights Reserved © January 2026</em></p>
+                    <hr class='my-4'>
+                    <h4>Course Abstract</h4>
+                    <p>This foundational course equips pastors, church leaders, teachers, and Bible students with a structured, Scripture-first (KJV) approach to discipling new believers. The modules establish assurance of salvation, spiritual habits, essential doctrine, church integration, holiness, and witness—designed for immediate ministry application.</p>
+                    <hr class='my-4'>
+                    <h4>How the Course Works</h4>
+                    <ul>
+                        <li><strong>Recommended pace:</strong> Complete one module per 7-day cycle</li>
+                        <li><strong>Deliverables per module:</strong> Quiz + Reflection + Video Application Report + Main Assignment</li>
+                        <li><strong>Reflection minimum:</strong> 200+ words, include at least one KJV verse + explain application</li>
+                        <li><strong>Video requirement:</strong> 3–7 minutes Application Report video with at least one KJV verse + evidence of application (alternative path allowed if no ministry setting access)</li>
+                        <li><strong>Submission channel:</strong> Facebook Messenger (large files via Google Drive link)</li>
+                        <li><strong>Evaluation standard:</strong> Completed / Needs Revision</li>
+                    </ul>
+                    <hr class='my-4'>
+                    <h4>Module Titles (6 Modules)</h4>
+                    <ul>
+                        <li><strong>Module 1:</strong> The Goal of Discipleship and Assurance of Salvation</li>
+                        <li><strong>Module 2:</strong> Establishing Spiritual Habits (Bible, Prayer, and Obedience)</li>
+                        <li><strong>Module 3:</strong> Teaching Essential Doctrine to a New Believer</li>
+                        <li><strong>Module 4:</strong> Integrating the New Believer into the Local Church</li>
+                        <li><strong>Module 5:</strong> Growth in Holiness (Sanctification, Temptation, and Repentance)</li>
+                        <li><strong>Module 6:</strong> Training the New Believer for Witness and Disciple-Making</li>
+                    </ul>
+                    <hr class='my-4'>
+                    <h4>Completion Requirement</h4>
+                    <p>All modules must be marked <strong>Completed</strong> to finish the course and receive the Certificate of Completion.</p>
+                `
+            },
+            {
+                id: "homiletics_1",
+                name: "Homiletics I - 12 Week Introductory Course",
+                syllabus: `
+                    <p><strong>Course Duration:</strong> 12 Weeks</p>
+                    <p><strong>Level:</strong> Bachelor of Theology</p>
+                    <p><strong>Instructor:</strong> Rody Babaran</p>
+                    <p><em>All Rights Reserved - Pastor Rody Babaran © March 2025</em></p>
+                    <hr class='my-4'>
+                    <h4>Course Objective</h4>
+                    <p>This course introduces students to the foundational principles of homiletics, focusing on the art and science of preparing and delivering biblical sermons. Students will learn how to interpret scripture, organize sermons, and develop preaching skills that are bibally sound, theologically informed, and contextually relevant.</p>
+                    <hr class='my-4'>
+                    <h4>Weekly Breakdown</h4>
+                    <p><strong>Week 1: Introduction to Homiletics</strong><br>Understanding the Nature and Purpose of Preaching.</p>
+                    <p><strong>Week 2: The Preacher's Calling and Authority</strong><br>The Role and Responsibility of the Preacher.</p>
+                    <p><strong>Week 3: Understanding the Congregation</strong><br>Knowing Your Audience.</p>
+                    <p><strong>Week 4: Scripture Interpretation and Exegesis I</strong><br>Exegesis: Drawing Meaning from the Text.</p>
+                    <p><strong>Week 5: Scripture Interpretation and Exegesis II</strong><br>Tools for Biblical Exegesis.</p>
+                    <p><strong>Week 6: Sermon Structure I – The Basics</strong><br>Introduction to Sermon Structure.</p>
+                    <p><strong>Week 7: Sermon Structure II – Crafting the Introduction and Conclusion</strong><br>Engaging Introductions and Effective Conclusions.</p>
+                    <p><strong>Week 8: Sermon Delivery I – Voice, Tone, and Body Language</strong><br>The Art of Sermon Delivery.</p>
+                    <p><strong>Week 9: Sermon Delivery II – Handling Nervousness and Engaging the Congregation</strong><br>Confidence in the Pulpit.</p>
+                    <p><strong>Week 10: Preaching with Passion and Authority</strong><br>Preaching with Conviction.</p>
+                    <p><strong>Week 11: The Role of Prayer in Preaching</strong><br>The Preacher as Intercessor.</p>
+                    <p><strong>Week 12: Final Sermon Presentation</strong><br>Seminar Delivery and Feedback.</p>
+                    <hr class='my-4'>
+                    <h4>Final Assessment</h4>
+                    <p>Deliver a 40-minute recorded video sermon and submit a 2-page reflection paper on personal growth in homiletics.</p>
+                `
+            },
+            {
+                id: "homiletics_2",
+                name: "Homiletics II - Advanced Biblical Preaching and Sermon Delivery",
+                syllabus: `
+                    <p><strong>Course Duration:</strong> 16 Weeks</p>
+                    <p><strong>Course Format:</strong> Asynchronous Online (Self-Paced), Weekly Module (No Live Zoom Class)</p>
+                    <p><strong>Required Text:</strong> King James Version (KJV) Bible for all scriptural references</p>
+                    <p><strong>Instructor:</strong> Rody Babaran</p>
+                    <p><em>All Rights Reserved - Pastor Rody Babaran © March 2025</em></p>
+                    <hr class='my-4'>
+                    <h4>Course Objective</h4>
+                    <p>To strengthen the student’s ability to move from sound biblical interpretation to faithful, clear, and relevant proclamation, with improved delivery, ethical integrity, contextual sensitivity, and digital preaching competence.</p>
+                    <hr class='my-4'>
+                    <h4>Weekly Breakdown</h4>
+                    <p><strong>Week 1: Review of Homiletics I</strong><br>Self-assessment, goals, short sermon video, and feedback summary.</p>
+                    <p><strong>Week 2: Advanced Exegesis and Hermeneutics</strong><br>Working with complex passages and translating study into sermon direction.</p>
+                    <p><strong>Week 3: Addressing Contemporary Issues in Preaching</strong><br>Engaging cultural and social challenges with biblical faithfulness.</p>
+                    <p><strong>Week 4: Special Sermon Structures</strong><br>Using varied sermon forms that serve both text and audience.</p>
+                    <p><strong>Week 5: The Power of Storytelling</strong><br>Story-driven communication for clarity and listener connection.</p>
+                    <p><strong>Week 6: Ethics of Preaching</strong><br>Integrity with sources, illustrations, and handling sensitive topics.</p>
+                    <p><strong>Week 7: Preaching in Different Settings</strong><br>Adapting sermons for weddings, funerals, grief, crisis, and pastoral needs.</p>
+                    <p><strong>Week 8: Preaching in a Digital Age</strong><br>Pacing, clarity, and engagement for online platforms.</p>
+                    <p><strong>Week 9: Preaching and Pastoral Care</strong><br>Speaking biblically into real-life burdens with shepherding wisdom.</p>
+                    <p><strong>Week 10: Preaching Through Adversity and Suffering</strong><br>Faithful preaching in hardship, pain, and trial.</p>
+                    <p><strong>Week 11: Preaching and Cultural Sensitivity</strong><br>Truth with love: contextual awareness without compromise.</p>
+                    <p><strong>Week 12: Capstone Sermon and Reflection</strong><br>Portfolio sermon development, delivery file, and personal reflection.</p>
+                    <p><strong>Week 13: Preaching for Evangelism and Mission</strong><br>Gospel clarity, invitation, and missional purpose.</p>
+                    <p><strong>Week 14: Preaching to Specific Demographics</strong><br>Adapting approach for different listener groups.</p>
+                    <p><strong>Week 15: Preaching with Visuals and Media</strong><br>Using supporting media with wisdom and clarity.</p>
+                    <p><strong>Week 16: The Preacher’s Ongoing Development</strong><br>Long-term growth plan for preaching and spiritual disciplines.</p>
+                `
+            },
+            {
+                id: "crafting_sermons",
+                name: "Advanced Crafting Sermon for Effective Preaching",
+                syllabus: `
+                    <p><strong>Duration:</strong> 12 Weeks</p>
+                    <p><strong>Format:</strong> Weekly lessons with readings, exercises, and assignments</p>
+                    <p><em>All Rights Reserved - Pastor Rody Babaran © March 2025</em></p>
+                    <hr class='my-4'>
+                    <h4>Course Objective</h4>
+                    <p>To equip beginner preachers and ministry students with the foundational skills necessary to craft and deliver expository, topical, and textual sermons effectively. Participants will learn how to interpret biblical texts accurately, develop sermons that resonate with contemporary congregations, and apply biblical truths to modern life.</p>
+                    <hr class='my-4'>
+                    <h4>Who Should Enroll</h4>
+                    <p>This course is designed for individuals new to preaching, ministry students, or anyone in a church leadership role looking to develop or enhance their sermon crafting skills.</p>
+                    <hr class='my-4'>
+                    <h4>Weekly Breakdown</h4>
+                    <p><strong>Week 1: Introduction to Sermon Crafting</strong><br>Overview of sermon types and their purposes in ministry.</p>
+                    <p><strong>Week 2: Basics of Expository Sermon</strong><br>Understanding expository sermons and the importance of context.</p>
+                    <p><strong>Week 3: Exegetical Study Techniques</strong><br>Introduction to exegetical study methods and tools.</p>
+                    <p><strong>Week 4: Crafting the Expository Sermon</strong><br>Structuring an expository sermon: from text to sermon.</p>
+                    <p><strong>Week 5: Introduction to Topical Sermons</strong><br>Understanding topical sermons and selecting topics.</p>
+                    <p><strong>Week 6: Crafting the Topical Sermon</strong><br>Developing a topical sermon: integration of scripture and topic.</p>
+                    <p><strong>Week 7: Introduction to Textual Sermons</strong><br>Exploring textual sermons and text selection.</p>
+                    <p><strong>Week 8: Crafting the Textual Sermon</strong><br>Developing a sermon from a single text.</p>
+                    <p><strong>Week 9: Sermon Delivery Techniques</strong><br>Effective sermon delivery and engagement strategies.</p>
+                    <p><strong>Week 10: Application and Reflection in Sermon Crafting</strong><br>Making sermons relevant and reflective.</p>
+                    <p><strong>Week 11: Peer Review and Feedback</strong><br>The importance of feedback in sermon development.</p>
+                    <p><strong>Week 12: Final Project and Presentation</strong><br>Integration of learning and final presentation.</p>
+                `
+            },
+            {
+                id: "topical_sermons_beginners",
+                name: "Topical Sermon for Beginners: A Step-by-Step Guide",
+                syllabus: `
+                    <p><strong>Author/Instructor:</strong> Rody Babaran - All Rights Reserved June 2025 ©</p>
+                    <p><strong>Course Type:</strong> Beginner | Self-Paced | Home Study</p>
+                    <p><strong>Duration:</strong> 6 Weeks</p>
+                    <p><strong>Focus:</strong> How to Write and Deliver a Topical Sermon</p>
+                    <p><strong>Language:</strong> English with Tagalog translation</p>
+                    <hr class='my-4'>
+                    <h4>Course Objective</h4>
+                    <p>This course will help absolute beginners understand the basics of biblical preaching through topical sermons. It will guide students from no experience to writing and sharing their own Bible-based sermon in 6 weeks, with full Scripture integrity and practical clarity.</p>
+                    <hr class='my-4'>
+                    <h4>Materials Provided</h4>
+                    <ul>
+                        <li>Weekly Lessons (English + Tagalog)</li>
+                        <li>Practice Exercises</li>
+                        <li>Bible Study Tools (KJV links)</li>
+                        <li>Assignments for Review and Feedback</li>
+                        <li>Sermon Outline Templates</li>
+                    </ul>
+                    <hr class='my-4'>
+                    <h4>Weekly Breakdown</h4>
+                    <p><strong>WEEK 1 – What Is a Topical Sermon?</strong><br>Outcome: Understand what a topical sermon is and how it fits in biblical preaching.</p>
+                    <p><strong>WEEK 2 – How to Choose and Define a Biblical Topic</strong><br>Outcome: Student has a clearly defined, Bible-based topic and supporting Scriptures.</p>
+                    <p><strong>WEEK 3 – Interpreting Scripture in Context</strong><br>Outcome: Student can explain the meaning of Scripture faithfully.</p>
+                    <p><strong>WEEK 4 – Building a Sermon Outline</strong><br>Outcome: Student has a structured outline ready for expansion.</p>
+                    <p><strong>WEEK 5 – Writing the Sermon</strong><br>Outcome: Student completes a full sermon ready for presentation.</p>
+                    <p><strong>WEEK 6 – Practicing and Presenting Your Sermon</strong><br>Outcome: Student preaches their sermon and reflects on what they learned.</p>
+                `
+            },
+            {
+                id: "how_to_write_devotional",
+                name: "Intro to Writing Devotional",
                 syllabus: `
                     <p><strong>One-Month Study Plan: How to Write a Devotional</strong></p>
                     <p><strong>Course:</strong> Practical Theology</p>
@@ -424,11 +656,11 @@ label[for="registrationDate"] {
                     <hr class='my-4'>
                     <h4>Final Assessment</h4>
                     <p>You will be assessed via a Module Quiz and the submission of your final, formatted devotional.</p>
-                ` 
+                `
             },
             {
                 id: "advanced_devotional_writing",
-                name: "Advanced: How to Write a Devotional (Part 2)",
+                name: "Advanced Writing Devotional",
                 syllabus: `
                     <p><strong>Title:</strong> Devotional Writing for Ministry Leaders: Communicating Scripture with Depth and Impact</p>
                     <p><strong>Audience:</strong> Pastors, Ministers, and Christian Leaders</p>
@@ -464,304 +696,112 @@ label[for="registrationDate"] {
                 `
             },
             {
-                id: "topical_sermons_beginners",
-                name: "Topical Sermons for Beginners: A Step-by-Step Guide",
+                id: "major_doctrines_salvation",
+                name: "Major Doctrines of Salvation (Soteriology) Video Based",
                 syllabus: `
-                    <p><strong>Author/Instructor:</strong> Rody Babaran - All Rights Reserved June 2025 ©</p>
-                    <p><strong>Course Type:</strong> Beginner | Self-Paced | Home Study</p>
-                    <p><strong>Duration:</strong> 6 Weeks</p>
-                    <p><strong>Focus:</strong> How to Write and Deliver a Topical Sermon</p>
-                    <p><strong>Language:</strong> English with Tagalog translation</p>
-                    <hr class='my-4'>
-                    <h4>Course Objective</h4>
-                    <p>This course will help absolute beginners understand the basics of biblical preaching through topical sermons. It will guide students from no experience to writing and sharing their own Bible-based sermon in 6 weeks, with full Scripture integrity and practical clarity.</p>
-                    <hr class='my-4'>
-                     <h4>Materials Provided</h4>
-                    <ul>
-                        <li>Weekly Lessons (English + Tagalog)</li>
-                        <li>Practice Exercises</li>
-                        <li>Bible Study Tools (KJV links)</li>
-                        <li>Assignments for Review and Feedback</li>
-                        <li>Sermon Outline Templates</li>
-                    </ul>
-                    <hr class='my-4'>
-                    <h4>Weekly Breakdown</h4>
-                    <p><strong>WEEK 1 – What Is a Topical Sermon?</strong><br>Outcome: Understand what a topical sermon is and how it fits in biblical preaching.</p>
-                    <p><strong>WEEK 2 – How to Choose and Define a Biblical Topic</strong><br>Outcome: Student has a clearly defined, Bible-based topic and supporting Scriptures.</p>
-                    <p><strong>WEEK 3 – Interpreting Scripture in Context</strong><br>Outcome: Student can explain the meaning of Scripture faithfully.</p>
-                    <p><strong>WEEK 4 – Building a Sermon Outline</strong><br>Outcome: Student has a structured outline ready for expansion.</p>
-                    <p><strong>WEEK 5 – Writing the Sermon</strong><br>Outcome: Student completes a full sermon ready for presentation.</p>
-                    <p><strong>WEEK 6 – Practicing and Presenting Your Sermon</strong><br>Outcome: Student preaches their sermon and reflects on what they learned.</p>
-                `
-            },
-            {
-                id: "crafting_sermons",
-                name: "Crafting Sermons for Effective Preaching",
-                syllabus: `
-                    <p><strong>Duration:</strong> 12 Weeks</p>
-                    <p><strong>Format:</strong> Weekly lessons with readings, exercises, and assignments</p>
+                    <p><strong>Course Duration:</strong> 12 Weeks (1 session per week)</p>
+                    <p><strong>Session Length:</strong> 90 minutes</p>
+                    <p><strong>Format:</strong> Live Zoom Training (Teaching + Discussion/Exegesis + Practical Preaching Application)</p>
+                    <p><strong>Instructor:</strong> Pastor Rody Babaran</p>
                     <p><em>All Rights Reserved - Pastor Rody Babaran © March 2025</em></p>
                     <hr class='my-4'>
-                    <h4>Course Objective</h4>
-                    <p>To equip beginner preachers and ministry students with the foundational skills necessary to craft and deliver expository, topical, and textual sermons effectively. Participants will learn how to interpret biblical texts accurately, develop sermons that resonate with contemporary congregations, and apply biblical truths to modern life.</p>
-                     <hr class='my-4'>
-                    <h4>Who Should Enroll</h4>
-                    <p>This course is designed for individuals new to preaching, ministry students, or anyone in a church leadership role looking to develop or enhance their sermon crafting skills.</p>
+                    <h4>Course Description</h4>
+                    <p>This course offers an in-depth exploration of the doctrine of salvation (Soteriology), combining theological foundations with practical preaching applications. Topics include human depravity, divine election, atonement, justification, sanctification, and perseverance, while also examining key viewpoints such as Calvinism (TULIP), Arminianism, and the Five Solas of the Reformation.</p>
                     <hr class='my-4'>
-                    <h4>Weekly Breakdown</h4>
-                    <p><strong>Week 1: Introduction to Sermon Crafting</strong><br>Overview of sermon types and their purposes in ministry.</p>
-                    <p><strong>Week 2: Basics of Expository Sermon</strong><br>Understanding expository sermons and the importance of context.</p>
-                    <p><strong>Week 3: Exegetical Study Techniques</strong><br>Introduction to exegetical study methods and tools.</p>
-                    <p><strong>Week 4: Crafting the Expository Sermon</strong><br>Structuring an expository sermon: from text to sermon.</p>
-                    <p><strong>Week 5: Introduction to Topical Sermons</strong><br>Understanding topical sermons and selecting topics.</p>
-                    <p><strong>Week 6: Crafting the Topical Sermon</strong><br>Developing a topical sermon: integration of scripture and topic.</p>
-                    <p><strong>Week 7: Introduction to Textual Sermons</strong><br>Exploring textual sermons and text selection.</p>
-                    <p><strong>Week 8: Crafting the Textual Sermon</strong><br>Developing a sermon from a single text.</p>
-                    <p><strong>Week 9: Sermon Delivery Techniques</strong><br>Effective sermon delivery and engagement strategies.</p>
-                    <p><strong>Week 10: Application and Reflection in Sermon Crafting</strong><br>Making sermons relevant and reflective.</p>
-                    <p><strong>Week 11: Peer Review and Feedback</strong><br>The importance of feedback in sermon development.</p>
-                    <p><strong>Week 12: Final Project and Presentation</strong><br>Integration of learning and final presentation.</p>
-                `
-            },
-            {
-                id: "homiletics_1",
-                name: "Homiletics I",
-                syllabus: `
-                    <p><strong>Course Duration:</strong> 12 Weeks</p>
-                    <p><strong>Level:</strong> Bachelor of Theology</p>
-                    <p><strong>Instructor:</strong> Rody Babaran</p>
-                    <p><em>All Rights Reserved - Pastor Rody Babaran © March 2025</em></p>
-                    <hr class='my-4'>
-                    <h4>Course Objective</h4>
-                    <p>This course introduces students to the foundational principles of homiletics, focusing on the art and science of preparing and delivering biblical sermons. Students will learn how to interpret scripture, organize sermons, and develop preaching skills that are bibally sound, theologically informed, and contextually relevant.</p>
-                    <hr class='my-4'>
-                    <h4>Weekly Breakdown</h4>
-                    <p><strong>Week 1: Introduction to Homiletics</strong><br>Understanding the Nature and Purpose of Preaching.</p>
-                    <p><strong>Week 2: The Preacher's Calling and Authority</strong><br>The Role and Responsibility of the Preacher.</p>
-                    <p><strong>Week 3: Understanding the Congregation</strong><br>Knowing Your Audience.</p>
-                    <p><strong>Week 4: Scripture Interpretation and Exegesis I</strong><br>Exegesis: Drawing Meaning from the Text.</p>
-                    <p><strong>Week 5: Scripture Interpretation and Exegesis II</strong><br>Tools for Biblical Exegesis.</p>
-                    <p><strong>Week 6: Sermon Structure I – The Basics</strong><br>Introduction to Sermon Structure.</p>
-                    <p><strong>Week 7: Sermon Structure II – Crafting the Introduction and Conclusion</strong><br>Engaging Introductions and Effective Conclusions.</p>
-                    <p><strong>Week 8: Sermon Delivery I – Voice, Tone, and Body Language</strong><br>The Art of Sermon Delivery.</p>
-                    <p><strong>Week 9: Sermon Delivery II – Handling Nervousness and Engaging the Congregation</strong><br>Confidence in the Pulpit.</p>
-                    <p><strong>Week 10: Preaching with Passion and Authority</strong><br>Preaching with Conviction.</p>
-                    <p><strong>Week 11: The Role of Prayer in Preaching</strong><br>The Preacher as Intercessor.</p>
-                    <p><strong>Week 12: Final Sermon Presentation</strong><br>Seminar Delivery and Feedback.</p>
-                     <hr class='my-4'>
-                    <h4>Final Assessment</h4>
-                    <p>Deliver a 40-minute recorded video sermon and submit a 2-page reflection paper on personal growth in homiletics.</p>
-                `
-            },
-            {
-                id: "homiletics_2",
-                name: "Homiletics II: Advanced Biblical Preaching and Sermon Delivery",
-                syllabus: `
-                    <p><strong>Course Duration:</strong> 16 Weeks</p>
-                    <p><strong>Course Format:</strong> Asynchronous Online (Self-Paced), Weekly Module (No Live Zoom Class)</p>
-                    <p><strong>Required Text:</strong> King James Version (KJV) Bible for all scriptural references</p>
-                    <p><strong>Instructor:</strong> Rody Babaran</p>
-                    <p><em>All Rights Reserved - Pastor Rody Babaran © March 2025</em></p>
-                    <hr class='my-4'>
-
-                    <h4>Course Objective</h4>
-                    <p>To strengthen the student’s ability to move from sound biblical interpretation to faithful, clear, and relevant proclamation, with improved delivery, ethical integrity, contextual sensitivity, and digital preaching competence.</p>
-
-                    <hr class='my-4'>
-                    <h4>Weekly Breakdown</h4>
-                    <p><strong>Week 1: Review of Homiletics I</strong><br>Self-assessment, goals, short sermon video, and feedback summary.</p>
-                    <p><strong>Week 2: Advanced Exegesis and Hermeneutics</strong><br>Working with complex passages and translating study into sermon direction.</p>
-                    <p><strong>Week 3: Addressing Contemporary Issues in Preaching</strong><br>Engaging cultural and social challenges with biblical faithfulness.</p>
-                    <p><strong>Week 4: Special Sermon Structures</strong><br>Using varied sermon forms that serve both text and audience.</p>
-                    <p><strong>Week 5: The Power of Storytelling</strong><br>Story-driven communication for clarity and listener connection.</p>
-                    <p><strong>Week 6: Ethics of Preaching</strong><br>Integrity with sources, illustrations, and handling sensitive topics.</p>
-                    <p><strong>Week 7: Preaching in Different Settings</strong><br>Adapting sermons for weddings, funerals, grief, crisis, and pastoral needs.</p>
-                    <p><strong>Week 8: Preaching in a Digital Age</strong><br>Pacing, clarity, and engagement for online platforms.</p>
-                    <p><strong>Week 9: Preaching and Pastoral Care</strong><br>Speaking biblically into real-life burdens with shepherding wisdom.</p>
-                    <p><strong>Week 10: Preaching Through Adversity and Suffering</strong><br>Faithful preaching in hardship, pain, and trial.</p>
-                    <p><strong>Week 11: Preaching and Cultural Sensitivity</strong><br>Truth with love: contextual awareness without compromise.</p>
-                    <p><strong>Week 12: Capstone Sermon and Reflection</strong><br>Portfolio sermon development, delivery file, and personal reflection.</p>
-                    <p><strong>Week 13: Preaching for Evangelism and Mission</strong><br>Gospel clarity, invitation, and missional purpose.</p>
-                    <p><strong>Week 14: Preaching to Specific Demographics</strong><br>Adapting approach for different listener groups.</p>
-                    <p><strong>Week 15: Preaching with Visuals and Media</strong><br>Using supporting media with wisdom and clarity.</p>
-                    <p><strong>Week 16: The Preacher’s Ongoing Development</strong><br>Long-term growth plan for preaching and spiritual disciplines.</p>
-
-                    
-                `
-            },
-
-    /* NEW COURSE (ADDED) */
-    {
-        id: "major_doctrines_salvation",
-        name: "Major Doctrines of Salvation (Soteriology)",
-        syllabus: `
-            <p><strong>Course Duration:</strong> 12 Weeks (1 session per week)</p>
-            <p><strong>Session Length:</strong> 90 minutes</p>
-            <p><strong>Format:</strong> Live Zoom Training (Teaching + Discussion/Exegesis + Practical Preaching Application)</p>
-            <p><strong>Instructor:</strong> Pastor Rody Babaran</p>
-            <p><em>All Rights Reserved - Pastor Rody Babaran © March 2025</em></p>
-            <hr class='my-4'>
-
-            <h4>Course Description</h4>
-            <p>This course offers an in-depth exploration of the doctrine of salvation (Soteriology), combining theological foundations with practical preaching applications. Topics include human depravity, divine election, atonement, justification, sanctification, and perseverance, while also examining key viewpoints such as Calvinism (TULIP), Arminianism, and the Five Solas of the Reformation.</p>
-
-            <hr class='my-4'>
-            <h4>Course Objectives</h4>
-            <ul>
-                <li>Understand and articulate the core doctrines of salvation as presented in Scripture.</li>
-                <li>Compare and contrast major theological perspectives on salvation.</li>
-                <li>Defend the biblical doctrine of salvation against misconceptions and false teachings.</li>
-                <li>Develop and deliver sermons/teachings that communicate salvation clearly to diverse audiences.</li>
-            </ul>
-
-            <hr class='my-4'>
-            <h4>Session Structure (90 minutes)</h4>
-            <ul>
-                <li>Theological Teaching (30 minutes)</li>
-                <li>Discussion & Exegesis (20 minutes)</li>
-                <li>Preaching & Teaching Application (30 minutes)</li>
-                <li>Q&A and Ministry Reflection (10 minutes)</li>
-            </ul>
-
-            <hr class='my-4'>
-            <h4>Weekly Breakdown (Topics + Key Scriptures)</h4>
-            <p><strong>Week 1:</strong> The Need for Salvation: Sin & the Fall (Genesis 3; Romans 3:23; Ephesians 2:1–3)</p>
-            <p><strong>Week 2:</strong> God’s Sovereignty in Salvation (Ephesians 1:4–5; Romans 8:29–30)</p>
-            <p><strong>Week 3:</strong> The Atonement of Christ: Different Theories (Isaiah 53; Hebrews 9:22; 1 John 2:2)</p>
-            <p><strong>Week 4:</strong> Justification by Faith: The Five Solas (Romans 5:1; Galatians 2:16; Ephesians 2:8–9)</p>
-            <p><strong>Week 5:</strong> Regeneration & the New Birth (John 3:3–7; Titus 3:5; 2 Corinthians 5:17)</p>
-            <p><strong>Week 6:</strong> The Role of Grace & Faith in Salvation (Ephesians 2:8–9; Romans 4:4–5; Philippians 2:12–13)</p>
-            <p><strong>Week 7:</strong> Sanctification: Holiness & Christian Growth (1 Thessalonians 4:3; Hebrews 12:14; Galatians 5:22–23)</p>
-            <p><strong>Week 8:</strong> Perseverance vs. Apostasy (John 10:28–29; Hebrews 6:4–6; Philippians 1:6)</p>
-            <p><strong>Week 9:</strong> The Five Points of Calvinism (TULIP) (Romans 9; John 6:44; Ephesians 1:4–5)</p>
-            <p><strong>Week 10:</strong> The Free Grace vs. Lordship Salvation Debate (James 2:14–26; Matthew 7:21–23; Romans 10:9–10)</p>
-            <p><strong>Week 11:</strong> False Teachings on Salvation (Galatians 1:6–9; Colossians 2:8; 2 Peter 2:1–3)</p>
-            <p><strong>Week 12:</strong> Teaching & Preaching Salvation Effectively (2 Timothy 4:2; Acts 16:30–31; 1 Corinthians 2:1–5)</p>
-
-            <hr class='my-4'>
-            <h4>Final Project</h4>
-            <p>In Week 12, each student presents a 10-minute sermon or teaching on a selected aspect of salvation for feedback and growth.</p>
-        `
-    },
-
-    /* NEW COURSE (ADDED) */
-    {
-        id: "foundations_of_faith",
-        name: "Foundations of Faith (Series)",
-        syllabus: `
-            <p><strong>Series Title:</strong> Foundations of Faith</p>
-            <p><strong>Objective:</strong> To provide a structured study of core theological topics to deepen understanding, encourage unity, and foster practical application among participants from diverse backgrounds.</p>
-            <p><em>All rights reserved © Jan 2025</em></p>
-            <hr class='my-4'>
-
-            <h4>Lesson Outline</h4>
-
-            <h4>Lesson 1: The Authority of Scripture</h4>
-            <p><strong>Main Text:</strong> 2 Timothy 3:16–17</p>
-            <ul>
-                <li>The inspiration, inerrancy, and sufficiency of Scripture</li>
-                <li>Why Scripture is the ultimate guide for faith and practice</li>
-                <li><strong>Interactive:</strong> Discuss how trusting the Bible’s authority impacts daily decisions</li>
-            </ul>
-
-            <h4>Lesson 2: The Nature and Attributes of God</h4>
-            <p><strong>Main Text:</strong> Isaiah 6:3</p>
-            <ul>
-                <li>Understanding God’s holiness, love, omnipotence, and omniscience</li>
-                <li>How God’s character influences worship and daily life</li>
-                <li><strong>Interactive:</strong> Group reflection on which attribute of God stands out most and why</li>
-            </ul>
-
-            <h4>Lesson 3: The Person and Work of Jesus Christ</h4>
-            <p><strong>Main Text:</strong> John 1:1–14</p>
-            <ul>
-                <li>Jesus as fully God and fully man</li>
-                <li>His role in salvation and as an example for living</li>
-                <li><strong>Interactive:</strong> Discuss how Jesus’ humanity and divinity impact personal faith</li>
-            </ul>
-
-            <h4>Lesson 4: The Holy Spirit: Empowerer and Guide</h4>
-            <p><strong>Main Text:</strong> Acts 1:8</p>
-            <ul>
-                <li>The Holy Spirit’s role in conviction, regeneration, sanctification, and empowerment</li>
-                <li>Living by the Spirit’s power and bearing fruit</li>
-                <li><strong>Interactive:</strong> Identify how participants have experienced the Holy Spirit’s work in their lives</li>
-            </ul>
-
-            <h4>Lesson 5: Salvation: Grace, Faith, and Works</h4>
-            <p><strong>Main Text:</strong> Ephesians 2:8–9</p>
-            <ul>
-                <li>Salvation as a gift of grace through faith, not by works</li>
-                <li>The role of good works as evidence of faith</li>
-                <li><strong>Interactive:</strong> Discuss how grace changes attitudes toward works and obedience</li>
-            </ul>
-
-            <h4>Lesson 6: The Church: Unity in Diversity</h4>
-            <p><strong>Main Text:</strong> 1 Corinthians 12:12–27</p>
-            <ul>
-                <li>The Church as the body of Christ, with diverse gifts and unity of purpose</li>
-                <li>The importance of spiritual gifts in building up the Church</li>
-                <li><strong>Interactive:</strong> Share how diversity within the group strengthens their collective faith</li>
-            </ul>
-
-            <h4>Lesson 7: The End Times: Living in Hope</h4>
-            <p><strong>Main Text:</strong> Revelation 21:1–4</p>
-            <ul>
-                <li>Biblical teachings about Christ’s return and the promise of eternal life</li>
-                <li>Encouraging readiness and faithfulness</li>
-                <li><strong>Interactive:</strong> Discuss how the hope of eternity influences daily living</li>
-            </ul>
-        `
-    }
-
-        ,
-
-            /* NEW COURSE (ADDED) */
-            {
-                id: "disciple_new_believer",
-                name: "How to Disciple a New Believer? (Foundation)",
-                syllabus: `
-                    <p><strong>Course Title:</strong> How to Disciple a New Believer? (Foundation)</p>
-                    <p><strong>Provider:</strong> Rody Babaran Digital Education</p>
-                    <p><strong>Author/Instructor:</strong> Pastor Rody Babaran</p>
-                    <p><strong>Course Format:</strong> Self-Paced (Asynchronous)</p>
-                    <p><strong>Course Duration:</strong> 6 Modules (Recommended: 7 days per module)</p>
-                    <p><strong>Bible Translation:</strong> King James Version (KJV)</p>
-                    <p><strong>Certificate:</strong> Certificate of Completion upon successful completion of all course requirements</p>
-                    <p><em>All Rights Reserved © January 2026</em></p>
-                    <hr class=\'my-4\'>
-
-                    <h4>Course Abstract</h4>
-                    <p>This foundational course equips pastors, church leaders, teachers, and Bible students with a structured, Scripture-first (KJV) approach to discipling new believers. The modules establish assurance of salvation, spiritual habits, essential doctrine, church integration, holiness, and witness—designed for immediate ministry application.</p>
-
-                    <hr class=\'my-4\'>
-                    <h4>How the Course Works</h4>
+                    <h4>Course Objectives</h4>
                     <ul>
-                        <li><strong>Recommended pace:</strong> Complete one module per 7-day cycle</li>
-                        <li><strong>Deliverables per module:</strong> Quiz + Reflection + Video Application Report + Main Assignment</li>
-                        <li><strong>Reflection minimum:</strong> 200+ words, include at least one KJV verse + explain application</li>
-                        <li><strong>Video requirement:</strong> 3–7 minutes Application Report video with at least one KJV verse + evidence of application (alternative path allowed if no ministry setting access)</li>
-                        <li><strong>Submission channel:</strong> Facebook Messenger (large files via Google Drive link)</li>
-                        <li><strong>Evaluation standard:</strong> Completed / Needs Revision</li>
+                        <li>Understand and articulate the core doctrines of salvation as presented in Scripture.</li>
+                        <li>Compare and contrast major theological perspectives on salvation.</li>
+                        <li>Defend the biblical doctrine of salvation against misconceptions and false teachings.</li>
+                        <li>Develop and deliver sermons/teachings that communicate salvation clearly to diverse audiences.</li>
                     </ul>
-
-                    <hr class=\'my-4\'>
-                    <h4>Module Titles (6 Modules)</h4>
+                    <hr class='my-4'>
+                    <h4>Session Structure (90 minutes)</h4>
                     <ul>
-                        <li><strong>Module 1:</strong> The Goal of Discipleship and Assurance of Salvation</li>
-                        <li><strong>Module 2:</strong> Establishing Spiritual Habits (Bible, Prayer, and Obedience)</li>
-                        <li><strong>Module 3:</strong> Teaching Essential Doctrine to a New Believer</li>
-                        <li><strong>Module 4:</strong> Integrating the New Believer into the Local Church</li>
-                        <li><strong>Module 5:</strong> Growth in Holiness (Sanctification, Temptation, and Repentance)</li>
-                        <li><strong>Module 6:</strong> Training the New Believer for Witness and Disciple-Making</li>
+                        <li>Theological Teaching (30 minutes)</li>
+                        <li>Discussion & Exegesis (20 minutes)</li>
+                        <li>Preaching & Teaching Application (30 minutes)</li>
+                        <li>Q&A and Ministry Reflection (10 minutes)</li>
                     </ul>
-
-                    <hr class=\'my-4\'>
-                    <h4>Completion Requirement</h4>
-                    <p>All modules must be marked <strong>Completed</strong> to finish the course and receive the Certificate of Completion.</p>
+                    <hr class='my-4'>
+                    <h4>Weekly Breakdown (Topics + Key Scriptures)</h4>
+                    <p><strong>Week 1:</strong> The Need for Salvation: Sin & the Fall (Genesis 3; Romans 3:23; Ephesians 2:1–3)</p>
+                    <p><strong>Week 2:</strong> God’s Sovereignty in Salvation (Ephesians 1:4–5; Romans 8:29–30)</p>
+                    <p><strong>Week 3:</strong> The Atonement of Christ: Different Theories (Isaiah 53; Hebrews 9:22; 1 John 2:2)</p>
+                    <p><strong>Week 4:</strong> Justification by Faith: The Five Solas (Romans 5:1; Galatians 2:16; Ephesians 2:8–9)</p>
+                    <p><strong>Week 5:</strong> Regeneration & the New Birth (John 3:3–7; Titus 3:5; 2 Corinthians 5:17)</p>
+                    <p><strong>Week 6:</strong> The Role of Grace & Faith in Salvation (Ephesians 2:8–9; Romans 4:4–5; Philippians 2:12–13)</p>
+                    <p><strong>Week 7:</strong> Sanctification: Holiness & Christian Growth (1 Thessalonians 4:3; Hebrews 12:14; Galatians 5:22–23)</p>
+                    <p><strong>Week 8:</strong> Perseverance vs. Apostasy (John 10:28–29; Hebrews 6:4–6; Philippians 1:6)</p>
+                    <p><strong>Week 9:</strong> The Five Points of Calvinism (TULIP) (Romans 9; John 6:44; Ephesians 1:4–5)</p>
+                    <p><strong>Week 10:</strong> The Free Grace vs. Lordship Salvation Debate (James 2:14–26; Matthew 7:21–23; Romans 10:9–10)</p>
+                    <p><strong>Week 11:</strong> False Teachings on Salvation (Galatians 1:6–9; Colossians 2:8; 2 Peter 2:1–3)</p>
+                    <p><strong>Week 12:</strong> Teaching & Preaching Salvation Effectively (2 Timothy 4:2; Acts 16:30–31; 1 Corinthians 2:1–5)</p>
+                    <hr class='my-4'>
+                    <h4>Final Project</h4>
+                    <p>In Week 12, each student presents a 10-minute sermon or teaching on a selected aspect of salvation for feedback and growth.</p>
+                `
+            },
+            {
+                id: "foundations_of_faith",
+                name: "Foundation of Faith (Series) Video Based",
+                syllabus: `
+                    <p><strong>Series Title:</strong> Foundations of Faith</p>
+                    <p><strong>Objective:</strong> To provide a structured study of core theological topics to deepen understanding, encourage unity, and foster practical application among participants from diverse backgrounds.</p>
+                    <p><em>All rights reserved © Jan 2025</em></p>
+                    <hr class='my-4'>
+                    <h4>Lesson Outline</h4>
+                    <h4>Lesson 1: The Authority of Scripture</h4>
+                    <p><strong>Main Text:</strong> 2 Timothy 3:16–17</p>
+                    <ul>
+                        <li>The inspiration, inerrancy, and sufficiency of Scripture</li>
+                        <li>Why Scripture is the ultimate guide for faith and practice</li>
+                        <li><strong>Interactive:</strong> Discuss how trusting the Bible’s authority impacts daily decisions</li>
+                    </ul>
+                    <h4>Lesson 2: The Nature and Attributes of God</h4>
+                    <p><strong>Main Text:</strong> Isaiah 6:3</p>
+                    <ul>
+                        <li>Understanding God’s holiness, love, omnipotence, and omniscience</li>
+                        <li>How God’s character influences worship and daily life</li>
+                        <li><strong>Interactive:</strong> Group reflection on which attribute of God stands out most and why</li>
+                    </ul>
+                    <h4>Lesson 3: The Person and Work of Jesus Christ</h4>
+                    <p><strong>Main Text:</strong> John 1:1–14</p>
+                    <ul>
+                        <li>Jesus as fully God and fully man</li>
+                        <li>His role in salvation and as an example for living</li>
+                        <li><strong>Interactive:</strong> Discuss how Jesus’ humanity and divinity impact personal faith</li>
+                    </ul>
+                    <h4>Lesson 4: The Holy Spirit: Empowerer and Guide</h4>
+                    <p><strong>Main Text:</strong> Acts 1:8</p>
+                    <ul>
+                        <li>The Holy Spirit’s role in conviction, regeneration, sanctification, and empowerment</li>
+                        <li>Living by the Spirit’s power and bearing fruit</li>
+                        <li><strong>Interactive:</strong> Identify how participants have experienced the Holy Spirit’s work in their lives</li>
+                    </ul>
+                    <h4>Lesson 5: Salvation: Grace, Faith, and Works</h4>
+                    <p><strong>Main Text:</strong> Ephesians 2:8–9</p>
+                    <ul>
+                        <li>Salvation as a gift of grace through faith, not by works</li>
+                        <li>The role of good works as evidence of faith</li>
+                        <li><strong>Interactive:</strong> Discuss how grace changes attitudes toward works and obedience</li>
+                    </ul>
+                    <h4>Lesson 6: The Church: Unity in Diversity</h4>
+                    <p><strong>Main Text:</strong> 1 Corinthians 12:12–27</p>
+                    <ul>
+                        <li>The Church as the body of Christ, with diverse gifts and unity of purpose</li>
+                        <li>The importance of spiritual gifts in building up the Church</li>
+                        <li><strong>Interactive:</strong> Share how diversity within the group strengthens their collective faith</li>
+                    </ul>
+                    <h4>Lesson 7: The End Times: Living in Hope</h4>
+                    <p><strong>Main Text:</strong> Revelation 21:1–4</p>
+                    <ul>
+                        <li>Biblical teachings about Christ’s return and the promise of eternal life</li>
+                        <li>Encouraging readiness and faithfulness</li>
+                        <li><strong>Interactive:</strong> Discuss how the hope of eternity influences daily living</li>
+                    </ul>
                 `
             }
-
         ];
 
         // --- DOM ELEMENT REFERENCES ---
