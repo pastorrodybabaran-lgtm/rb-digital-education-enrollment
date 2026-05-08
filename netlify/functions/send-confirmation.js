@@ -28,6 +28,7 @@ exports.handler = async (event) => {
     const fullName = (data.fullName || "").trim();
     const email = (data.email || "").trim();
     const course = (data.course || "").trim();
+    const facebookName = (data.facebookName || data.fbName || "").trim();
 
     if (!fullName || !email) {
       return {
@@ -100,6 +101,12 @@ const html = `
           course
             ? `<p style="margin:0 0 12px 0;"><b>Selected Course:</b> ${escapeHtml(course)}</p>`
             : ""
+        }
+
+        ${
+          facebookName
+            ? `<p style="margin:0 0 12px 0;"><b>Facebook Account Name:</b> ${escapeHtml(facebookName)}</p>`
+            : `<p style="margin:0 0 12px 0;"><b>Facebook Account Name:</b> Not provided</p>`
         }
 
         <div style="margin-top:16px;padding:14px;border-radius:12px;background:#fff7ed;border:1px solid #fed7aa;">
