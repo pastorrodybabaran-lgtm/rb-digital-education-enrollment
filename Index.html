@@ -1,0 +1,1891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rody Babaran Digital Education - Enrollment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .form-label {
+            @apply block text-sm font-medium text-gray-700 mb-1;
+        }
+        .form-input, .form-select {
+            @apply block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm;
+        }
+        .form-checkbox, .form-radio {
+            @apply h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded;
+        }
+        .form-section, .header-section {
+            @apply bg-white p-6 rounded-xl shadow-lg mb-6 border border-gray-200;
+        }
+        .prose ul {
+            padding-left: 1.25rem;
+            list-style-type: disc;
+        }
+        .prose hr {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .error-highlight {
+    border: 2px solid #ef4444 !important; /* red-500 */
+    box-shadow: 0 0 0 3px rgba(239,68,68,.25);
+    border-radius: 0.5rem;
+}
+        .fieldset-error-highlight {
+    border: 2px solid #ef4444 !important;
+    box-shadow: 0 0 0 3px rgba(239,68,68,.25);
+    border-radius: 0.75rem;
+    padding: 0.5rem;
+}
+.fieldset-error-highlight legend { 
+    color: #ef4444 !important;
+}
+    
+/* --- Glossy white labels --- */
+label[for="legalName"],
+label[for="email"],
+label[for="fbName"],
+label[for="fbLink"],
+label[for="courseSelection"] {
+    color: #ffffff !important;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.35);
+}
+
+/* --- Enrollment Form / Agreement --- */
+.enrollment-heading {
+    color: #ffffff !important;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.35);
+}
+
+/* --- FREE THEOLOGY COURSES in blue --- */
+.blue-highlight {
+    color: #1E90FF !important;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.25);
+}
+
+
+/* Make the Date of Registration label glossy white */
+label[for="registrationDate"] {
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+
+
+/* --- Poster-Style Paid Portal Redesign (FRONT-END ONLY) --- */
+body.paid-portal {
+    background: radial-gradient(circle at top center, #3b0764 0%, #25005f 42%, #4c1d95 100%) !important;
+    background-attachment: fixed !important;
+    color: #111827;
+}
+
+.enrollment-page {
+    max-width: 1220px !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+/* Header like poster sample */
+.header-section {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0.5rem 1rem 1rem !important;
+    margin-bottom: 0.75rem !important;
+    display: grid !important;
+    grid-template-columns: 115px 1fr !important;
+    gap: 1rem !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+.header-section img {
+    width: 110px !important;
+    height: 110px !important;
+    margin: 0 auto !important;
+    border: 5px solid #facc15 !important;
+    box-shadow: 0 0 18px rgba(250,204,21,.45) !important;
+    background: #ffffff !important;
+}
+
+.header-section h1 {
+    color: #ffffff !important;
+    font-size: 2.05rem !important;
+    line-height: 2.25rem !important;
+    font-weight: 800 !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,.35) !important;
+}
+
+.header-section h2 {
+    font-size: 2.35rem !important;
+    line-height: 2.55rem !important;
+    font-weight: 900 !important;
+    color: #ffffff !important;
+    margin-top: 0.25rem !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,.35) !important;
+}
+
+.header-section .blue-highlight {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,.35) !important;
+}
+
+.header-section .blue-highlight::after {
+    content: "";
+}
+
+.header-section h2 .training-gold,
+.training-gold {
+    color: #facc15 !important;
+    text-shadow: 0 0 8px rgba(250,204,21,.55), 0 2px 4px rgba(0,0,0,.35) !important;
+}
+
+.enrollment-heading {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    font-size: 1.35rem !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,.35) !important;
+}
+
+/* Main white portal shell */
+#enrollment-form-container,
+.portal-shell {
+    background: rgba(255,255,255,.985) !important;
+    border-radius: 1.5rem !important;
+    padding: 1.35rem !important;
+    box-shadow: 0 25px 70px rgba(0,0,0,.28) !important;
+    border: 1px solid rgba(255,255,255,.65) !important;
+}
+
+#enrollmentForm {
+    display: grid !important;
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+}
+
+#enrollmentForm > .form-section {
+    margin-bottom: 0 !important;
+}
+
+/* Section cards */
+.form-section {
+    background: #ffffff !important;
+    border: 1px solid rgba(88,28,135,.28) !important;
+    border-radius: 0.85rem !important;
+    box-shadow: 0 9px 25px rgba(30,14,84,.08) !important;
+    padding: 1.15rem !important;
+    position: relative !important;
+    color: #111827 !important;
+}
+
+/* Purple tab headers */
+.form-section > h3 {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: .45rem !important;
+    background: linear-gradient(135deg, #4c1d95, #5b21b6, #3b0764) !important;
+    color: #ffffff !important;
+    border: 0 !important;
+    border-radius: .45rem !important;
+    padding: .38rem .9rem !important;
+    margin: -1.75rem 0 0.95rem 0 !important;
+    box-shadow: 0 7px 15px rgba(76,29,149,.28) !important;
+    font-size: 1rem !important;
+    line-height: 1.2rem !important;
+    letter-spacing: .02em !important;
+    white-space: nowrap !important;
+}
+
+/* Lightweight icons via CSS */
+.form-section.student-card > h3::before { content: "👤"; }
+.form-section.course-card > h3::before { content: "📘"; }
+.form-section.reason-card > h3::before { content: "❤"; }
+.form-section.tech-card > h3::before { content: "💻"; }
+.form-section.testimony-card > h3::before { content: "🎥"; }
+.form-section.agreement-card > h3::before { content: "📋"; }
+.form-section.date-card > h3::before { content: "📅"; }
+
+.form-section label,
+.form-section legend,
+.form-label {
+    color: #111827 !important;
+    text-shadow: none !important;
+    font-weight: 700 !important;
+}
+
+.form-section .text-gray-200,
+.form-section .text-white {
+    color: #111827 !important;
+    text-shadow: none !important;
+}
+
+.form-input,
+.form-select,
+textarea.form-input {
+    background: #ffffff !important;
+    border: 1px solid #c9c2dc !important;
+    border-radius: .5rem !important;
+    color: #111827 !important;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.03) !important;
+}
+
+.form-input:focus,
+.form-select:focus,
+textarea.form-input:focus {
+    border-color: #5b21b6 !important;
+    box-shadow: 0 0 0 3px rgba(91,33,182,.16) !important;
+}
+
+textarea.form-input {
+    min-height: 140px !important;
+}
+
+/* Tuition panel inside the white shell */
+.tuition-wrapper {
+    grid-column: 1 / -1 !important;
+}
+
+.tuition-panel {
+    background: #ffffff !important;
+    border: 1px solid rgba(88,28,135,.35) !important;
+    border-radius: 0.9rem !important;
+    box-shadow: none !important;
+    color: #111827 !important;
+    padding: 1.35rem !important;
+}
+
+.tuition-title {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: .5rem !important;
+    margin-top: -2.15rem !important;
+    background: linear-gradient(135deg, #4c1d95, #5b21b6, #3b0764) !important;
+    color: #ffffff !important;
+    border-radius: .55rem !important;
+    padding: .5rem 1.55rem !important;
+    font-weight: 900 !important;
+    letter-spacing: .04em !important;
+    box-shadow: 0 8px 18px rgba(76,29,149,.32) !important;
+}
+
+.tuition-title::before {
+    content: "📑";
+}
+
+.tuition-list {
+    color: #111827 !important;
+    font-size: .97rem !important;
+}
+
+.tuition-list p {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    gap: 1rem !important;
+    border-bottom: 0 !important;
+    padding: .22rem 0 !important;
+}
+
+.tuition-list strong {
+    font-weight: 700 !important;
+    color: #111827 !important;
+}
+
+.fee-note-box {
+    background: #fffaf0 !important;
+    border: 1px solid rgba(245,158,11,.5) !important;
+    border-radius: .75rem !important;
+    color: #111827 !important;
+    padding: 1rem 1.25rem !important;
+}
+
+.fee-highlight {
+    color: #8b2f0b !important;
+    font-weight: 900 !important;
+    text-shadow: none !important;
+}
+
+/* Grid placement like sample */
+.student-card { grid-column: span 4 !important; }
+.course-card { grid-column: span 4 !important; }
+.reason-card { grid-column: span 4 !important; }
+.tech-card { grid-column: 9 / span 4 !important; }
+.testimony-card { grid-column: span 5 !important; }
+.agreement-card { grid-column: span 7 !important; }
+.date-card { grid-column: span 4 !important; display: none !important; }
+.submit-card { grid-column: 1 / -1 !important; text-align: center !important; box-shadow: none !important; border: 0 !important; padding-top: 0.25rem !important; }
+
+/* Payment summary */
+#paymentSummary {
+    background: #fffaf0 !important;
+    color: #111827 !important;
+    border: 1px solid rgba(245,158,11,.55) !important;
+    border-radius: .65rem !important;
+    box-shadow: none !important;
+}
+
+#paymentSummary h4 {
+    color: #4c1d95 !important;
+    text-shadow: none !important;
+    font-size: 1rem !important;
+}
+
+#paymentSummary .text-yellow-300 {
+    color: #8b2f0b !important;
+    text-shadow: none !important;
+}
+
+#selectedTotalAmount {
+    color: #8b2f0b !important;
+}
+
+/* Syllabus card */
+#syllabusContainer {
+    background: #ffffff !important;
+    border: 1px solid rgba(88,28,135,.25) !important;
+    border-radius: .65rem !important;
+    color: #111827 !important;
+}
+
+#syllabusContainer .text-white,
+#syllabusContainer .text-gray-200,
+#syllabusContent {
+    color: #111827 !important;
+}
+
+#syllabusTitle {
+    display: inline-flex !important;
+    background: linear-gradient(135deg, #4c1d95, #5b21b6) !important;
+    color: #ffffff !important;
+    border-radius: .45rem !important;
+    padding: .35rem .85rem !important;
+    font-size: .95rem !important;
+}
+
+/* Submit */
+button#submitButton {
+    max-width: 430px !important;
+    border-radius: 9999px !important;
+    background: linear-gradient(135deg, #2563eb, #4f46e5, #5b21b6) !important;
+    box-shadow: 0 15px 30px rgba(37,99,235,.35) !important;
+    font-size: 1.45rem !important;
+    padding-top: .95rem !important;
+    padding-bottom: .95rem !important;
+}
+
+.submit-card p,
+.submit-card span {
+    color: #8b2f0b !important;
+    text-shadow: none !important;
+}
+
+.submit-card a {
+    color: #3730a3 !important;
+    font-weight: 900 !important;
+}
+
+/* Footer secure note */
+.secure-note {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #ffffff;
+    font-size: .85rem;
+    font-weight: 700;
+    margin-top: .75rem;
+}
+
+/* Hide old email/fb yellow helper loudness, make readable */
+.form-section p[style*="#FFD700"],
+.form-section p[style*="255,215,0"] {
+    color: #8b2f0b !important;
+    text-shadow: none !important;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .student-card, .course-card, .reason-card, .tech-card, .testimony-card, .agreement-card {
+        grid-column: 1 / -1 !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .enrollment-page { padding: .75rem !important; }
+    .header-section {
+        display: block !important;
+        text-align: center !important;
+        padding: .75rem .25rem 1rem !important;
+    }
+    .header-section img {
+        width: 92px !important;
+        height: 92px !important;
+        margin: 0 auto .75rem !important;
+    }
+    .header-section h1 {
+        font-size: 1.45rem !important;
+        line-height: 1.8rem !important;
+    }
+    .header-section h2 {
+        font-size: 1.4rem !important;
+        line-height: 1.75rem !important;
+    }
+    .enrollment-heading {
+        font-size: 1rem !important;
+    }
+    #enrollment-form-container {
+        padding: .8rem !important;
+        border-radius: 1rem !important;
+    }
+    #enrollmentForm {
+        display: block !important;
+    }
+    #enrollmentForm > .form-section,
+    .tuition-wrapper {
+        margin-bottom: 1.1rem !important;
+    }
+    .tuition-panel {
+        padding: 1rem !important;
+    }
+    .tuition-title {
+        margin-top: -1.65rem !important;
+        font-size: .9rem !important;
+        padding: .4rem .9rem !important;
+    }
+    .tuition-list p {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: .05rem !important;
+        padding: .35rem 0 !important;
+        border-bottom: 1px dashed rgba(88,28,135,.15) !important;
+    }
+    .form-section > h3 {
+        white-space: normal !important;
+        margin-top: -1.55rem !important;
+    }
+}
+
+
+/* --- Surgical fixes for uploaded poster design alignment --- */
+.header-section {
+    grid-template-columns: 120px minmax(0, 1fr) !important;
+    text-align: center !important;
+    align-items: center !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.header-text-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-text-stack h1,
+.header-text-stack h2,
+.header-text-stack p {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.header-text-stack h2 {
+    display: block !important;
+    width: 100% !important;
+}
+
+.enrollment-subline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 0.35rem;
+}
+
+.enrollment-subline > span {
+    display: block;
+    height: 2px;
+    max-width: 220px;
+    flex: 1;
+    background: #facc15;
+    opacity: 0.95;
+}
+
+.form-section > h3,
+.form-section > h3 *,
+.tuition-title,
+.tuition-title *,
+#syllabusTitle,
+#syllabusTitle * {
+    color: #ffffff !important;
+}
+
+.student-card .grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+}
+
+.reason-card label[for="enrollmentReason"] {
+    display: block !important;
+    margin-top: 0.15rem !important;
+    margin-bottom: 0.45rem !important;
+    color: #111827 !important;
+}
+
+.reason-card textarea {
+    min-height: 155px !important;
+}
+
+#paymentSummary {
+    display: block !important;
+    margin-top: 0.9rem !important;
+    background: #fffaf0 !important;
+    border: 1px solid rgba(245, 158, 11, .65) !important;
+}
+
+#paymentSummary.hidden {
+    display: block !important;
+}
+
+#paymentSummary p {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.75rem;
+    margin: 0.25rem 0;
+}
+
+#paymentSummary p.mt-2 {
+    border-top: 1px solid rgba(245, 158, 11, .45);
+    padding-top: 0.75rem;
+    margin-top: 0.75rem !important;
+}
+
+#syllabusContainer {
+    display: block !important;
+    margin-top: 0.9rem !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    border: 1px solid rgba(88, 28, 135, .25) !important;
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+#syllabusContainer.hidden {
+    display: block !important;
+}
+
+#syllabusContent,
+#syllabusContent * {
+    color: #111827 !important;
+}
+
+.tech-card {
+    grid-column: 9 / span 4 !important;
+    align-self: start !important;
+}
+
+.tech-card .grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+}
+
+.tech-card fieldset {
+    border: 0 !important;
+    padding: 0 !important;
+}
+
+.tech-card .flex.items-center.space-x-4,
+.tech-card .space-y-2 {
+    background: #ffffff;
+    border: 1px solid #c9c2dc;
+    border-radius: 0.55rem;
+    padding: 0.65rem 0.75rem;
+}
+
+.secure-note {
+    display: block !important;
+    grid-column: 1 / -1 !important;
+    text-align: center !important;
+    color: #ffffff !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    margin: 0.25rem 0 0 !important;
+    padding: 0.25rem 0 0 !important;
+}
+
+.submit-card p,
+.submit-card span {
+    color: #8b2f0b !important;
+    text-shadow: none !important;
+}
+
+@media (max-width: 1024px) {
+    .tech-card {
+        grid-column: 1 / -1 !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .header-section {
+        display: block !important;
+        text-align: center !important;
+    }
+
+    .header-text-stack h2 {
+        font-size: 1.25rem !important;
+        line-height: 1.6rem !important;
+    }
+
+    .enrollment-subline > span {
+        display: none !important;
+    }
+
+    #paymentSummary p {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+/* --- Surgical Fix v3: readable purple tabs + restored syllabus behavior --- */
+.form-section > h3,
+.form-section > h3::before,
+.form-section > h3 * {
+    color: #ffffff !important;
+    text-shadow: 0 1px 1px rgba(0,0,0,.35) !important;
+}
+.form-section > h3 { font-weight: 900 !important; }
+
+#paymentSummary p {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    align-items: center !important;
+}
+#selectedTuitionFee,
+#selectedTotalAmount {
+    color: #8b2f0b !important;
+    font-weight: 900 !important;
+}
+#syllabusContainer { display: none !important; }
+#syllabusContainer.show-syllabus { display: block !important; }
+
+
+/* --- Final tab color override: force all purple section title text/icons to white --- */
+.form-section h3,
+.form-section h3::before,
+.form-section h3 span,
+.form-section h3 strong,
+.form-section h3 i,
+.form-section h3 svg,
+.form-section h3 * {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+    text-shadow: 0 1px 1px rgba(0,0,0,.45) !important;
+}
+
+.form-section h3 {
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+
+/* --- Surgical validation fix: make labels/titles red when their field is missing --- */
+.label-error-highlight {
+    color: #ef4444 !important;
+    -webkit-text-fill-color: #ef4444 !important;
+    font-weight: 900 !important;
+    text-shadow: none !important;
+}
+
+.label-error-highlight::after {
+    color: #ef4444 !important;
+}
+
+
+/* --- Surgical Fix v4: move course preview below first-row cards only --- */
+#syllabusContainer.course-preview-card {
+    grid-column: 1 / span 8 !important;
+    margin-top: 0 !important;
+    align-self: start !important;
+}
+
+@media (max-width: 1024px) {
+    #syllabusContainer.course-preview-card {
+        grid-column: 1 / -1 !important;
+    }
+}
+
+/* --- Final surgical color changes --- */
+.training-gold {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,.35) !important;
+}
+
+.enrollment-heading {
+    color: #facc15 !important;
+    -webkit-text-fill-color: #facc15 !important;
+    font-weight: 900 !important;
+    text-shadow: 0 0 8px rgba(250,204,21,.55), 0 2px 4px rgba(0,0,0,.35) !important;
+}
+
+
+/* --- Surgical Fix v5: course preview title text white + credential text update --- */
+#syllabusContainer #syllabusTitle,
+#syllabusContainer #syllabusTitle * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 1px 1px rgba(0,0,0,.45) !important;
+}
+
+</style>
+</head>
+<body class="bg-gray-100 paid-portal">
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-6xl enrollment-page">
+        
+        <header class="text-center mb-8 header-section">
+            <!-- Logo -->
+            <img src="https://i.imgur.com/zpxUXa5.jpeg" alt="Rody Babaran Digital Education Logo" class="w-32 h-32 mx-auto mb-4 rounded-full object-cover shadow-md">
+
+            <div class="header-text-stack">
+                <h1 class="text-3xl sm:text-4xl font-bold text-white">Rody Babaran Digital Education</h1>
+                <h2 class="text-2xl sm:text-3xl font-bold text-indigo-300 mt-2">
+                    <span class="blue-highlight">ONLINE THEOLOGY &amp; MINISTRY <span class="training-gold">TRAINING PROGRAMS</span></span>
+                </h2>
+                <div class="enrollment-subline">
+                    <span></span>
+                    <p class="text-lg text-gray-200 font-bold"><span class="enrollment-heading">Enrollment Form / Agreement</span></p>
+                    <span></span>
+                </div>
+            </div>
+        </header>
+
+<main id="enrollment-form-container">
+            <form id="enrollmentForm" name="enrollment" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6" novalidate>
+      <input type="hidden" name="form-name" value="enrollment" />
+      <p class="hidden">
+        <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+      </p>
+
+                <div class="tuition-wrapper">
+<!-- Tuition Fees Notice -->
+<div class="mx-auto mb-8 max-w-6xl px-2 sm:px-4">
+    <div class="tuition-panel py-6 px-5 sm:px-7 text-center">
+        <div class="tuition-title">
+            LIST OF TUITION FEES
+        </div>
+
+        <div class="tuition-list mt-5 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-1 text-left font-semibold leading-relaxed max-w-5xl mx-auto">
+            <div>
+                <p><span>1. From Zero to Faithful Worker</span><strong>Php 2,000</strong></p>
+                <p><span>2. How to Disciple a New Believer</span><strong>Php 1,000</strong></p>
+                <p><span>3. Homiletics I</span><strong>Php 1,000</strong></p>
+                <p><span>4. Homiletics II</span><strong>Php 1,500</strong></p>
+                <p><span>5. Advanced Crafting for Effective Preaching</span><strong>Php 1,500</strong></p>
+            </div>
+            <div>
+                <p><span>6. Topical Sermon for Beginners</span><strong>Php 1,000</strong></p>
+                <p><span>7. Intro to Writing Devotional</span><strong>Php 500</strong></p>
+                <p><span>8. Advanced Writing Devotional</span><strong>Php 800</strong></p>
+                <p><span>9. 12-week Major Doctrines of Salvation (Video Based)</span><strong>Php 1,000</strong></p>
+                <p><span>10. Foundation of Faith (Video Based)</span><strong>Php 800</strong></p>
+            </div>
+        </div>
+
+        <div class="fee-note-box mt-5 max-w-5xl mx-auto text-left py-4 px-5">
+            <p class="font-bold text-lg">
+                Registration Fee: <span class="fee-highlight">Php 300.00</span> (non-refundable)
+            </p>
+            <p class="mt-3 text-sm sm:text-base leading-relaxed">
+                Your tuition payment is received as a love gift or donation to a church I am supporting in the Philippines.
+                Registration fee and tuition donation are payable through <span class="fee-highlight">GCASH</span>.
+                Payment instructions will be discussed privately through Facebook Messenger after submitting this form.
+            </p>
+        </div>
+    </div>
+</div>
+                </div>
+
+                <!-- Student Information Section -->
+                <div class="form-section student-card">
+                    <h3 class="text-xl font-semibold mb-4 text-white border-b border-gray-400 pb-2">Student Information</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="legalName" class="form-label">Full Legal Name</label>
+                            <input type="text" id="legalName" name="legalName" required class="form-input">
+                        </div>
+                        <div>
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" name="email" required class="form-input">
+<p class="text-sm text-white font-semibold mt-1" style="text-shadow: 0 0 5px rgba(255,255,255,0.8);">By providing your email, you consent to receive course updates and confirmation messages from <strong>Rody Babaran Digital Education</strong>. Your information will remain private and will not be shared.</p>
+<p class="text-sm mt-1" style="color:#8b2f0b; font-weight:bold; text-shadow:none;">Make sure to provide VALID email address.</p>
+                        </div>
+                        <div>
+                            <label for="fbName" class="form-label">Facebook Account Name</label>
+                            <input type="text" id="fbName" name="fbName" required class="form-input">
+                        </div>
+                        <div>
+                            <label for="fbLink" class="form-label">Facebook Profile Link</label>
+                            <input type="url" id="fbLink" name="fbLink" required class="form-input" placeholder="https://www.facebook.com/yourprofile">
+                        </div>
+                        </div>
+                </div>
+
+                <!-- Course Selection Section -->
+                <div class="form-section course-card">
+                    <h3 class="text-xl font-semibold mb-4 text-white border-b border-gray-400 pb-2">Course Selection</h3>
+                    <div>
+                        <label for="courseSelection" class="form-label">Select a Course</label>
+                        <select id="courseSelection" name="courseSelection" required class="form-select">
+                            <option value="" disabled selected>-- Choose a course --</option>
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                        <p class="text-sm mt-2 text-white font-semibold" style="text-shadow: 0 0 5px rgba(255,255,255,0.8);">
+                            Please choose the course you intend to enroll in. Tuition fee depends on the selected course.
+                        </p>
+                    </div>
+                    <div id="paymentSummary" class="mt-4 p-4 rounded-lg border border-yellow-300/40 bg-yellow-300/10 text-white shadow-inner">
+                        <h4 class="text-lg font-bold text-yellow-300 mb-2" style="text-shadow: 0 0 8px rgba(255,215,0,0.9);">Payment Summary</h4>
+                        <p><strong>Selected Course:</strong> <span id="selectedCourseName">-</span></p>
+                        <p><strong>Tuition Love Gift / Donation:</strong> <span id="selectedTuitionFee">Php -</span></p>
+                        <p><strong>Registration Fee:</strong> <span class="fee-highlight">Php 300.00</span></p>
+                        <p class="mt-2 text-xl font-extrabold text-yellow-300" style="text-shadow: 0 0 8px rgba(255,215,0,0.9);">
+                            Total Amount: <span id="selectedTotalAmount">Php -</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Enrollment Reason Section -->
+                <div class="form-section reason-card">
+                    <h3 class="text-xl font-semibold mb-4 text-white border-b border-gray-400 pb-2">Enrollment Reason</h3>
+                    <label for="enrollmentReason" class="form-label text-white">Why do you want to enroll in this course?</label>
+                    <textarea id="enrollmentReason" name="enrollmentReason" required class="form-input min-h-[120px]" placeholder="Briefly share your reason for enrolling and how this training may help your ministry, church service, or personal growth."></textarea>
+                </div>
+
+                <!-- Course Preview Section -->
+                    <div id="syllabusContainer" class="course-preview-card hidden mt-4 p-4 border rounded-md bg-slate-700 bg-opacity-50 shadow-inner">
+                        <h4 class="text-lg font-bold mb-2 text-white" id="syllabusTitle"></h4>
+                        <div id="syllabusContent" class="prose max-w-none text-sm text-gray-200"></div>
+                    </div>
+
+                <!-- Technical Readiness Section -->
+                <div class="form-section tech-card">
+                    <h3 class="text-xl font-semibold mb-4 text-white border-b border-gray-400 pb-2">Technical Readiness</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <fieldset data-validation="select-one">
+                            <legend class="form-label font-bold text-white">Primary Device (Select one)</legend>
+                             <div class="flex items-center space-x-4 mt-2">
+                                <div class="flex items-center">
+                                    <input id="device_phone" name="device" type="radio" value="Phone" class="form-radio" required>
+                                    <label for="device_phone" class="ml-2 text-sm text-gray-200">Phone</label>
+                                </div>
+                                 <div class="flex items-center">
+                                    <input id="device_computer" name="device" type="radio" value="Computer" class="form-radio">
+                                    <label for="device_computer" class="ml-2 text-sm text-gray-200">Computer</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset data-validation="select-all">
+                            <legend class="form-label font-bold text-white">Internet Connection (Select ALL)</legend>
+                            <div class="space-y-2 mt-2">
+                                <div class="flex items-start">
+                                    <input id="conn_wifi" name="connection" type="checkbox" value="Wifi" class="form-checkbox">
+                                    <label for="conn_wifi" class="ml-3 text-sm text-gray-200">Wifi</label>
+                                </div>
+                                <div class="flex items-start">
+                                    <input id="conn_data" name="connection" type="checkbox" value="Data (LTE, 4G, 5G)" class="form-checkbox">
+                                    <label for="conn_data" class="ml-3 text-sm text-gray-200">Data (LTE, 4G, 5G)</label>
+                                </div>
+                                <div class="flex items-start">
+                                    <input id="conn_signal" name="connection" type="checkbox" value="Reliable Network Signal" class="form-checkbox">
+                                    <label for="conn_signal" class="ml-3 text-sm text-gray-200">I have a reliable network signal</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <!-- Optional Testimony Section -->
+                <div class="form-section testimony-card">
+                    <h3 class="text-xl font-semibold mb-4 text-white border-b border-gray-400 pb-2">Optional Testimony</h3>
+                    <p class="text-base text-gray-200 mb-3" style="text-shadow: 0 0 6px rgba(255,255,255,0.5);">
+                        After completing the course, a written or video testimony is highly appreciated. With your permission, your testimony may be posted on the Rody Babaran Digital Education Facebook Page to encourage others to enroll and continue their ministry training.
+                    </p>
+                    <div class="space-y-2 mt-2">
+                        <div class="flex items-start">
+                            <input id="testimony_yes" name="testimonyAgreement" type="radio" value="Yes, I am willing to give a written or video testimony after completion" class="form-radio">
+                            <label for="testimony_yes" class="ml-3 text-sm text-gray-200">Yes, I am willing to give a written or video testimony after completion.</label>
+                        </div>
+                        <div class="flex items-start">
+                            <input id="testimony_no" name="testimonyAgreement" type="radio" value="Not at this time" class="form-radio">
+                            <label for="testimony_no" class="ml-3 text-sm text-gray-200">Not at this time.</label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Course Agreement Section -->
+                <div class="form-section agreement-card">
+                    <h3 class="text-xl font-semibold mb-4 text-white border-b border-gray-400 pb-2">Course Agreement</h3>
+                    
+
+<div class="prose prose-sm max-w-none text-gray-200 space-y-3">
+    <p>This enrollment is part of a ministry training program offered through Rody Babaran Digital Education. Tuition fees vary depending on the selected course, and a one-time non-refundable registration fee of <strong class="fee-highlight">Php 300.00</strong> is required to process and confirm enrollment.</p>
+    <p>Your tuition payment is received as a love gift or donation to a church I am supporting in the Philippines. Registration fee and tuition donation are payable through <strong class="fee-highlight">GCASH</strong>. Payment instructions will be discussed privately through Facebook Messenger after submitting this form.</p>
+    <p>Enrollment is not considered confirmed until payment instructions have been completed and verified through private communication.</p>
+    <p>Students are responsible for their own progress, participation, communication, and submission of assignments. Failure to continue, complete assignments, or communicate will be considered voluntary withdrawal from the course without <strong class="fee-highlight">REFUND</strong>.</p>
+    <p>No <strong class="fee-highlight">REFUND</strong> will be issued once registration has been confirmed.</p>
+    <p>By proceeding with this enrollment, you acknowledge and agree to these terms.</p>
+</div>
+
+
+                    <fieldset class="mt-4" data-validation="no-refusal" data-refusal-value="I Do Not Agree">
+                        <div class="flex items-center space-x-4 mt-2">
+                             <div class="flex items-center">
+                                 <input id="agree_yes" name="courseAgreement" type="radio" value="I Agree" class="form-radio" required>
+                                 <label for="agree_yes" class="ml-2 text-sm font-medium text-gray-200">I Agree</label>
+                             </div>
+                             <div class="flex items-center">
+                                 <input id="agree_no" name="courseAgreement" type="radio" value="I Do Not Agree" class="form-radio">
+                                 <label for="agree_no" class="ml-2 text-sm font-medium text-gray-200">I Do Not Agree</label>
+                             </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- Registration Date Section -->
+                 <div class="form-section date-card">
+                     <h3 class="text-xl font-semibold mb-4 text-white border-b border-gray-400 pb-2">Registration Date</h3>
+                     <div>
+                         <label for="registrationDate" class="form-label">Date of Registration</label>
+                         <input type="date" id="registrationDate" name="registrationDate" required class="form-input">
+                     </div>
+                </div>
+
+                <!-- Submission -->
+                <div class="form-section submit-card">
+                    <p class="text-sm text-white font-semibold mb-3" style="text-shadow: 0 0 5px rgba(255,255,255,0.8);">By submitting this form, you confirm that you agree to receive enrollment confirmation and course-related updates through the email provided.</p>
+<button type="submit" id="submitButton" class="w-full flex justify-center py-4 px-6 border border-transparent rounded-md shadow-lg text-2xl font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-blue-300 transition-transform transform hover:scale-105 max-w-md mx-auto">
+                        Submit Enrollment
+                    </button>
+                    <p class="mt-4 text-center font-bold text-gray-200 max-w-lg mx-auto"><span style="color:#8b2f0b; font-weight:bold; text-shadow:none;">After submitting this form, please send me a private message on Facebook Messenger to receive payment instructions and confirm your enrollment.</span><br><a href="https://m.me/PastorRodyBabaran" target="_blank" class="text-indigo-300 hover:underline">https://m.me/PastorRodyBabaran</a></p>
+                </div>
+            </form>
+            <div class="secure-note">🔒 Your information is secure and will only be used for enrollment confirmation and course-related updates.</div>
+        </main>
+        
+                <!-- Success Message -->
+        <div id="success-container" class="hidden text-center p-8 bg-white rounded-lg shadow-lg">
+            <svg class="mx-auto h-12 w-12 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h3 class="mt-4 text-2xl font-semibold text-gray-900">Enrollment Submitted!</h3>
+            <p class="mt-2 text-gray-600">Thank you for registering. Your information has been received.</p>
+            <div class="mt-6 p-4 bg-indigo-50 border-l-4 border-indigo-400">
+                <button type="button"
+                    onclick="handleMessengerClick()"
+                    class="w-full mt-2 py-4 px-6 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xl rounded-lg shadow-lg animate-pulse transition-transform transform hover:scale-105">
+                    📩 MESSAGE PASTOR RODY NOW<br>(Confirm your enrollment)
+                </button>
+
+                <p id="confirm-warning-title" class="mt-4 font-bold text-yellow-800 text-base">
+                    ⚠️ Your enrollment is NOT YET CONFIRMED.
+                </p>
+                <p id="confirm-warning-text" class="text-yellow-700 text-sm mt-1">
+                    To activate your enrollment, message Pastor Rody now on Facebook Messenger with your confirmation message,
+                    including the FULL NAME you used to register and the EMAIL ADDRESS you submitted in this form.
+                </p>
+            </div>
+        </div>
+
+    <div id="validationModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-60" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="bg-white rounded-lg shadow-xl p-6 max-w-md w-full m-4">
+            <div class="text-center">
+                <div id="modal-icon-container" class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+                    <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                </div>
+                <h3 id="modalTitle" class="text-xl font-bold mt-3 text-gray-900"></h3>
+                <div class="mt-2">
+                    <p id="modalMessage" class="text-sm text-gray-600"></p>
+                </div>
+            </div>
+            <div class="mt-5 sm:mt-6">
+                <button id="closeModalButton" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="module">
+        // Firebase Imports
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // --- COURSE DATA ---
+                const courses = [
+            {
+                id: "zero_to_faithful_worker",
+                name: "From Zero to Faithful Worker: Complete Theology & Ministry Training",
+                syllabus: `
+                    <p><strong>Course Title:</strong> From Zero to Faithful Worker: Complete Theology & Ministry Training</p>
+                    <p><strong>Format:</strong> Self-Paced KJV Training Curriculum</p>
+                    <p><strong>Focus:</strong> Understanding Scripture, Teaching Doctrine, Writing Sermons, Leading Bible Studies, and Evangelism</p>
+                    <p><strong>Author:</strong> Rody D. Babaran, B.Th., M.CE, MAST</p>
+                    <p><strong>Founder:</strong> Rody Babaran Digital Education</p>
+                    <p><strong>Scripture Base:</strong> King James Version (KJV)</p>
+                    <p><em>Copyright © 2026 Rody D. Babaran. All rights reserved.</em></p>
+                    <hr class='my-4'>
+                    <h4>Course Description</h4>
+                    <p>This complete self-paced KJV-based training program is designed to take a learner from little or no theological foundation to becoming a faithful and capable church worker. It develops real ministry ability—not just information—through a clear, practical, step-by-step learning path.</p>
+                    <p>Students will learn how to understand Scripture, explain doctrine, prepare sermons, lead Bible studies, and participate in evangelism with clarity and confidence. The curriculum is especially designed for learners with limited time, limited confidence, limited educational background, or limited formal theological training.</p>
+                    <hr class='my-4'>
+                    <h4>By the End of This Course, the Student Will Be Able To:</h4>
+                    <ul>
+                        <li>Understand foundational truths about God, Scripture, and the Gospel</li>
+                        <li>Read and explain a Bible verse accurately</li>
+                        <li>Interpret short passages in their proper context</li>
+                        <li>Understand essential biblical doctrines in simple, biblical terms</li>
+                        <li>Prepare and lead a clear Bible study</li>
+                        <li>Write and deliver a simple, faithful sermon</li>
+                        <li>Share the Gospel clearly and confidently</li>
+                    </ul>
+                    <hr class='my-4'>
+                    <h4>Course Structure (7 Levels)</h4>
+                    <p><strong>Level 0:</strong> Foundations</p>
+                    <p><strong>Level 1:</strong> Understanding a Verse</p>
+                    <p><strong>Level 2:</strong> Understanding a Passage</p>
+                    <p><strong>Level 3:</strong> Basic Doctrine and Theology</p>
+                    <p><strong>Level 4:</strong> Leading a Bible Study</p>
+                    <p><strong>Level 5:</strong> Writing a Simple Sermon</p>
+                    <p><strong>Level 6:</strong> Worker Readiness and Evangelism</p>
+                    <hr class='my-4'>
+                    <h4>Curriculum Ladder</h4>
+                    <p>Stage 1: Know God, the Bible, and the Gospel</p>
+                    <p>Stage 2: Explain a Verse</p>
+                    <p>Stage 3: Explain a Passage</p>
+                    <p>Stage 4: Learn Doctrine</p>
+                    <p>Stage 5: Teach Others</p>
+                    <p>Stage 6: Preach</p>
+                    <p>Stage 7: Evangelize</p>
+                    <hr class='my-4'>
+                    <h4>Detailed Lesson Listing</h4>
+                    <p><strong>LEVEL 0 – FOUNDATIONS</strong></p>
+                    <p>Lesson 1 – Who Is God?</p>
+                    <p>Lesson 2 – What Is the Bible?</p>
+                    <p>Lesson 3 – The Big Story of the Bible</p>
+                    <p>Lesson 4 – The Gospel</p>
+                    <p>Lesson 5 – The Christian Life and the Local Church</p>
+                    <p><strong>LEVEL 1 – UNDERSTANDING A VERSE</strong></p>
+                    <p>Lesson 6 – How to Read a Verse Carefully</p>
+                    <p>Lesson 7 – Who Is Speaking, To Whom, and Why?</p>
+                    <p>Lesson 8 – What Does the Verse Actually Say?</p>
+                    <p>Lesson 9 – What Is the Main Idea of the Verse?</p>
+                    <p>Lesson 10 – Avoiding Common Mistakes</p>
+                    <p><strong>LEVEL 2 – UNDERSTANDING A PASSAGE</strong></p>
+                    <p>Lesson 11 – Reading the Context</p>
+                    <p>Lesson 12 – Connecting Verses in a Passage</p>
+                    <p>Lesson 13 – Recognizing Keywords and Themes</p>
+                    <p>Lesson 14 – Comparing Scripture with Scripture</p>
+                    <p>Lesson 15 – Writing a Passage Summary</p>
+                    <p><strong>LEVEL 3 – BASIC DOCTRINE AND THEOLOGY</strong></p>
+                    <p>Lesson 16 – Doctrine of God</p>
+                    <p>Lesson 17 – Doctrine of Scripture</p>
+                    <p>Lesson 18 – Doctrine of Man and Sin</p>
+                    <p>Lesson 19 – Doctrine of Christ and Salvation</p>
+                    <p>Lesson 20 – Doctrine of the Church and Service</p>
+                    <p><strong>LEVEL 4 – LEADING A BIBLE STUDY</strong></p>
+                    <p>Lesson 21 – What is a Bible Study?</p>
+                    <p>Lesson 22 – Preparing a Bible Study Lesson</p>
+                    <p>Lesson 23 – Asking Good Questions</p>
+                    <p>Lesson 24 – Explaining Clearly</p>
+                    <p>Lesson 25 – Leading a Small Group</p>
+                    <p><strong>LEVEL 5 – WRITING A SIMPLE SERMON</strong></p>
+                    <p>Lesson 26 – What is a Sermon?</p>
+                    <p>Lesson 27 – Choosing a Text</p>
+                    <p>Lesson 28 – Finding the Main Message</p>
+                    <p>Lesson 29 – Building the Outline</p>
+                    <p>Lesson 30 – Writing the Sermon</p>
+                    <p>Lesson 31 – Illustration and Application</p>
+                    <p>Lesson 32 – Delivering the Sermon</p>
+                    <p><strong>LEVEL 6 – WORKER READINESS AND EVANGELISM</strong></p>
+                    <p>Lesson 33 – What is Evangelism?</p>
+                    <p>Lesson 34 – Sharing the Gospel Clearly</p>
+                    <p>Lesson 35 – Answering Basic Questions</p>
+                    <p>Lesson 36 – Character and Faithfulness</p>
+                    <p>Lesson 37 – Final Ministry Project</p>
+                `
+            },
+            {
+                id: "disciple_new_believer",
+                name: "Discipleship Program - How to Disciple a New Believer (Foundational)",
+                syllabus: `
+                    <p><strong>Course Title:</strong> How to Disciple a New Believer? (Foundation)</p>
+                    <p><strong>Provider:</strong> Rody Babaran Digital Education</p>
+                    <p><strong>Author/Instructor:</strong> Pastor Rody Babaran</p>
+                    <p><strong>Course Format:</strong> Self-Paced (Asynchronous)</p>
+                    <p><strong>Course Duration:</strong> 6 Modules (Recommended: 7 days per module)</p>
+                    <p><strong>Bible Translation:</strong> King James Version (KJV)</p>
+                    <p><strong>Certificate:</strong> Certificate of Completion upon successful completion of all course requirements</p>
+                    <p><em>All Rights Reserved © January 2026</em></p>
+                    <hr class='my-4'>
+                    <h4>Course Abstract</h4>
+                    <p>This foundational course equips pastors, church leaders, teachers, and Bible students with a structured, Scripture-first (KJV) approach to discipling new believers. The modules establish assurance of salvation, spiritual habits, essential doctrine, church integration, holiness, and witness—designed for immediate ministry application.</p>
+                    <hr class='my-4'>
+                    <h4>How the Course Works</h4>
+                    <ul>
+                        <li><strong>Recommended pace:</strong> Complete one module per 7-day cycle</li>
+                        <li><strong>Deliverables per module:</strong> Quiz + Reflection + Video Application Report + Main Assignment</li>
+                        <li><strong>Reflection minimum:</strong> 200+ words, include at least one KJV verse + explain application</li>
+                        <li><strong>Video requirement:</strong> 3–7 minutes Application Report video with at least one KJV verse + evidence of application (alternative path allowed if no ministry setting access)</li>
+                        <li><strong>Submission channel:</strong> Facebook Messenger (large files via Google Drive link)</li>
+                        <li><strong>Evaluation standard:</strong> Completed / Needs Revision</li>
+                    </ul>
+                    <hr class='my-4'>
+                    <h4>Module Titles (6 Modules)</h4>
+                    <ul>
+                        <li><strong>Module 1:</strong> The Goal of Discipleship and Assurance of Salvation</li>
+                        <li><strong>Module 2:</strong> Establishing Spiritual Habits (Bible, Prayer, and Obedience)</li>
+                        <li><strong>Module 3:</strong> Teaching Essential Doctrine to a New Believer</li>
+                        <li><strong>Module 4:</strong> Integrating the New Believer into the Local Church</li>
+                        <li><strong>Module 5:</strong> Growth in Holiness (Sanctification, Temptation, and Repentance)</li>
+                        <li><strong>Module 6:</strong> Training the New Believer for Witness and Disciple-Making</li>
+                    </ul>
+                    <hr class='my-4'>
+                    <h4>Completion Requirement</h4>
+                    <p>All modules must be marked <strong>Completed</strong> to finish the course and receive the Certificate of Completion.</p>
+                `
+            },
+            {
+                id: "homiletics_1",
+                name: "Homiletics I - 12 Week Introductory Course",
+                syllabus: `
+                    <p><strong>Course Duration:</strong> 12 Weeks</p>
+                    <p><strong>Level:</strong> Bachelor of Theology</p>
+                    <p><strong>Instructor:</strong> Rody Babaran</p>
+                    <p><em>All Rights Reserved - Pastor Rody Babaran © March 2025</em></p>
+                    <hr class='my-4'>
+                    <h4>Course Objective</h4>
+                    <p>This course introduces students to the foundational principles of homiletics, focusing on the art and science of preparing and delivering biblical sermons. Students will learn how to interpret scripture, organize sermons, and develop preaching skills that are bibally sound, theologically informed, and contextually relevant.</p>
+                    <hr class='my-4'>
+                    <h4>Weekly Breakdown</h4>
+                    <p><strong>Week 1: Introduction to Homiletics</strong><br>Understanding the Nature and Purpose of Preaching.</p>
+                    <p><strong>Week 2: The Preacher's Calling and Authority</strong><br>The Role and Responsibility of the Preacher.</p>
+                    <p><strong>Week 3: Understanding the Congregation</strong><br>Knowing Your Audience.</p>
+                    <p><strong>Week 4: Scripture Interpretation and Exegesis I</strong><br>Exegesis: Drawing Meaning from the Text.</p>
+                    <p><strong>Week 5: Scripture Interpretation and Exegesis II</strong><br>Tools for Biblical Exegesis.</p>
+                    <p><strong>Week 6: Sermon Structure I – The Basics</strong><br>Introduction to Sermon Structure.</p>
+                    <p><strong>Week 7: Sermon Structure II – Crafting the Introduction and Conclusion</strong><br>Engaging Introductions and Effective Conclusions.</p>
+                    <p><strong>Week 8: Sermon Delivery I – Voice, Tone, and Body Language</strong><br>The Art of Sermon Delivery.</p>
+                    <p><strong>Week 9: Sermon Delivery II – Handling Nervousness and Engaging the Congregation</strong><br>Confidence in the Pulpit.</p>
+                    <p><strong>Week 10: Preaching with Passion and Authority</strong><br>Preaching with Conviction.</p>
+                    <p><strong>Week 11: The Role of Prayer in Preaching</strong><br>The Preacher as Intercessor.</p>
+                    <p><strong>Week 12: Final Sermon Presentation</strong><br>Seminar Delivery and Feedback.</p>
+                    <hr class='my-4'>
+                    <h4>Final Assessment</h4>
+                    <p>Deliver a 40-minute recorded video sermon and submit a 2-page reflection paper on personal growth in homiletics.</p>
+                `
+            },
+            {
+                id: "homiletics_2",
+                name: "Homiletics II - Advanced Biblical Preaching and Sermon Delivery",
+                syllabus: `
+                    <p><strong>Course Duration:</strong> 16 Weeks</p>
+                    <p><strong>Course Format:</strong> Asynchronous Online (Self-Paced), Weekly Module (No Live Zoom Class)</p>
+                    <p><strong>Required Text:</strong> King James Version (KJV) Bible for all scriptural references</p>
+                    <p><strong>Instructor:</strong> Rody Babaran</p>
+                    <p><em>All Rights Reserved - Pastor Rody Babaran © March 2025</em></p>
+                    <hr class='my-4'>
+                    <h4>Course Objective</h4>
+                    <p>To strengthen the student’s ability to move from sound biblical interpretation to faithful, clear, and relevant proclamation, with improved delivery, ethical integrity, contextual sensitivity, and digital preaching competence.</p>
+                    <hr class='my-4'>
+                    <h4>Weekly Breakdown</h4>
+                    <p><strong>Week 1: Review of Homiletics I</strong><br>Self-assessment, goals, short sermon video, and feedback summary.</p>
+                    <p><strong>Week 2: Advanced Exegesis and Hermeneutics</strong><br>Working with complex passages and translating study into sermon direction.</p>
+                    <p><strong>Week 3: Addressing Contemporary Issues in Preaching</strong><br>Engaging cultural and social challenges with biblical faithfulness.</p>
+                    <p><strong>Week 4: Special Sermon Structures</strong><br>Using varied sermon forms that serve both text and audience.</p>
+                    <p><strong>Week 5: The Power of Storytelling</strong><br>Story-driven communication for clarity and listener connection.</p>
+                    <p><strong>Week 6: Ethics of Preaching</strong><br>Integrity with sources, illustrations, and handling sensitive topics.</p>
+                    <p><strong>Week 7: Preaching in Different Settings</strong><br>Adapting sermons for weddings, funerals, grief, crisis, and pastoral needs.</p>
+                    <p><strong>Week 8: Preaching in a Digital Age</strong><br>Pacing, clarity, and engagement for online platforms.</p>
+                    <p><strong>Week 9: Preaching and Pastoral Care</strong><br>Speaking biblically into real-life burdens with shepherding wisdom.</p>
+                    <p><strong>Week 10: Preaching Through Adversity and Suffering</strong><br>Faithful preaching in hardship, pain, and trial.</p>
+                    <p><strong>Week 11: Preaching and Cultural Sensitivity</strong><br>Truth with love: contextual awareness without compromise.</p>
+                    <p><strong>Week 12: Capstone Sermon and Reflection</strong><br>Portfolio sermon development, delivery file, and personal reflection.</p>
+                    <p><strong>Week 13: Preaching for Evangelism and Mission</strong><br>Gospel clarity, invitation, and missional purpose.</p>
+                    <p><strong>Week 14: Preaching to Specific Demographics</strong><br>Adapting approach for different listener groups.</p>
+                    <p><strong>Week 15: Preaching with Visuals and Media</strong><br>Using supporting media with wisdom and clarity.</p>
+                    <p><strong>Week 16: The Preacher’s Ongoing Development</strong><br>Long-term growth plan for preaching and spiritual disciplines.</p>
+                `
+            },
+            {
+                id: "crafting_sermons",
+                name: "Advanced Crafting Sermon for Effective Preaching",
+                syllabus: `
+                    <p><strong>Duration:</strong> 12 Weeks</p>
+                    <p><strong>Format:</strong> Weekly lessons with readings, exercises, and assignments</p>
+                    <p><em>All Rights Reserved - Pastor Rody Babaran © March 2025</em></p>
+                    <hr class='my-4'>
+                    <h4>Course Objective</h4>
+                    <p>To equip beginner preachers and ministry students with the foundational skills necessary to craft and deliver expository, topical, and textual sermons effectively. Participants will learn how to interpret biblical texts accurately, develop sermons that resonate with contemporary congregations, and apply biblical truths to modern life.</p>
+                    <hr class='my-4'>
+                    <h4>Who Should Enroll</h4>
+                    <p>This course is designed for individuals new to preaching, ministry students, or anyone in a church leadership role looking to develop or enhance their sermon crafting skills.</p>
+                    <hr class='my-4'>
+                    <h4>Weekly Breakdown</h4>
+                    <p><strong>Week 1: Introduction to Sermon Crafting</strong><br>Overview of sermon types and their purposes in ministry.</p>
+                    <p><strong>Week 2: Basics of Expository Sermon</strong><br>Understanding expository sermons and the importance of context.</p>
+                    <p><strong>Week 3: Exegetical Study Techniques</strong><br>Introduction to exegetical study methods and tools.</p>
+                    <p><strong>Week 4: Crafting the Expository Sermon</strong><br>Structuring an expository sermon: from text to sermon.</p>
+                    <p><strong>Week 5: Introduction to Topical Sermons</strong><br>Understanding topical sermons and selecting topics.</p>
+                    <p><strong>Week 6: Crafting the Topical Sermon</strong><br>Developing a topical sermon: integration of scripture and topic.</p>
+                    <p><strong>Week 7: Introduction to Textual Sermons</strong><br>Exploring textual sermons and text selection.</p>
+                    <p><strong>Week 8: Crafting the Textual Sermon</strong><br>Developing a sermon from a single text.</p>
+                    <p><strong>Week 9: Sermon Delivery Techniques</strong><br>Effective sermon delivery and engagement strategies.</p>
+                    <p><strong>Week 10: Application and Reflection in Sermon Crafting</strong><br>Making sermons relevant and reflective.</p>
+                    <p><strong>Week 11: Peer Review and Feedback</strong><br>The importance of feedback in sermon development.</p>
+                    <p><strong>Week 12: Final Project and Presentation</strong><br>Integration of learning and final presentation.</p>
+                `
+            },
+            {
+                id: "topical_sermons_beginners",
+                name: "Topical Sermon for Beginners: A Step-by-Step Guide",
+                syllabus: `
+                    <p><strong>Author/Instructor:</strong> Rody Babaran - All Rights Reserved June 2025 ©</p>
+                    <p><strong>Course Type:</strong> Beginner | Self-Paced | Home Study</p>
+                    <p><strong>Duration:</strong> 6 Weeks</p>
+                    <p><strong>Focus:</strong> How to Write and Deliver a Topical Sermon</p>
+                    <p><strong>Language:</strong> English with Tagalog translation</p>
+                    <hr class='my-4'>
+                    <h4>Course Objective</h4>
+                    <p>This course will help absolute beginners understand the basics of biblical preaching through topical sermons. It will guide students from no experience to writing and sharing their own Bible-based sermon in 6 weeks, with full Scripture integrity and practical clarity.</p>
+                    <hr class='my-4'>
+                    <h4>Materials Provided</h4>
+                    <ul>
+                        <li>Weekly Lessons (English + Tagalog)</li>
+                        <li>Practice Exercises</li>
+                        <li>Bible Study Tools (KJV links)</li>
+                        <li>Assignments for Review and Feedback</li>
+                        <li>Sermon Outline Templates</li>
+                    </ul>
+                    <hr class='my-4'>
+                    <h4>Weekly Breakdown</h4>
+                    <p><strong>WEEK 1 – What Is a Topical Sermon?</strong><br>Outcome: Understand what a topical sermon is and how it fits in biblical preaching.</p>
+                    <p><strong>WEEK 2 – How to Choose and Define a Biblical Topic</strong><br>Outcome: Student has a clearly defined, Bible-based topic and supporting Scriptures.</p>
+                    <p><strong>WEEK 3 – Interpreting Scripture in Context</strong><br>Outcome: Student can explain the meaning of Scripture faithfully.</p>
+                    <p><strong>WEEK 4 – Building a Sermon Outline</strong><br>Outcome: Student has a structured outline ready for expansion.</p>
+                    <p><strong>WEEK 5 – Writing the Sermon</strong><br>Outcome: Student completes a full sermon ready for presentation.</p>
+                    <p><strong>WEEK 6 – Practicing and Presenting Your Sermon</strong><br>Outcome: Student preaches their sermon and reflects on what they learned.</p>
+                `
+            },
+            {
+                id: "how_to_write_devotional",
+                name: "Intro to Writing Devotional",
+                syllabus: `
+                    <p><strong>One-Month Study Plan: How to Write a Devotional</strong></p>
+                    <p><strong>Course:</strong> Practical Theology</p>
+                    <p><strong>Duration:</strong> 4 Weeks (6-8 hours total)</p>
+                    <p><strong>Goal:</strong> By the end of the month, students will have written, revised, and finalized a complete devotional.</p>
+                    <p><em>All Rights Reserved - Pastor Rody Babaran June 2025 ©</em></p>
+                    <hr class='my-4'>
+                    <h4>Week 1: Understanding Devotionals</h4>
+                    <p><strong>Lesson 1: What is a Devotional?</strong></p>
+                    <p><strong>Objective:</strong> Understand the purpose and impact of devotionals.</p>
+                    <p><strong>Topics Covered:</strong></p>
+                    <ul>
+                        <li>What a devotional is</li>
+                        <li>The role of devotionals in spiritual growth</li>
+                        <li>Example devotional</li>
+                    </ul>
+                    <p><strong>Activity:</strong> Read an example devotional and reflect on its impact via reflection questions.</p>
+                    <p><strong>End of Week 1:</strong> Submit reflection answers to your teacher (if required).</p>
+                    <hr class='my-4'>
+                    <h4>Week 2: The Structure of a Devotional</h4>
+                    <p><strong>Lesson 2: Understanding the Five-Part Structure</strong></p>
+                    <p><strong>Objective:</strong> Learn the essential parts of a devotional.</p>
+                    <p><strong>Topics Covered: The 5-step structure</strong></p>
+                    <ul>
+                        <li>Title</li>
+                        <li>Scripture</li>
+                        <li>Reflection</li>
+                        <li>Personal Application</li>
+                        <li>Prayer</li>
+                    </ul>
+                    <p><strong>Activity:</strong> Choose a title and Bible verse, then create a short outline of your devotional.</p>
+                    <p><strong>End of Week 2:</strong> Review and refine your outline.</p>
+                    <hr class='my-4'>
+                    <h4>Week 3: Writing the Devotional</h4>
+                    <p><strong>Lesson 3: Writing from the Heart</strong></p>
+                    <p><strong>Objective:</strong> Develop a full devotional using the five-part structure.</p>
+                    <p><strong>Topics Covered:</strong></p>
+                    <ul>
+                        <li>How to write a meaningful reflection</li>
+                        <li>Making devotionals personal and relatable</li>
+                        <li>Keeping the message clear and focused</li>
+                    </ul>
+                    <p><strong>Activity:</strong> Write the full first draft of your devotional (200-300 words).</p>
+                    <p><strong>End of Week 3:</strong> Have a first draft ready for revision next week.</p>
+                    <hr class='my-4'>
+                    <h4>Week 4: Revising & Finalizing</h4>
+                    <p><strong>Lesson 4: Improving Your Devotional</strong></p>
+                    <p><strong>Objective:</strong> Edit and finalize your devotional for clarity and impact.</p>
+                    <p><strong>Topics Covered:</strong></p>
+                    <ul>
+                        <li>Editing for clarity, accuracy, and encouragement</li>
+                        <li>The importance of feedback and revision</li>
+                        <li>Finalizing the devotional for submission or sharing</li>
+                    </ul>
+                    <p><strong>Activity:</strong> Revise your devotional and share it with a friend or family member for feedback.</p>
+                    <p><strong>Final Steps:</strong> Take the Module Quiz and submit your final devotional.</p>
+                    <hr class='my-4'>
+                    <h4>Final Assessment</h4>
+                    <p>You will be assessed via a Module Quiz and the submission of your final, formatted devotional.</p>
+                `
+            },
+            {
+                id: "advanced_devotional_writing",
+                name: "Advanced Writing Devotional",
+                syllabus: `
+                    <p><strong>Title:</strong> Devotional Writing for Ministry Leaders: Communicating Scripture with Depth and Impact</p>
+                    <p><strong>Audience:</strong> Pastors, Ministers, and Christian Leaders</p>
+                    <p><strong>Duration:</strong> 8 Weeks</p>
+                    <p><strong>Format:</strong> Instructor-led sessions or structured self-study</p>
+                    <p><strong>Final Assignment:</strong> Write and present a full-length S.O.A.P. Devotional tailored to a ministry audience</p>
+                    <p><em>All Rights Reserved - Pastor Rody Babaran June 2025 ©</em></p>
+                    <hr class='my-4'>
+                    <h4>Course Objective</h4>
+                    <p>To equip ministry leaders with advanced devotional writing techniques that are theologically sound, pastorally sensitive, and spiritually enriching. The course emphasizes the S.O.A.P. method to foster structured and impactful devotional content.</p>
+                    <hr class='my-4'>
+                    <h4>Course Deliverables</h4>
+                    <ul>
+                        <li>Weekly lessons with structured content and exercises</li>
+                        <li>Reflection assignments (100–150 words per question)</li>
+                        <li>Devotional writing assignments (ranging from 250 to 1,200 words)</li>
+                        <li>Final project: Comprehensive S.O.A.P. devotional (800–1,200 words)</li>
+                        <li>10-item multiple-choice quiz to assess understanding</li>
+                    </ul>
+                    <hr class='my-4'>
+                    <h4>Weekly Breakdown</h4>
+                    <p><strong>Week 1: The Call and Craft of Devotional Writing</strong><br>Objective: Understand devotional writing as a pastoral ministry.</p>
+                    <p><strong>Week 2: Identifying the Spiritual Needs of Your Audience</strong><br>Objective: Learn to write devotionals addressing specific spiritual needs.</p>
+                    <p><strong>Week 3: Developing a Devotional Theme and Message Arc</strong><br>Objective: Craft devotionals with a clear theme and message progression.</p>
+                    <p><strong>Week 4: Weaving Multiple Scriptures</strong><br>Objective: Integrate multiple scriptures to enrich devotional content.</p>
+                    <p><strong>Week 5: The Power of Story and Testimony</strong><br>Objective: Utilize personal stories and testimonies in devotionals.</p>
+                    <p><strong>Week 6: Tone, Language, and Emotional Resonance</strong><br>Objective: Enhance the emotional impact of devotional writing.</p>
+                    <p><strong>Week 7: Introduction to S.O.A.P. Devotionals</strong><br>Objective: Learn the S.O.A.P. method for structured devotional writing.</p>
+                    <p><strong>Week 8: Final Assignment – Full S.O.A.P. Devotional Project</strong><br>Objective: Demonstrate mastery by composing a comprehensive S.O.A.P. devotional.</p>
+                    <hr class='my-4'>
+                    <h4>Final Assessment</h4>
+                    <p>A 10-item multiple-choice quiz will be administered to evaluate comprehension of key concepts covered throughout the course.</p>
+                `
+            },
+            {
+                id: "major_doctrines_salvation",
+                name: "12-week Major Doctrines of Salvation (Video Based)",
+                syllabus: `
+                    <p><strong>Course Duration:</strong> 12 Weeks (1 session per week)</p>
+                    <p><strong>Session Length:</strong> 90 minutes</p>
+                    <p><strong>Format:</strong> Live Zoom Training (Teaching + Discussion/Exegesis + Practical Preaching Application)</p>
+                    <p><strong>Instructor:</strong> Pastor Rody Babaran</p>
+                    <p><em>All Rights Reserved - Pastor Rody Babaran © March 2025</em></p>
+                    <hr class='my-4'>
+                    <h4>Course Description</h4>
+                    <p>This course offers an in-depth exploration of the doctrine of salvation (Soteriology), combining theological foundations with practical preaching applications. Topics include human depravity, divine election, atonement, justification, sanctification, and perseverance, while also examining key viewpoints such as Calvinism (TULIP), Arminianism, and the Five Solas of the Reformation.</p>
+                    <hr class='my-4'>
+                    <h4>Course Objectives</h4>
+                    <ul>
+                        <li>Understand and articulate the core doctrines of salvation as presented in Scripture.</li>
+                        <li>Compare and contrast major theological perspectives on salvation.</li>
+                        <li>Defend the biblical doctrine of salvation against misconceptions and false teachings.</li>
+                        <li>Develop and deliver sermons/teachings that communicate salvation clearly to diverse audiences.</li>
+                    </ul>
+                    <hr class='my-4'>
+                    <h4>Session Structure (90 minutes)</h4>
+                    <ul>
+                        <li>Theological Teaching (30 minutes)</li>
+                        <li>Discussion & Exegesis (20 minutes)</li>
+                        <li>Preaching & Teaching Application (30 minutes)</li>
+                        <li>Q&A and Ministry Reflection (10 minutes)</li>
+                    </ul>
+                    <hr class='my-4'>
+                    <h4>Weekly Breakdown (Topics + Key Scriptures)</h4>
+                    <p><strong>Week 1:</strong> The Need for Salvation: Sin & the Fall (Genesis 3; Romans 3:23; Ephesians 2:1–3)</p>
+                    <p><strong>Week 2:</strong> God’s Sovereignty in Salvation (Ephesians 1:4–5; Romans 8:29–30)</p>
+                    <p><strong>Week 3:</strong> The Atonement of Christ: Different Theories (Isaiah 53; Hebrews 9:22; 1 John 2:2)</p>
+                    <p><strong>Week 4:</strong> Justification by Faith: The Five Solas (Romans 5:1; Galatians 2:16; Ephesians 2:8–9)</p>
+                    <p><strong>Week 5:</strong> Regeneration & the New Birth (John 3:3–7; Titus 3:5; 2 Corinthians 5:17)</p>
+                    <p><strong>Week 6:</strong> The Role of Grace & Faith in Salvation (Ephesians 2:8–9; Romans 4:4–5; Philippians 2:12–13)</p>
+                    <p><strong>Week 7:</strong> Sanctification: Holiness & Christian Growth (1 Thessalonians 4:3; Hebrews 12:14; Galatians 5:22–23)</p>
+                    <p><strong>Week 8:</strong> Perseverance vs. Apostasy (John 10:28–29; Hebrews 6:4–6; Philippians 1:6)</p>
+                    <p><strong>Week 9:</strong> The Five Points of Calvinism (TULIP) (Romans 9; John 6:44; Ephesians 1:4–5)</p>
+                    <p><strong>Week 10:</strong> The Free Grace vs. Lordship Salvation Debate (James 2:14–26; Matthew 7:21–23; Romans 10:9–10)</p>
+                    <p><strong>Week 11:</strong> False Teachings on Salvation (Galatians 1:6–9; Colossians 2:8; 2 Peter 2:1–3)</p>
+                    <p><strong>Week 12:</strong> Teaching & Preaching Salvation Effectively (2 Timothy 4:2; Acts 16:30–31; 1 Corinthians 2:1–5)</p>
+                    <hr class='my-4'>
+                    <h4>Final Project</h4>
+                    <p>In Week 12, each student presents a 10-minute sermon or teaching on a selected aspect of salvation for feedback and growth.</p>
+                `
+            },
+            {
+                id: "foundations_of_faith",
+                name: "Foundation of Faith (Video Based)",
+                syllabus: `
+                    <p><strong>Series Title:</strong> Foundations of Faith</p>
+                    <p><strong>Objective:</strong> To provide a structured study of core theological topics to deepen understanding, encourage unity, and foster practical application among participants from diverse backgrounds.</p>
+                    <p><em>All rights reserved © Jan 2025</em></p>
+                    <hr class='my-4'>
+                    <h4>Lesson Outline</h4>
+                    <h4>Lesson 1: The Authority of Scripture</h4>
+                    <p><strong>Main Text:</strong> 2 Timothy 3:16–17</p>
+                    <ul>
+                        <li>The inspiration, inerrancy, and sufficiency of Scripture</li>
+                        <li>Why Scripture is the ultimate guide for faith and practice</li>
+                        <li><strong>Interactive:</strong> Discuss how trusting the Bible’s authority impacts daily decisions</li>
+                    </ul>
+                    <h4>Lesson 2: The Nature and Attributes of God</h4>
+                    <p><strong>Main Text:</strong> Isaiah 6:3</p>
+                    <ul>
+                        <li>Understanding God’s holiness, love, omnipotence, and omniscience</li>
+                        <li>How God’s character influences worship and daily life</li>
+                        <li><strong>Interactive:</strong> Group reflection on which attribute of God stands out most and why</li>
+                    </ul>
+                    <h4>Lesson 3: The Person and Work of Jesus Christ</h4>
+                    <p><strong>Main Text:</strong> John 1:1–14</p>
+                    <ul>
+                        <li>Jesus as fully God and fully man</li>
+                        <li>His role in salvation and as an example for living</li>
+                        <li><strong>Interactive:</strong> Discuss how Jesus’ humanity and divinity impact personal faith</li>
+                    </ul>
+                    <h4>Lesson 4: The Holy Spirit: Empowerer and Guide</h4>
+                    <p><strong>Main Text:</strong> Acts 1:8</p>
+                    <ul>
+                        <li>The Holy Spirit’s role in conviction, regeneration, sanctification, and empowerment</li>
+                        <li>Living by the Spirit’s power and bearing fruit</li>
+                        <li><strong>Interactive:</strong> Identify how participants have experienced the Holy Spirit’s work in their lives</li>
+                    </ul>
+                    <h4>Lesson 5: Salvation: Grace, Faith, and Works</h4>
+                    <p><strong>Main Text:</strong> Ephesians 2:8–9</p>
+                    <ul>
+                        <li>Salvation as a gift of grace through faith, not by works</li>
+                        <li>The role of good works as evidence of faith</li>
+                        <li><strong>Interactive:</strong> Discuss how grace changes attitudes toward works and obedience</li>
+                    </ul>
+                    <h4>Lesson 6: The Church: Unity in Diversity</h4>
+                    <p><strong>Main Text:</strong> 1 Corinthians 12:12–27</p>
+                    <ul>
+                        <li>The Church as the body of Christ, with diverse gifts and unity of purpose</li>
+                        <li>The importance of spiritual gifts in building up the Church</li>
+                        <li><strong>Interactive:</strong> Share how diversity within the group strengthens their collective faith</li>
+                    </ul>
+                    <h4>Lesson 7: The End Times: Living in Hope</h4>
+                    <p><strong>Main Text:</strong> Revelation 21:1–4</p>
+                    <ul>
+                        <li>Biblical teachings about Christ’s return and the promise of eternal life</li>
+                        <li>Encouraging readiness and faithfulness</li>
+                        <li><strong>Interactive:</strong> Discuss how the hope of eternity influences daily living</li>
+                    </ul>
+                `
+            }
+        ];
+
+        // --- TUITION DATA ---
+        const tuitionFees = {
+            zero_to_faithful_worker: 2000,
+            disciple_new_believer: 1000,
+            homiletics_1: 1000,
+            homiletics_2: 1500,
+            crafting_sermons: 1500,
+            topical_sermons_beginners: 1000,
+            how_to_write_devotional: 500,
+            advanced_devotional_writing: 800,
+            major_doctrines_salvation: 1000,
+            foundations_of_faith: 800
+        };
+        const registrationFee = 300;
+
+        function formatPhp(amount) {
+            return `Php ${amount.toLocaleString()}`;
+        }
+
+        function displayPaymentSummary(selectedCourse) {
+            const selectedCourseName = document.getElementById('selectedCourseName');
+            const selectedTuitionFee = document.getElementById('selectedTuitionFee');
+            const selectedTotalAmount = document.getElementById('selectedTotalAmount');
+
+            if (!selectedCourse || !tuitionFees[selectedCourse.id]) {
+                if (selectedCourseName) selectedCourseName.textContent = '-';
+                if (selectedTuitionFee) selectedTuitionFee.textContent = 'Php -';
+                if (selectedTotalAmount) selectedTotalAmount.textContent = 'Php -';
+                return;
+            }
+
+            const tuition = tuitionFees[selectedCourse.id];
+            const total = tuition + registrationFee;
+
+            selectedCourseName.textContent = selectedCourse.name;
+            selectedTuitionFee.textContent = formatPhp(tuition);
+            selectedTotalAmount.textContent = formatPhp(total);
+        }
+
+        // --- DOM ELEMENT REFERENCES ---
+        const courseSelect = document.getElementById('courseSelection');
+        const syllabusContainer = document.getElementById('syllabusContainer');
+        const syllabusTitle = document.getElementById('syllabusTitle');
+        const syllabusContent = document.getElementById('syllabusContent');
+        const enrollmentForm = document.getElementById('enrollmentForm');
+        const submitButton = document.getElementById('submitButton');
+        const registrationDateInput = document.getElementById('registrationDate');
+        const successContainer = document.getElementById('success-container');
+        const formContainer = document.getElementById('enrollment-form-container');
+        const modal = document.getElementById('validationModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMessage = document.getElementById('modalMessage');
+        const closeModalButton = document.getElementById('closeModalButton');
+        
+        // --- FIREBASE SETUP ---
+        let db;
+        let auth;
+        let userId;
+
+        try {
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+              apiKey: "AIzaSyDnMrF1olEQao-fRzIZHpEn1QyG1qrv0q0",
+              authDomain: "rb-digital-education-data.firebaseapp.com",
+              projectId: "rb-digital-education-data",
+              storageBucket: "rb-digital-education-data.firebasestorage.app",
+              messagingSenderId: "625610860303",
+              appId: "1:625610860303:web:c7773223e11627b3f6407a",
+              measurementId: "G-C0DRQTWT2X"
+            };
+
+            if (!firebaseConfig.apiKey || firebaseConfig.apiKey === "YOUR_API_KEY") {
+                 throw new Error("Firebase config is missing or invalid. Please paste your project's configuration.");
+            }
+
+            const app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+            setLogLevel('Debug');
+            
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    console.log("User is signed in:", user.uid);
+                    userId = user.uid;
+                } else {
+                    signInAnonymously(auth).catch((error) => {
+                         console.error("Anonymous authentication failed:", error);
+                         showModal('Authentication Error', 'Could not authenticate the session. Please refresh the page.');
+                    });
+                }
+            });
+
+        } catch (e) {
+            console.error("Firebase initialization failed:", e);
+            showModal('System Error', 'Could not connect to the database. Please check the configuration and try again.');
+            if(submitButton) submitButton.disabled = true;
+        }
+
+        // --- INITIALIZATION ---
+        function initializeAppLogic() {
+            // Populate courses
+            courses.forEach(course => {
+                const option = document.createElement('option');
+                option.value = course.id;
+                option.textContent = course.name;
+                courseSelect.appendChild(option);
+            });
+
+            // Set default registration date to today
+            const today = new Date().toISOString().split('T')[0];
+            registrationDateInput.value = today;
+
+            // Add event listeners
+            courseSelect.addEventListener('change', displaySyllabus);
+            enrollmentForm.addEventListener('submit', handleFormSubmit);
+            closeModalButton.addEventListener('click', hideModal);
+
+            // Add input listeners to remove highlights
+            enrollmentForm.querySelectorAll('input, select, textarea').forEach(el => {
+                el.addEventListener('input', () => {
+                    el.classList.remove('error-highlight');
+                    clearFieldLabelHighlight(el);
+                    clearFieldLabelHighlight(el);
+                    const fieldset = el.closest('fieldset');
+                    if(fieldset) fieldset.classList.remove('fieldset-error-highlight');
+                });
+                 el.addEventListener('change', () => { // For checkboxes and radios
+                    const fieldset = el.closest('fieldset');
+                    if(fieldset) fieldset.classList.remove('fieldset-error-highlight');
+                });
+            });
+        }
+        
+        // --- MODAL FUNCTIONS ---
+        function showModal(title, message) {
+            modalTitle.textContent = title;
+            modalMessage.innerHTML = message;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function hideModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // --- FUNCTIONS ---
+        function displaySyllabus() {
+            const selectedCourseId = courseSelect.value;
+
+            if (!selectedCourseId) {
+                syllabusContainer.classList.add('hidden');
+                syllabusContainer.classList.remove('show-syllabus');
+                document.getElementById('selectedCourseName').textContent = '-';
+                document.getElementById('selectedTuitionFee').textContent = 'Php -';
+                document.getElementById('selectedTotalAmount').textContent = 'Php -';
+                return;
+            }
+
+            const selectedCourse = courses.find(c => c.id === selectedCourseId);
+            if (selectedCourse) {
+                displayPaymentSummary(selectedCourse);
+                syllabusTitle.textContent = `${selectedCourse.name} - Syllabus Overview`;
+                syllabusContent.innerHTML = selectedCourse.syllabus;
+                syllabusContainer.classList.remove('hidden');
+                syllabusContainer.classList.add('show-syllabus');
+            }
+        }
+
+        function removeAllHighlights() {
+            enrollmentForm.querySelectorAll('.error-highlight').forEach(el => el.classList.remove('error-highlight'));
+            enrollmentForm.querySelectorAll('.fieldset-error-highlight').forEach(el => el.classList.remove('fieldset-error-highlight'));
+            enrollmentForm.querySelectorAll('.label-error-highlight').forEach(el => el.classList.remove('label-error-highlight'));
+        }
+
+        function highlightFieldLabel(el) {
+            if (!el || !el.id) return;
+            const label = enrollmentForm.querySelector(`label[for="${el.id}"]`);
+            if (label) label.classList.add('label-error-highlight');
+        }
+
+        function clearFieldLabelHighlight(el) {
+            if (!el || !el.id) return;
+            const label = enrollmentForm.querySelector(`label[for="${el.id}"]`);
+            if (label) label.classList.remove('label-error-highlight');
+        }
+
+        
+function validateForm() {
+    const invalidElements = [];
+
+    // 1) Required text/date/url/email/select (not radios/checkboxes)
+    enrollmentForm.querySelectorAll('input[required], select[required], textarea[required]').forEach(el => {
+        const type = (el.getAttribute('type') || '').toLowerCase();
+        if (type === 'radio' || type === 'checkbox') return;
+        const val = (el.value || '').trim();
+        if (!val) invalidElements.push(el);
+    });
+
+    // 2) Email format (if present)
+    const emailInput = document.getElementById('email');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailInput && emailInput.value && !emailRegex.test(emailInput.value)) {
+        if (!invalidElements.includes(emailInput)) invalidElements.push(emailInput);
+    }
+
+    // 3) Fieldset-based validation
+    enrollmentForm.querySelectorAll('fieldset').forEach(fieldset => {
+        const type = fieldset.dataset.validation;
+
+        if (type === 'select-all') {
+            const boxes = fieldset.querySelectorAll('input[type="checkbox"]');
+            const checked = fieldset.querySelectorAll('input[type="checkbox"]:checked');
+            if (boxes.length !== checked.length) invalidElements.push(fieldset);
+        }
+
+        if (type === 'select-one') {
+            const checked = fieldset.querySelector('input[type="radio"]:checked');
+            if (!checked) invalidElements.push(fieldset);
+        }
+
+        if (type === 'no-refusal') {
+            const checked = fieldset.querySelector('input[type="radio"]:checked');
+            if (!checked) {
+                invalidElements.push(fieldset);
+            } else if (checked.value === fieldset.dataset.refusalValue) {
+                // Highlight right away and show refusal modal
+                fieldset.classList.add('fieldset-error-highlight');
+                showModal('Application Refused', 'You must agree to the terms to enroll. Your application cannot be submitted.');
+                // Special 'null' sentinel for refusal
+                invalidElements.length = 0;
+                invalidElements.push('__REFUSAL__');
+            }
+        }
+    });
+
+    // If refusal sentinel present, return null so caller stops submission.
+    if (invalidElements.includes('__REFUSAL__')) return null;
+
+    return invalidElements;
+}
+
+  // PHASE 1 — Netlify Form Capture (Backup submission to Netlify Forms)
+  // This posts the same payload to Netlify Forms so you have a backup capture in Netlify dashboard.
+  // It does NOT send any email by itself.
+  async function submitToNetlifyForms(formEl) {
+    const formData = new FormData(formEl);
+
+    // Netlify Forms requires a "form-name" field that matches the form's name attribute.
+    if (!formData.get('form-name')) {
+      const nameAttr = formEl.getAttribute('name') || 'enrollment';
+      formData.set('form-name', nameAttr);
+    }
+
+    const res = await fetch(formEl.getAttribute('action') || '/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
+    });
+
+    if (!res.ok) {
+      throw new Error(`Netlify Forms capture failed (${res.status})`);
+    }
+
+    return true;
+  }
+
+
+
+async function handleFormSubmit(event) {
+  event.preventDefault();
+  removeAllHighlights();
+
+  const invalidElements = validateForm();
+
+  // Refusal case
+  if (invalidElements === null) return;
+
+  if (invalidElements.length > 0) {
+    invalidElements.forEach(el => {
+      if (el.tagName === 'FIELDSET') {
+        el.classList.add('fieldset-error-highlight');
+      } else {
+        el.classList.add('error-highlight');
+        highlightFieldLabel(el);
+      }
+    });
+    showModal('Incomplete Form', 'Please complete all the highlighted fields before submitting.');
+    return;
+  }
+
+  if (!db || !auth) {
+    showModal('Database Error', "Database connection is not available. Please try again later.");
+    return;
+  }
+
+  submitButton.disabled = true;
+  submitButton.innerHTML = 'Submitting...';
+
+  const formData = new FormData(enrollmentForm);
+  const selectedCourse = courses.find(c => c.id === formData.get('courseSelection'));
+  const studentEmail = (formData.get('email') || '').trim();
+
+  const enrollmentData = {
+    legalName: formData.get('legalName'),
+    email: studentEmail,
+    fbName: formData.get('fbName'),
+    fbLink: formData.get('fbLink'),
+    course: selectedCourse?.name || 'N/A',
+    enrollmentReason: formData.get('enrollmentReason'),
+    tuitionFee: selectedCourse ? (tuitionFees[selectedCourse.id] || 0) : 0,
+    registrationFee: registrationFee,
+    totalAmount: selectedCourse ? ((tuitionFees[selectedCourse.id] || 0) + registrationFee) : registrationFee,
+    device: formData.get('device'),
+    connection: formData.getAll('connection'),
+    testimonyAgreement: formData.get('testimonyAgreement') || 'Not answered',
+    courseAgreement: formData.get('courseAgreement'),
+    registrationDate: formData.get('registrationDate'),
+    submittedAt: new Date().toISOString(),
+    submitterUid: userId || 'anonymous',
+  };
+
+  try {
+    // 1) Netlify Form Capture (Phase 1) — this is the PRIMARY capture and must succeed
+    await submitToNetlifyForms(event.target);
+
+    // 2) Firestore save (optional backup). If this fails, we still allow success because Netlify captured it.
+    try {
+      const docRef = await addDoc(collection(db, 'enrollments'), enrollmentData);
+      console.log('Enrollment saved with ID:', docRef.id);
+    } catch (err) {
+      console.warn('Firestore save failed (Netlify capture already succeeded):', err);
+    }
+
+    // 2) OPTIONAL: Email sending (server-side)
+    // The previous Firebase "mail" collection trigger stops working when the project is on Spark (no-cost),
+    // because the typical email-trigger approach requires paid plan/Cloud Functions.
+    // We now call a Netlify Function instead (Phase 2). If the function is not installed yet, we DO NOT block success.
+
+    try {
+  const res = await fetch('/.netlify/functions/send-confirmation', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      fullName: (enrollmentData.legalName || '').trim(),
+      email: (enrollmentData.email || '').trim(),
+      course: (enrollmentData.course || '').trim()
+    })
+  });
+
+  if (!res.ok) {
+    const txt = await res.text();
+    console.warn('Email send failed:', res.status, txt);
+  } else {
+    console.log('Confirmation email triggered successfully.');
+  }
+} catch (err) {
+  console.warn('Email function call failed:', err);
+}
+
+    // 3) UI: success regardless of mail write
+    formContainer.classList.add('hidden');
+    successContainer.classList.remove('hidden');
+  } catch (e) {
+    console.error('Error saving enrollment:', e);
+    showModal('Submission Error', 'There was an error submitting. Please try again.');
+    submitButton.disabled = false;
+    submitButton.innerHTML = 'Submit Enrollment';
+  }
+}
+
+        
+// --- CTA: Confirm Enrollment via Messenger ---
+window.handleMessengerClick = function handleMessengerClick() {
+    const warnTitle = document.getElementById('confirm-warning-title');
+    const warnText = document.getElementById('confirm-warning-text');
+    if (warnTitle) warnTitle.style.display = 'none';
+    if (warnText) warnText.style.display = 'none';
+    window.open('https://m.me/PastorRodyBabaran', '_blank');
+};
+
+
+        // --- START THE APP ---
+        document.addEventListener('DOMContentLoaded', initializeAppLogic);
+    
+// Expose key functions for debugging/robustness
+window.submitToNetlifyForms = submitToNetlifyForms;
+window.handleFormSubmit = handleFormSubmit;
+</script>
+</body>
+</html>
