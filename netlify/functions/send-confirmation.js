@@ -110,7 +110,7 @@ const html = `
 
         <p style="margin-top:20px;margin-bottom:0;">
           Blessings,<br/>
-          <b>Pastor Rody Babaran, B.Th, M.CE</b>
+          <b>Pastor Rody Babaran, BTh, MCE, MAST</b>
         </p>
 
         <hr style="margin:18px 0;border:none;border-top:1px solid #e5e7eb;" />
