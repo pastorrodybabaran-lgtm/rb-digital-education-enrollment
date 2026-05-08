@@ -829,10 +829,7 @@ button#submitButton {
                         <div>
                             <label for="fbName" class="form-label">Facebook Account Name</label>
                             <input type="text" id="fbName" name="fbName" required class="form-input">
-                        </div>
-                        <div>
-                            <label for="fbLink" class="form-label">Facebook Profile Link</label>
-                            <input type="url" id="fbLink" name="fbLink" required class="form-input" placeholder="https://www.facebook.com/yourprofile">
+                            <p class="text-sm mt-1" style="color:#8b2f0b; font-weight:bold; text-shadow:none;">Write EXACTLY your profile name</p>
                         </div>
                         </div>
                 </div>
@@ -1041,7 +1038,7 @@ button#submitButton {
                     <p><strong>Course Title:</strong> From Zero to Faithful Worker: Complete Theology & Ministry Training</p>
                     <p><strong>Format:</strong> Self-Paced KJV Training Curriculum</p>
                     <p><strong>Focus:</strong> Understanding Scripture, Teaching Doctrine, Writing Sermons, Leading Bible Studies, and Evangelism</p>
-                    <p><strong>Author:</strong> Rody D. Babaran, B.Th., M.CE, MAST</p>
+                    <p><strong>Author:</strong> Rody D. Babaran, BTh, MCE, MAST</p>
                     <p><strong>Founder:</strong> Rody Babaran Digital Education</p>
                     <p><strong>Scripture Base:</strong> King James Version (KJV)</p>
                     <p><em>Copyright © 2026 Rody D. Babaran. All rights reserved.</em></p>
@@ -1844,6 +1841,7 @@ async function handleFormSubmit(event) {
     body: JSON.stringify({
       fullName: (enrollmentData.legalName || '').trim(),
       email: (enrollmentData.email || '').trim(),
+      facebookName: (enrollmentData.fbName || '').trim(),
       course: (enrollmentData.course || '').trim()
     })
   });
