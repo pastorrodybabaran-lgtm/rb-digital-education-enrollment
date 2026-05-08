@@ -79,64 +79,741 @@ label[for="registrationDate"] {
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
 }
 
+
+
+/* --- Poster-Style Paid Portal Redesign (FRONT-END ONLY) --- */
+body.paid-portal {
+    background: radial-gradient(circle at top center, #3b0764 0%, #25005f 42%, #4c1d95 100%) !important;
+    background-attachment: fixed !important;
+    color: #111827;
+}
+
+.enrollment-page {
+    max-width: 1220px !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+/* Header like poster sample */
+.header-section {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0.5rem 1rem 1rem !important;
+    margin-bottom: 0.75rem !important;
+    display: grid !important;
+    grid-template-columns: 115px 1fr !important;
+    gap: 1rem !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+.header-section img {
+    width: 110px !important;
+    height: 110px !important;
+    margin: 0 auto !important;
+    border: 5px solid #facc15 !important;
+    box-shadow: 0 0 18px rgba(250,204,21,.45) !important;
+    background: #ffffff !important;
+}
+
+.header-section h1 {
+    color: #ffffff !important;
+    font-size: 2.05rem !important;
+    line-height: 2.25rem !important;
+    font-weight: 800 !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,.35) !important;
+}
+
+.header-section h2 {
+    font-size: 2.35rem !important;
+    line-height: 2.55rem !important;
+    font-weight: 900 !important;
+    color: #ffffff !important;
+    margin-top: 0.25rem !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,.35) !important;
+}
+
+.header-section .blue-highlight {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,.35) !important;
+}
+
+.header-section .blue-highlight::after {
+    content: "";
+}
+
+.header-section h2 .training-gold,
+.training-gold {
+    color: #facc15 !important;
+    text-shadow: 0 0 8px rgba(250,204,21,.55), 0 2px 4px rgba(0,0,0,.35) !important;
+}
+
+.enrollment-heading {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    font-size: 1.35rem !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,.35) !important;
+}
+
+/* Main white portal shell */
+#enrollment-form-container,
+.portal-shell {
+    background: rgba(255,255,255,.985) !important;
+    border-radius: 1.5rem !important;
+    padding: 1.35rem !important;
+    box-shadow: 0 25px 70px rgba(0,0,0,.28) !important;
+    border: 1px solid rgba(255,255,255,.65) !important;
+}
+
+#enrollmentForm {
+    display: grid !important;
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+}
+
+#enrollmentForm > .form-section {
+    margin-bottom: 0 !important;
+}
+
+/* Section cards */
+.form-section {
+    background: #ffffff !important;
+    border: 1px solid rgba(88,28,135,.28) !important;
+    border-radius: 0.85rem !important;
+    box-shadow: 0 9px 25px rgba(30,14,84,.08) !important;
+    padding: 1.15rem !important;
+    position: relative !important;
+    color: #111827 !important;
+}
+
+/* Purple tab headers */
+.form-section > h3 {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: .45rem !important;
+    background: linear-gradient(135deg, #4c1d95, #5b21b6, #3b0764) !important;
+    color: #ffffff !important;
+    border: 0 !important;
+    border-radius: .45rem !important;
+    padding: .38rem .9rem !important;
+    margin: -1.75rem 0 0.95rem 0 !important;
+    box-shadow: 0 7px 15px rgba(76,29,149,.28) !important;
+    font-size: 1rem !important;
+    line-height: 1.2rem !important;
+    letter-spacing: .02em !important;
+    white-space: nowrap !important;
+}
+
+/* Lightweight icons via CSS */
+.form-section.student-card > h3::before { content: "👤"; }
+.form-section.course-card > h3::before { content: "📘"; }
+.form-section.reason-card > h3::before { content: "❤"; }
+.form-section.tech-card > h3::before { content: "💻"; }
+.form-section.testimony-card > h3::before { content: "🎥"; }
+.form-section.agreement-card > h3::before { content: "📋"; }
+.form-section.date-card > h3::before { content: "📅"; }
+
+.form-section label,
+.form-section legend,
+.form-label {
+    color: #111827 !important;
+    text-shadow: none !important;
+    font-weight: 700 !important;
+}
+
+.form-section .text-gray-200,
+.form-section .text-white {
+    color: #111827 !important;
+    text-shadow: none !important;
+}
+
+.form-input,
+.form-select,
+textarea.form-input {
+    background: #ffffff !important;
+    border: 1px solid #c9c2dc !important;
+    border-radius: .5rem !important;
+    color: #111827 !important;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.03) !important;
+}
+
+.form-input:focus,
+.form-select:focus,
+textarea.form-input:focus {
+    border-color: #5b21b6 !important;
+    box-shadow: 0 0 0 3px rgba(91,33,182,.16) !important;
+}
+
+textarea.form-input {
+    min-height: 140px !important;
+}
+
+/* Tuition panel inside the white shell */
+.tuition-wrapper {
+    grid-column: 1 / -1 !important;
+}
+
+.tuition-panel {
+    background: #ffffff !important;
+    border: 1px solid rgba(88,28,135,.35) !important;
+    border-radius: 0.9rem !important;
+    box-shadow: none !important;
+    color: #111827 !important;
+    padding: 1.35rem !important;
+}
+
+.tuition-title {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: .5rem !important;
+    margin-top: -2.15rem !important;
+    background: linear-gradient(135deg, #4c1d95, #5b21b6, #3b0764) !important;
+    color: #ffffff !important;
+    border-radius: .55rem !important;
+    padding: .5rem 1.55rem !important;
+    font-weight: 900 !important;
+    letter-spacing: .04em !important;
+    box-shadow: 0 8px 18px rgba(76,29,149,.32) !important;
+}
+
+.tuition-title::before {
+    content: "📑";
+}
+
+.tuition-list {
+    color: #111827 !important;
+    font-size: .97rem !important;
+}
+
+.tuition-list p {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    gap: 1rem !important;
+    border-bottom: 0 !important;
+    padding: .22rem 0 !important;
+}
+
+.tuition-list strong {
+    font-weight: 700 !important;
+    color: #111827 !important;
+}
+
+.fee-note-box {
+    background: #fffaf0 !important;
+    border: 1px solid rgba(245,158,11,.5) !important;
+    border-radius: .75rem !important;
+    color: #111827 !important;
+    padding: 1rem 1.25rem !important;
+}
+
+.fee-highlight {
+    color: #8b2f0b !important;
+    font-weight: 900 !important;
+    text-shadow: none !important;
+}
+
+/* Grid placement like sample */
+.student-card { grid-column: span 4 !important; }
+.course-card { grid-column: span 4 !important; }
+.reason-card { grid-column: span 4 !important; }
+.tech-card { grid-column: 9 / span 4 !important; }
+.testimony-card { grid-column: span 5 !important; }
+.agreement-card { grid-column: span 7 !important; }
+.date-card { grid-column: span 4 !important; display: none !important; }
+.submit-card { grid-column: 1 / -1 !important; text-align: center !important; box-shadow: none !important; border: 0 !important; padding-top: 0.25rem !important; }
+
+/* Payment summary */
+#paymentSummary {
+    background: #fffaf0 !important;
+    color: #111827 !important;
+    border: 1px solid rgba(245,158,11,.55) !important;
+    border-radius: .65rem !important;
+    box-shadow: none !important;
+}
+
+#paymentSummary h4 {
+    color: #4c1d95 !important;
+    text-shadow: none !important;
+    font-size: 1rem !important;
+}
+
+#paymentSummary .text-yellow-300 {
+    color: #8b2f0b !important;
+    text-shadow: none !important;
+}
+
+#selectedTotalAmount {
+    color: #8b2f0b !important;
+}
+
+/* Syllabus card */
+#syllabusContainer {
+    background: #ffffff !important;
+    border: 1px solid rgba(88,28,135,.25) !important;
+    border-radius: .65rem !important;
+    color: #111827 !important;
+}
+
+#syllabusContainer .text-white,
+#syllabusContainer .text-gray-200,
+#syllabusContent {
+    color: #111827 !important;
+}
+
+#syllabusTitle {
+    display: inline-flex !important;
+    background: linear-gradient(135deg, #4c1d95, #5b21b6) !important;
+    color: #ffffff !important;
+    border-radius: .45rem !important;
+    padding: .35rem .85rem !important;
+    font-size: .95rem !important;
+}
+
+/* Submit */
+button#submitButton {
+    max-width: 430px !important;
+    border-radius: 9999px !important;
+    background: linear-gradient(135deg, #2563eb, #4f46e5, #5b21b6) !important;
+    box-shadow: 0 15px 30px rgba(37,99,235,.35) !important;
+    font-size: 1.45rem !important;
+    padding-top: .95rem !important;
+    padding-bottom: .95rem !important;
+}
+
+.submit-card p,
+.submit-card span {
+    color: #8b2f0b !important;
+    text-shadow: none !important;
+}
+
+.submit-card a {
+    color: #3730a3 !important;
+    font-weight: 900 !important;
+}
+
+/* Footer secure note */
+.secure-note {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #ffffff;
+    font-size: .85rem;
+    font-weight: 700;
+    margin-top: .75rem;
+}
+
+/* Hide old email/fb yellow helper loudness, make readable */
+.form-section p[style*="#FFD700"],
+.form-section p[style*="255,215,0"] {
+    color: #8b2f0b !important;
+    text-shadow: none !important;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .student-card, .course-card, .reason-card, .tech-card, .testimony-card, .agreement-card {
+        grid-column: 1 / -1 !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .enrollment-page { padding: .75rem !important; }
+    .header-section {
+        display: block !important;
+        text-align: center !important;
+        padding: .75rem .25rem 1rem !important;
+    }
+    .header-section img {
+        width: 92px !important;
+        height: 92px !important;
+        margin: 0 auto .75rem !important;
+    }
+    .header-section h1 {
+        font-size: 1.45rem !important;
+        line-height: 1.8rem !important;
+    }
+    .header-section h2 {
+        font-size: 1.4rem !important;
+        line-height: 1.75rem !important;
+    }
+    .enrollment-heading {
+        font-size: 1rem !important;
+    }
+    #enrollment-form-container {
+        padding: .8rem !important;
+        border-radius: 1rem !important;
+    }
+    #enrollmentForm {
+        display: block !important;
+    }
+    #enrollmentForm > .form-section,
+    .tuition-wrapper {
+        margin-bottom: 1.1rem !important;
+    }
+    .tuition-panel {
+        padding: 1rem !important;
+    }
+    .tuition-title {
+        margin-top: -1.65rem !important;
+        font-size: .9rem !important;
+        padding: .4rem .9rem !important;
+    }
+    .tuition-list p {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: .05rem !important;
+        padding: .35rem 0 !important;
+        border-bottom: 1px dashed rgba(88,28,135,.15) !important;
+    }
+    .form-section > h3 {
+        white-space: normal !important;
+        margin-top: -1.55rem !important;
+    }
+}
+
+
+/* --- Surgical fixes for uploaded poster design alignment --- */
+.header-section {
+    grid-template-columns: 120px minmax(0, 1fr) !important;
+    text-align: center !important;
+    align-items: center !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.header-text-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-text-stack h1,
+.header-text-stack h2,
+.header-text-stack p {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.header-text-stack h2 {
+    display: block !important;
+    width: 100% !important;
+}
+
+.enrollment-subline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 0.35rem;
+}
+
+.enrollment-subline > span {
+    display: block;
+    height: 2px;
+    max-width: 220px;
+    flex: 1;
+    background: #facc15;
+    opacity: 0.95;
+}
+
+.form-section > h3,
+.form-section > h3 *,
+.tuition-title,
+.tuition-title *,
+#syllabusTitle,
+#syllabusTitle * {
+    color: #ffffff !important;
+}
+
+.student-card .grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+}
+
+.reason-card label[for="enrollmentReason"] {
+    display: block !important;
+    margin-top: 0.15rem !important;
+    margin-bottom: 0.45rem !important;
+    color: #111827 !important;
+}
+
+.reason-card textarea {
+    min-height: 155px !important;
+}
+
+#paymentSummary {
+    display: block !important;
+    margin-top: 0.9rem !important;
+    background: #fffaf0 !important;
+    border: 1px solid rgba(245, 158, 11, .65) !important;
+}
+
+#paymentSummary.hidden {
+    display: block !important;
+}
+
+#paymentSummary p {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.75rem;
+    margin: 0.25rem 0;
+}
+
+#paymentSummary p.mt-2 {
+    border-top: 1px solid rgba(245, 158, 11, .45);
+    padding-top: 0.75rem;
+    margin-top: 0.75rem !important;
+}
+
+#syllabusContainer {
+    display: block !important;
+    margin-top: 0.9rem !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    border: 1px solid rgba(88, 28, 135, .25) !important;
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+#syllabusContainer.hidden {
+    display: block !important;
+}
+
+#syllabusContent,
+#syllabusContent * {
+    color: #111827 !important;
+}
+
+.tech-card {
+    grid-column: 9 / span 4 !important;
+    align-self: start !important;
+}
+
+.tech-card .grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+}
+
+.tech-card fieldset {
+    border: 0 !important;
+    padding: 0 !important;
+}
+
+.tech-card .flex.items-center.space-x-4,
+.tech-card .space-y-2 {
+    background: #ffffff;
+    border: 1px solid #c9c2dc;
+    border-radius: 0.55rem;
+    padding: 0.65rem 0.75rem;
+}
+
+.secure-note {
+    display: block !important;
+    grid-column: 1 / -1 !important;
+    text-align: center !important;
+    color: #ffffff !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    margin: 0.25rem 0 0 !important;
+    padding: 0.25rem 0 0 !important;
+}
+
+.submit-card p,
+.submit-card span {
+    color: #8b2f0b !important;
+    text-shadow: none !important;
+}
+
+@media (max-width: 1024px) {
+    .tech-card {
+        grid-column: 1 / -1 !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .header-section {
+        display: block !important;
+        text-align: center !important;
+    }
+
+    .header-text-stack h2 {
+        font-size: 1.25rem !important;
+        line-height: 1.6rem !important;
+    }
+
+    .enrollment-subline > span {
+        display: none !important;
+    }
+
+    #paymentSummary p {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+/* --- Surgical Fix v3: readable purple tabs + restored syllabus behavior --- */
+.form-section > h3,
+.form-section > h3::before,
+.form-section > h3 * {
+    color: #ffffff !important;
+    text-shadow: 0 1px 1px rgba(0,0,0,.35) !important;
+}
+.form-section > h3 { font-weight: 900 !important; }
+
+#paymentSummary p {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    align-items: center !important;
+}
+#selectedTuitionFee,
+#selectedTotalAmount {
+    color: #8b2f0b !important;
+    font-weight: 900 !important;
+}
+#syllabusContainer { display: none !important; }
+#syllabusContainer.show-syllabus { display: block !important; }
+
+
+/* --- Final tab color override: force all purple section title text/icons to white --- */
+.form-section h3,
+.form-section h3::before,
+.form-section h3 span,
+.form-section h3 strong,
+.form-section h3 i,
+.form-section h3 svg,
+.form-section h3 * {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+    text-shadow: 0 1px 1px rgba(0,0,0,.45) !important;
+}
+
+.form-section h3 {
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+
+/* --- Surgical validation fix: make labels/titles red when their field is missing --- */
+.label-error-highlight {
+    color: #ef4444 !important;
+    -webkit-text-fill-color: #ef4444 !important;
+    font-weight: 900 !important;
+    text-shadow: none !important;
+}
+
+.label-error-highlight::after {
+    color: #ef4444 !important;
+}
+
+
+/* --- Surgical Fix v4: move course preview below first-row cards only --- */
+#syllabusContainer.course-preview-card {
+    grid-column: 1 / span 8 !important;
+    margin-top: 0 !important;
+    align-self: start !important;
+}
+
+@media (max-width: 1024px) {
+    #syllabusContainer.course-preview-card {
+        grid-column: 1 / -1 !important;
+    }
+}
+
+/* --- Final surgical color changes --- */
+.training-gold {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,.35) !important;
+}
+
+.enrollment-heading {
+    color: #facc15 !important;
+    -webkit-text-fill-color: #facc15 !important;
+    font-weight: 900 !important;
+    text-shadow: 0 0 8px rgba(250,204,21,.55), 0 2px 4px rgba(0,0,0,.35) !important;
+}
+
+
+/* --- Surgical Fix v5: course preview title text white + credential text update --- */
+#syllabusContainer #syllabusTitle,
+#syllabusContainer #syllabusTitle * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 1px 1px rgba(0,0,0,.45) !important;
+}
+
 </style>
 </head>
-<body class="bg-gray-100">
-    <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-4xl">
+<body class="bg-gray-100 paid-portal">
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-6xl enrollment-page">
         
         <header class="text-center mb-8 header-section">
             <!-- Logo -->
             <img src="https://i.imgur.com/zpxUXa5.jpeg" alt="Rody Babaran Digital Education Logo" class="w-32 h-32 mx-auto mb-4 rounded-full object-cover shadow-md">
-            
-            <h1 class="text-3xl sm:text-4xl font-bold text-white">Rody Babaran Digital Education</h1>
-            <h2 class="text-2xl sm:text-3xl font-bold text-indigo-300 mt-2"><span class="blue-highlight"><span style="color:#FFD700; font-weight:bold; text-shadow:0 0 8px rgba(255,215,0,0.9);">FREE</span> HOME STUDY THEOLOGY COURSES</span></h2>
-            <p class="text-lg text-gray-200 font-bold"><span class="enrollment-heading">Enrollment Form / Agreement</span></p>
+
+            <div class="header-text-stack">
+                <h1 class="text-3xl sm:text-4xl font-bold text-white">Rody Babaran Digital Education</h1>
+                <h2 class="text-2xl sm:text-3xl font-bold text-indigo-300 mt-2">
+                    <span class="blue-highlight">ONLINE THEOLOGY &amp; MINISTRY <span class="training-gold">TRAINING PROGRAMS</span></span>
+                </h2>
+                <div class="enrollment-subline">
+                    <span></span>
+                    <p class="text-lg text-gray-200 font-bold"><span class="enrollment-heading">Enrollment Form / Agreement</span></p>
+                    <span></span>
+                </div>
+            </div>
         </header>
 
-
-<!-- NEW: Ministry Support Notice (Centered) -->
-<div class="mx-auto mb-6 max-w-2xl px-4">
-    <div class="rounded-lg border border-white/30 bg-white/10 backdrop-blur-sm py-4 px-5 text-center">
-        <div class="text-yellow-300 font-extrabold tracking-wide text-lg" style="text-shadow: 0 0 8px rgba(255,215,0,0.9);">MINISTRY SUPPORT</div>
-        <p class="mt-2 text-white font-semibold leading-relaxed">
-            If you find this Course <span class="font-extrabold underline">VALUABLE</span> to your ministry/church/evangelism,
-            please consider supporting my church in the Philippines. Contact me for more details. Thank you.
-        </p>
-    </div>
-</div>
-
-
-
-
-        
-<!-- Registration Fee Notice -->
-<div class="mx-auto mb-6 max-w-2xl px-4">
-    <div class="rounded-lg border border-yellow-300/40 bg-yellow-300/10 backdrop-blur-sm py-4 px-5 text-center">
-        <div class="text-yellow-300 font-extrabold tracking-wide text-lg" style="text-shadow: 0 0 8px rgba(255,215,0,0.9);">
-            REGISTRATION FEE NOTICE
-        </div>
-        <p class="mt-2 text-white font-semibold leading-relaxed">
-            A non-refundable registration fee of <span class="font-extrabold underline">Php 400.00</span> is required to process your enrollment.
-        </p>
-        <p class="mt-2 text-white text-sm">
-            This helps support the administration and ongoing ministry work behind these courses.
-        </p>
-        <p class="mt-2 text-white text-sm italic">
-            Payment details will be provided after submission of this form.
-        </p>
-    </div>
-</div>
-
-
-        <main id="enrollment-form-container">
+<main id="enrollment-form-container">
             <form id="enrollmentForm" name="enrollment" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6" novalidate>
       <input type="hidden" name="form-name" value="enrollment" />
       <p class="hidden">
         <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
       </p>
 
+                <div class="tuition-wrapper">
+<!-- Tuition Fees Notice -->
+<div class="mx-auto mb-8 max-w-6xl px-2 sm:px-4">
+    <div class="tuition-panel py-6 px-5 sm:px-7 text-center">
+        <div class="tuition-title">
+            LIST OF TUITION FEES
+        </div>
+
+        <div class="tuition-list mt-5 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-1 text-left font-semibold leading-relaxed max-w-5xl mx-auto">
+            <div>
+                <p><span>1. From Zero to Faithful Worker</span><strong>Php 2,000</strong></p>
+                <p><span>2. How to Disciple a New Believer</span><strong>Php 1,000</strong></p>
+                <p><span>3. Homiletics I</span><strong>Php 1,000</strong></p>
+                <p><span>4. Homiletics II</span><strong>Php 1,500</strong></p>
+                <p><span>5. Advanced Crafting for Effective Preaching</span><strong>Php 1,500</strong></p>
+            </div>
+            <div>
+                <p><span>6. Topical Sermon for Beginners</span><strong>Php 1,000</strong></p>
+                <p><span>7. Intro to Writing Devotional</span><strong>Php 500</strong></p>
+                <p><span>8. Advanced Writing Devotional</span><strong>Php 800</strong></p>
+                <p><span>9. 12-week Major Doctrines of Salvation (Video Based)</span><strong>Php 1,000</strong></p>
+                <p><span>10. Foundation of Faith (Video Based)</span><strong>Php 800</strong></p>
+            </div>
+        </div>
+
+        <div class="fee-note-box mt-5 max-w-5xl mx-auto text-left py-4 px-5">
+            <p class="font-bold text-lg">
+                Registration Fee: <span class="fee-highlight">Php 300.00</span> (non-refundable)
+            </p>
+            <p class="mt-3 text-sm sm:text-base leading-relaxed">
+                Your tuition payment is received as a love gift or donation to a church I am supporting in the Philippines.
+                Registration fee and tuition donation are payable through <span class="fee-highlight">GCASH</span>.
+                Payment instructions will be discussed privately through Facebook Messenger after submitting this form.
+            </p>
+        </div>
+    </div>
+</div>
+                </div>
+
                 <!-- Student Information Section -->
-                <div class="form-section">
+                <div class="form-section student-card">
                     <h3 class="text-xl font-semibold mb-4 text-white border-b border-gray-400 pb-2">Student Information</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
@@ -147,18 +824,18 @@ label[for="registrationDate"] {
                             <label for="email" class="form-label">Email Address</label>
                             <input type="email" id="email" name="email" required class="form-input">
 <p class="text-sm text-white font-semibold mt-1" style="text-shadow: 0 0 5px rgba(255,255,255,0.8);">By providing your email, you consent to receive course updates and confirmation messages from <strong>Rody Babaran Digital Education</strong>. Your information will remain private and will not be shared.</p>
-<p class="text-sm mt-1" style="color:#FFD700; font-weight:bold; text-shadow:0 0 8px rgba(255,215,0,0.9);">Make sure to provide VALID email address.</p>
+<p class="text-sm mt-1" style="color:#8b2f0b; font-weight:bold; text-shadow:none;">Make sure to provide VALID email address.</p>
                         </div>
                         <div>
                             <label for="fbName" class="form-label">Facebook Account Name</label>
                             <input type="text" id="fbName" name="fbName" required class="form-input">
-<p class="text-sm mt-1" style="color:#FFD700; font-weight:bold; text-shadow:0 0 8px rgba(255,215,0,0.9);">Make sure to provide the full FB account name (e.g. https://www.facebook.com/PastorRodyBabaran)</p>
+                            <p class="text-sm mt-1" style="color:#8b2f0b; font-weight:bold; text-shadow:none;">Write EXACTLY your profile name</p>
                         </div>
                         </div>
                 </div>
 
                 <!-- Course Selection Section -->
-                <div class="form-section">
+                <div class="form-section course-card">
                     <h3 class="text-xl font-semibold mb-4 text-white border-b border-gray-400 pb-2">Course Selection</h3>
                     <div>
                         <label for="courseSelection" class="form-label">Select a Course</label>
@@ -166,56 +843,38 @@ label[for="registrationDate"] {
                             <option value="" disabled selected>-- Choose a course --</option>
                             <!-- Options will be populated by JavaScript -->
                         </select>
+                        <p class="text-sm mt-2 text-white font-semibold" style="text-shadow: 0 0 5px rgba(255,255,255,0.8);">
+                            Please choose the course you intend to enroll in. Tuition fee depends on the selected course.
+                        </p>
                     </div>
-                    <div id="syllabusContainer" class="hidden mt-4 p-4 border rounded-md bg-slate-700 bg-opacity-50 shadow-inner">
-                        <h4 class="text-lg font-bold mb-2 text-white" id="syllabusTitle"></h4>
-                        <div id="syllabusContent" class="prose max-w-none text-sm text-gray-200"></div>
+                    <div id="paymentSummary" class="mt-4 p-4 rounded-lg border border-yellow-300/40 bg-yellow-300/10 text-white shadow-inner">
+                        <h4 class="text-lg font-bold text-yellow-300 mb-2" style="text-shadow: 0 0 8px rgba(255,215,0,0.9);">Payment Summary</h4>
+                        <p><strong>Selected Course:</strong> <span id="selectedCourseName">-</span></p>
+                        <p><strong>Tuition Love Gift / Donation:</strong> <span id="selectedTuitionFee">Php -</span></p>
+                        <p><strong>Registration Fee:</strong> <span class="fee-highlight">Php 300.00</span></p>
+                        <p class="mt-2 text-xl font-extrabold text-yellow-300" style="text-shadow: 0 0 8px rgba(255,215,0,0.9);">
+                            Total Amount: <span id="selectedTotalAmount">Php -</span>
+                        </p>
                     </div>
                 </div>
 
-                <!-- Commitments & Qualifications Section -->
-                <div class="form-section">
-                    <h3 class="text-xl font-semibold mb-4 text-white border-b border-gray-400 pb-2">Commitments & Qualifications</h3>
+                <!-- Enrollment Reason Section -->
+                <div class="form-section reason-card">
+                    <h3 class="text-xl font-semibold mb-4 text-white border-b border-gray-400 pb-2">Enrollment Reason</h3>
+                    <label for="enrollmentReason" class="form-label text-white">Why do you want to enroll in this course?</label>
+                    <textarea id="enrollmentReason" name="enrollmentReason" required class="form-input min-h-[120px]" placeholder="Briefly share your reason for enrolling and how this training may help your ministry, church service, or personal growth."></textarea>
+                </div>
+
+                <!-- Course Preview Section -->
+                    <div id="syllabusContainer" class="course-preview-card hidden mt-4 p-4 border rounded-md bg-slate-700 bg-opacity-50 shadow-inner">
+                        <h4 class="text-lg font-bold mb-2 text-white" id="syllabusTitle"></h4>
+                        <div id="syllabusContent" class="prose max-w-none text-sm text-gray-200"></div>
+                    </div>
+
+                <!-- Technical Readiness Section -->
+                <div class="form-section tech-card">
+                    <h3 class="text-xl font-semibold mb-4 text-white border-b border-gray-400 pb-2">Technical Readiness</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Student Commitment -->
-                        <fieldset data-validation="select-all">
-                            <legend class="form-label font-bold text-white">Student Commitment (Select ALL)</legend>
-                            <div class="space-y-2 mt-2">
-                                <div class="flex items-start">
-                                    <input id="commit_time" name="studentCommitment" type="checkbox" value="Time" class="form-checkbox">
-                                    <label for="commit_time" class="ml-3 text-sm text-gray-200">Time</label>
-                                </div>
-                                <div class="flex items-start">
-                                    <input id="commit_commitment" name="studentCommitment" type="checkbox" value="Commitment" class="form-checkbox">
-                                    <label for="commit_commitment" class="ml-3 text-sm text-gray-200">Commitment</label>
-                                </div>
-                                <div class="flex items-start">
-                                    <input id="commit_interest" name="studentCommitment" type="checkbox" value="Interest" class="form-checkbox">
-                                    <label for="commit_interest" class="ml-3 text-sm text-gray-200">Interest</label>
-                                </div>
-                                <div class="flex items-start">
-                                    <input id="commit_willingness" name="studentCommitment" type="checkbox" value="Willingness" class="form-checkbox">
-                                    <label for="commit_willingness" class="ml-3 text-sm text-gray-200">Willingness</label>
-                                </div>
-                            </div>
-                        </fieldset>
-
-                        <!-- Qualifications -->
-                        <fieldset data-validation="select-all">
-                            <legend class="form-label font-bold text-white">Qualifications (Select ALL)</legend>
-                            <div class="space-y-2 mt-2">
-                                <div class="flex items-start">
-                                    <input id="qual_english" name="qualifications" type="checkbox" value="Able to Read/Understand English" class="form-checkbox">
-                                    <label for="qual_english" class="ml-3 text-sm text-gray-200">Able to Read/Understand English</label>
-                                </div>
-                                <div class="flex items-start">
-                                    <input id="qual_highschool" name="qualifications" type="checkbox" value="Minimum High School Graduate" class="form-checkbox">
-                                    <label for="qual_highschool" class="ml-3 text-sm text-gray-200">Minimum High School Graduate</label>
-                                </div>
-                            </div>
-                        </fieldset>
-
-                        <!-- Technical Requirements -->
                         <fieldset data-validation="select-one">
                             <legend class="form-label font-bold text-white">Primary Device (Select one)</legend>
                              <div class="flex items-center space-x-4 mt-2">
@@ -229,7 +888,6 @@ label[for="registrationDate"] {
                                 </div>
                             </div>
                         </fieldset>
-                        
                         <fieldset data-validation="select-all">
                             <legend class="form-label font-bold text-white">Internet Connection (Select ALL)</legend>
                             <div class="space-y-2 mt-2">
@@ -250,53 +908,39 @@ label[for="registrationDate"] {
                     </div>
                 </div>
 
-                <!-- Agreements Section -->
-                <div class="form-section">
-                    <h3 class="text-xl font-semibold mb-4 text-white border-b border-gray-400 pb-2">Agreements</h3>
-                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8">
-                         <fieldset data-validation="no-refusal" data-refusal-value="No">
-                             <legend class="form-label font-bold text-white">Commitment to Finish</legend>
-                             <div class="flex items-center space-x-4 mt-2">
-                                 <div class="flex items-center">
-                                     <input id="finish_yes" name="commitToFinish" type="radio" value="Yes" class="form-radio" required>
-                                     <label for="finish_yes" class="ml-2 text-sm text-gray-200">Yes</label>
-                                 </div>
-                                 <div class="flex items-center">
-                                     <input id="finish_no" name="commitToFinish" type="radio" value="No" class="form-radio">
-                                     <label for="finish_no" class="ml-2 text-sm text-gray-200">No</label>
-                                 </div>
-                             </div>
-                         </fieldset>
-
-                         <fieldset data-validation="no-refusal" data-refusal-value="No, I Do Not Agree">
-                             <legend class="form-label font-bold text-white">Testimony Video Agreement</legend>
-                             <p class="text-base text-gray-200 mb-2" style="text-shadow: 0 0 6px rgba(255,255,255,0.5);">As a token of appreciation, <span style="color:#FFD700; font-weight:bold; text-shadow:0 0 8px rgba(255,215,0,0.9);">I agree to provide a 5-minute testimony</span> video after completing my program. <strong><span style="color:#FFD700; font-weight:bold; text-shadow:0 0 8px rgba(255,215,0,0.9);">I also agree</span></strong> to be uploaded to <strong><span style="color:#FFD700; font-weight:bold; text-shadow:0 0 8px rgba(255,215,0,0.9);">Rody Babaran Digital Education Facebook Page</span></strong> as part of his ministry testimony to encourage others to enroll for <strong style="color:#FFD700; font-weight:bold; text-shadow:0 0 8px rgba(255,215,0,0.9);">FREE</strong>.</p>
-                             <div class="flex items-center space-x-4 mt-2">
-                                 <div class="flex items-center">
-                                     <input id="testimony_yes" name="testimonyAgreement" type="radio" value="Yes, I Agree" class="form-radio" required>
-                                     <label for="testimony_yes" class="ml-2 text-sm text-gray-200">Yes, I Agree</label>
-                                 </div>
-                                 <div class="flex items-center">
-                                     <input id="testimony_no" name="testimonyAgreement" type="radio" value="No, I Do Not Agree" class="form-radio">
-                                     <label for="testimony_no" class="ml-2 text-sm text-gray-200">No, I Do Not Agree</label>
-                                 </div>
-                             </div>
-                         </fieldset>
-                     </div>
+                <!-- Optional Testimony Section -->
+                <div class="form-section testimony-card">
+                    <h3 class="text-xl font-semibold mb-4 text-white border-b border-gray-400 pb-2">Optional Testimony</h3>
+                    <p class="text-base text-gray-200 mb-3" style="text-shadow: 0 0 6px rgba(255,255,255,0.5);">
+                        After completing the course, a written or video testimony is highly appreciated. With your permission, your testimony may be posted on the Rody Babaran Digital Education Facebook Page to encourage others to enroll and continue their ministry training.
+                    </p>
+                    <div class="space-y-2 mt-2">
+                        <div class="flex items-start">
+                            <input id="testimony_yes" name="testimonyAgreement" type="radio" value="Yes, I am willing to give a written or video testimony after completion" class="form-radio">
+                            <label for="testimony_yes" class="ml-3 text-sm text-gray-200">Yes, I am willing to give a written or video testimony after completion.</label>
+                        </div>
+                        <div class="flex items-start">
+                            <input id="testimony_no" name="testimonyAgreement" type="radio" value="Not at this time" class="form-radio">
+                            <label for="testimony_no" class="ml-3 text-sm text-gray-200">Not at this time.</label>
+                        </div>
+                    </div>
                 </div>
 
+
                 <!-- Course Agreement Section -->
-                <div class="form-section">
+                <div class="form-section agreement-card">
                     <h3 class="text-xl font-semibold mb-4 text-white border-b border-gray-400 pb-2">Course Agreement</h3>
                     
+
 <div class="prose prose-sm max-w-none text-gray-200 space-y-3">
-    <p>This course is offered as part of a ministry training program. While the course content itself is provided freely, a one-time non-refundable registration fee of <strong style="color:#FFD700; font-weight:bold; text-shadow:0 0 8px rgba(255,215,0,0.9);">Php 400.00</strong> is required to confirm and process your enrollment.</p>
-    <p>This registration fee secures your slot in the program and supports the administrative and ministry efforts behind this course.</p>
-    <p>Enrollment does not guarantee completion. Students are responsible for their own progress, participation, and submission of assignments.</p>
-    <p><strong style="color:#FFD700; font-weight:bold; text-shadow:0 0 8px rgba(255,215,0,0.9);">Failure to participate, complete assignments, or communicate will be considered a voluntary withdrawal from the course without refund.</strong></p>
-    <p><strong style="color:#FFD700; font-weight:bold; text-shadow:0 0 8px rgba(255,215,0,0.9);">No refunds will be issued once registration has been confirmed.</strong></p>
+    <p>This enrollment is part of a ministry training program offered through Rody Babaran Digital Education. Tuition fees vary depending on the selected course, and a one-time non-refundable registration fee of <strong class="fee-highlight">Php 300.00</strong> is required to process and confirm enrollment.</p>
+    <p>Your tuition payment is received as a love gift or donation to a church I am supporting in the Philippines. Registration fee and tuition donation are payable through <strong class="fee-highlight">GCASH</strong>. Payment instructions will be discussed privately through Facebook Messenger after submitting this form.</p>
+    <p>Enrollment is not considered confirmed until payment instructions have been completed and verified through private communication.</p>
+    <p>Students are responsible for their own progress, participation, communication, and submission of assignments. Failure to continue, complete assignments, or communicate will be considered voluntary withdrawal from the course without <strong class="fee-highlight">REFUND</strong>.</p>
+    <p>No <strong class="fee-highlight">REFUND</strong> will be issued once registration has been confirmed.</p>
     <p>By proceeding with this enrollment, you acknowledge and agree to these terms.</p>
 </div>
+
 
                     <fieldset class="mt-4" data-validation="no-refusal" data-refusal-value="I Do Not Agree">
                         <div class="flex items-center space-x-4 mt-2">
@@ -313,7 +957,7 @@ label[for="registrationDate"] {
                 </div>
 
                 <!-- Registration Date Section -->
-                 <div class="form-section">
+                 <div class="form-section date-card">
                      <h3 class="text-xl font-semibold mb-4 text-white border-b border-gray-400 pb-2">Registration Date</h3>
                      <div>
                          <label for="registrationDate" class="form-label">Date of Registration</label>
@@ -322,14 +966,15 @@ label[for="registrationDate"] {
                 </div>
 
                 <!-- Submission -->
-                <div class="form-section">
+                <div class="form-section submit-card">
                     <p class="text-sm text-white font-semibold mb-3" style="text-shadow: 0 0 5px rgba(255,255,255,0.8);">By submitting this form, you confirm that you agree to receive enrollment confirmation and course-related updates through the email provided.</p>
 <button type="submit" id="submitButton" class="w-full flex justify-center py-4 px-6 border border-transparent rounded-md shadow-lg text-2xl font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-blue-300 transition-transform transform hover:scale-105 max-w-md mx-auto">
                         Submit Enrollment
                     </button>
-                    <p class="mt-4 text-center font-bold text-gray-200 max-w-lg mx-auto"><span style="color:#FFD700; font-weight:bold; text-shadow:0 0 8px rgba(255,215,0,0.9);">Don’t forget to send me a private message to confirm registration</span> at <a href="https://m.me/PastorRodyBabaran" target="_blank" class="text-indigo-300 hover:underline">https://m.me/PastorRodyBabaran</a> (very important)</p>
+                    <p class="mt-4 text-center font-bold text-gray-200 max-w-lg mx-auto"><span style="color:#8b2f0b; font-weight:bold; text-shadow:none;">After submitting this form, please send me a private message on Facebook Messenger to receive payment instructions and confirm your enrollment.</span><br><a href="https://m.me/PastorRodyBabaran" target="_blank" class="text-indigo-300 hover:underline">https://m.me/PastorRodyBabaran</a></p>
                 </div>
             </form>
+            <div class="secure-note">🔒 Your information is secure and will only be used for enrollment confirmation and course-related updates.</div>
         </main>
         
                 <!-- Success Message -->
@@ -393,7 +1038,7 @@ label[for="registrationDate"] {
                     <p><strong>Course Title:</strong> From Zero to Faithful Worker: Complete Theology & Ministry Training</p>
                     <p><strong>Format:</strong> Self-Paced KJV Training Curriculum</p>
                     <p><strong>Focus:</strong> Understanding Scripture, Teaching Doctrine, Writing Sermons, Leading Bible Studies, and Evangelism</p>
-                    <p><strong>Author:</strong> Rody D. Babaran, B.Th., M.CE, M.A (Sys Theo)</p>
+                    <p><strong>Author:</strong> Rody D. Babaran, BTh, MCE, MAST</p>
                     <p><strong>Founder:</strong> Rody Babaran Digital Education</p>
                     <p><strong>Scripture Base:</strong> King James Version (KJV)</p>
                     <p><em>Copyright © 2026 Rody D. Babaran. All rights reserved.</em></p>
@@ -430,6 +1075,52 @@ label[for="registrationDate"] {
                     <p>Stage 5: Teach Others</p>
                     <p>Stage 6: Preach</p>
                     <p>Stage 7: Evangelize</p>
+                    <hr class='my-4'>
+                    <h4>Detailed Lesson Listing</h4>
+                    <p><strong>LEVEL 0 – FOUNDATIONS</strong></p>
+                    <p>Lesson 1 – Who Is God?</p>
+                    <p>Lesson 2 – What Is the Bible?</p>
+                    <p>Lesson 3 – The Big Story of the Bible</p>
+                    <p>Lesson 4 – The Gospel</p>
+                    <p>Lesson 5 – The Christian Life and the Local Church</p>
+                    <p><strong>LEVEL 1 – UNDERSTANDING A VERSE</strong></p>
+                    <p>Lesson 6 – How to Read a Verse Carefully</p>
+                    <p>Lesson 7 – Who Is Speaking, To Whom, and Why?</p>
+                    <p>Lesson 8 – What Does the Verse Actually Say?</p>
+                    <p>Lesson 9 – What Is the Main Idea of the Verse?</p>
+                    <p>Lesson 10 – Avoiding Common Mistakes</p>
+                    <p><strong>LEVEL 2 – UNDERSTANDING A PASSAGE</strong></p>
+                    <p>Lesson 11 – Reading the Context</p>
+                    <p>Lesson 12 – Connecting Verses in a Passage</p>
+                    <p>Lesson 13 – Recognizing Keywords and Themes</p>
+                    <p>Lesson 14 – Comparing Scripture with Scripture</p>
+                    <p>Lesson 15 – Writing a Passage Summary</p>
+                    <p><strong>LEVEL 3 – BASIC DOCTRINE AND THEOLOGY</strong></p>
+                    <p>Lesson 16 – Doctrine of God</p>
+                    <p>Lesson 17 – Doctrine of Scripture</p>
+                    <p>Lesson 18 – Doctrine of Man and Sin</p>
+                    <p>Lesson 19 – Doctrine of Christ and Salvation</p>
+                    <p>Lesson 20 – Doctrine of the Church and Service</p>
+                    <p><strong>LEVEL 4 – LEADING A BIBLE STUDY</strong></p>
+                    <p>Lesson 21 – What is a Bible Study?</p>
+                    <p>Lesson 22 – Preparing a Bible Study Lesson</p>
+                    <p>Lesson 23 – Asking Good Questions</p>
+                    <p>Lesson 24 – Explaining Clearly</p>
+                    <p>Lesson 25 – Leading a Small Group</p>
+                    <p><strong>LEVEL 5 – WRITING A SIMPLE SERMON</strong></p>
+                    <p>Lesson 26 – What is a Sermon?</p>
+                    <p>Lesson 27 – Choosing a Text</p>
+                    <p>Lesson 28 – Finding the Main Message</p>
+                    <p>Lesson 29 – Building the Outline</p>
+                    <p>Lesson 30 – Writing the Sermon</p>
+                    <p>Lesson 31 – Illustration and Application</p>
+                    <p>Lesson 32 – Delivering the Sermon</p>
+                    <p><strong>LEVEL 6 – WORKER READINESS AND EVANGELISM</strong></p>
+                    <p>Lesson 33 – What is Evangelism?</p>
+                    <p>Lesson 34 – Sharing the Gospel Clearly</p>
+                    <p>Lesson 35 – Answering Basic Questions</p>
+                    <p>Lesson 36 – Character and Faithfulness</p>
+                    <p>Lesson 37 – Final Ministry Project</p>
                 `
             },
             {
@@ -697,7 +1388,7 @@ label[for="registrationDate"] {
             },
             {
                 id: "major_doctrines_salvation",
-                name: "Major Doctrines of Salvation (Soteriology) Video Based",
+                name: "12-week Major Doctrines of Salvation (Video Based)",
                 syllabus: `
                     <p><strong>Course Duration:</strong> 12 Weeks (1 session per week)</p>
                     <p><strong>Session Length:</strong> 90 minutes</p>
@@ -744,7 +1435,7 @@ label[for="registrationDate"] {
             },
             {
                 id: "foundations_of_faith",
-                name: "Foundation of Faith (Series) Video Based",
+                name: "Foundation of Faith (Video Based)",
                 syllabus: `
                     <p><strong>Series Title:</strong> Foundations of Faith</p>
                     <p><strong>Objective:</strong> To provide a structured study of core theological topics to deepen understanding, encourage unity, and foster practical application among participants from diverse backgrounds.</p>
@@ -803,6 +1494,45 @@ label[for="registrationDate"] {
                 `
             }
         ];
+
+        // --- TUITION DATA ---
+        const tuitionFees = {
+            zero_to_faithful_worker: 2000,
+            disciple_new_believer: 1000,
+            homiletics_1: 1000,
+            homiletics_2: 1500,
+            crafting_sermons: 1500,
+            topical_sermons_beginners: 1000,
+            how_to_write_devotional: 500,
+            advanced_devotional_writing: 800,
+            major_doctrines_salvation: 1000,
+            foundations_of_faith: 800
+        };
+        const registrationFee = 300;
+
+        function formatPhp(amount) {
+            return `Php ${amount.toLocaleString()}`;
+        }
+
+        function displayPaymentSummary(selectedCourse) {
+            const selectedCourseName = document.getElementById('selectedCourseName');
+            const selectedTuitionFee = document.getElementById('selectedTuitionFee');
+            const selectedTotalAmount = document.getElementById('selectedTotalAmount');
+
+            if (!selectedCourse || !tuitionFees[selectedCourse.id]) {
+                if (selectedCourseName) selectedCourseName.textContent = '-';
+                if (selectedTuitionFee) selectedTuitionFee.textContent = 'Php -';
+                if (selectedTotalAmount) selectedTotalAmount.textContent = 'Php -';
+                return;
+            }
+
+            const tuition = tuitionFees[selectedCourse.id];
+            const total = tuition + registrationFee;
+
+            selectedCourseName.textContent = selectedCourse.name;
+            selectedTuitionFee.textContent = formatPhp(tuition);
+            selectedTotalAmount.textContent = formatPhp(total);
+        }
 
         // --- DOM ELEMENT REFERENCES ---
         const courseSelect = document.getElementById('courseSelection');
@@ -883,9 +1613,11 @@ label[for="registrationDate"] {
             closeModalButton.addEventListener('click', hideModal);
 
             // Add input listeners to remove highlights
-            enrollmentForm.querySelectorAll('input, select').forEach(el => {
+            enrollmentForm.querySelectorAll('input, select, textarea').forEach(el => {
                 el.addEventListener('input', () => {
                     el.classList.remove('error-highlight');
+                    clearFieldLabelHighlight(el);
+                    clearFieldLabelHighlight(el);
                     const fieldset = el.closest('fieldset');
                     if(fieldset) fieldset.classList.remove('fieldset-error-highlight');
                 });
@@ -912,22 +1644,42 @@ label[for="registrationDate"] {
         // --- FUNCTIONS ---
         function displaySyllabus() {
             const selectedCourseId = courseSelect.value;
+
             if (!selectedCourseId) {
                 syllabusContainer.classList.add('hidden');
+                syllabusContainer.classList.remove('show-syllabus');
+                document.getElementById('selectedCourseName').textContent = '-';
+                document.getElementById('selectedTuitionFee').textContent = 'Php -';
+                document.getElementById('selectedTotalAmount').textContent = 'Php -';
                 return;
             }
 
             const selectedCourse = courses.find(c => c.id === selectedCourseId);
             if (selectedCourse) {
+                displayPaymentSummary(selectedCourse);
                 syllabusTitle.textContent = `${selectedCourse.name} - Syllabus Overview`;
                 syllabusContent.innerHTML = selectedCourse.syllabus;
                 syllabusContainer.classList.remove('hidden');
+                syllabusContainer.classList.add('show-syllabus');
             }
         }
-        
+
         function removeAllHighlights() {
             enrollmentForm.querySelectorAll('.error-highlight').forEach(el => el.classList.remove('error-highlight'));
             enrollmentForm.querySelectorAll('.fieldset-error-highlight').forEach(el => el.classList.remove('fieldset-error-highlight'));
+            enrollmentForm.querySelectorAll('.label-error-highlight').forEach(el => el.classList.remove('label-error-highlight'));
+        }
+
+        function highlightFieldLabel(el) {
+            if (!el || !el.id) return;
+            const label = enrollmentForm.querySelector(`label[for="${el.id}"]`);
+            if (label) label.classList.add('label-error-highlight');
+        }
+
+        function clearFieldLabelHighlight(el) {
+            if (!el || !el.id) return;
+            const label = enrollmentForm.querySelector(`label[for="${el.id}"]`);
+            if (label) label.classList.remove('label-error-highlight');
         }
 
         
@@ -935,7 +1687,7 @@ function validateForm() {
     const invalidElements = [];
 
     // 1) Required text/date/url/email/select (not radios/checkboxes)
-    enrollmentForm.querySelectorAll('input[required], select[required]').forEach(el => {
+    enrollmentForm.querySelectorAll('input[required], select[required], textarea[required]').forEach(el => {
         const type = (el.getAttribute('type') || '').toLowerCase();
         if (type === 'radio' || type === 'checkbox') return;
         const val = (el.value || '').trim();
@@ -1023,8 +1775,12 @@ async function handleFormSubmit(event) {
 
   if (invalidElements.length > 0) {
     invalidElements.forEach(el => {
-      if (el.tagName === 'FIELDSET') el.classList.add('fieldset-error-highlight');
-      else el.classList.add('error-highlight');
+      if (el.tagName === 'FIELDSET') {
+        el.classList.add('fieldset-error-highlight');
+      } else {
+        el.classList.add('error-highlight');
+        highlightFieldLabel(el);
+      }
     });
     showModal('Incomplete Form', 'Please complete all the highlighted fields before submitting.');
     return;
@@ -1046,13 +1802,15 @@ async function handleFormSubmit(event) {
     legalName: formData.get('legalName'),
     email: studentEmail,
     fbName: formData.get('fbName'),
+    fbLink: formData.get('fbLink'),
     course: selectedCourse?.name || 'N/A',
-    studentCommitment: formData.getAll('studentCommitment'),
-    qualifications: formData.getAll('qualifications'),
+    enrollmentReason: formData.get('enrollmentReason'),
+    tuitionFee: selectedCourse ? (tuitionFees[selectedCourse.id] || 0) : 0,
+    registrationFee: registrationFee,
+    totalAmount: selectedCourse ? ((tuitionFees[selectedCourse.id] || 0) + registrationFee) : registrationFee,
     device: formData.get('device'),
     connection: formData.getAll('connection'),
-    commitToFinish: formData.get('commitToFinish'),
-    testimonyAgreement: formData.get('testimonyAgreement'),
+    testimonyAgreement: formData.get('testimonyAgreement') || 'Not answered',
     courseAgreement: formData.get('courseAgreement'),
     registrationDate: formData.get('registrationDate'),
     submittedAt: new Date().toISOString(),
@@ -1083,6 +1841,7 @@ async function handleFormSubmit(event) {
     body: JSON.stringify({
       fullName: (enrollmentData.legalName || '').trim(),
       email: (enrollmentData.email || '').trim(),
+      facebookName: (enrollmentData.fbName || '').trim(),
       course: (enrollmentData.course || '').trim()
     })
   });
